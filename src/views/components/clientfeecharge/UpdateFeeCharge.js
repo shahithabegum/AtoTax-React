@@ -22,7 +22,7 @@ const UpdateFeeCharge = () => {
           gstClientId:location.state.gstClientId,
           serviceCategoryId:location.state.serviceCategoryId,
           defaultCharge:location.state.defaultCharge,
-          previousCharge:location.state.previousCharge
+          previousCharge:location.state.serviceCategory.previousCharge
         },
        // validationSchema:AmendValidation,
         onSubmit: values => {
@@ -59,7 +59,7 @@ const UpdateFeeCharge = () => {
       const handleCancle =()=>{
         navigate('/Clientfeecharges')
       }
-      console.log("status",status)
+      console.log("status",location.state)
   return (
     <div className='container p-2 col-11 col-sm-10 col-lg-12 mt-5 text-lg-right float-sm-left'>
    

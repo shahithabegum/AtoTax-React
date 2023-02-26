@@ -348,7 +348,7 @@ const GstForm = () => {
        </Row>
        <Row className='my-3 mx-1  justify-content-center'>
                 <Col m={6} sm={8} lg={4} ml-0 >
-                <button type="submit" className='btn btn-block btn-outline-info mb-2  ' onClick={()=>createGstClientSubmit()}>Submit</button>
+                <button type="submit" className='btn btn-block btn-outline-info mb-2  ' >Submit</button>
               
                 </Col>
                 <Col m={6} sm={8} lg={4} ml-0>
