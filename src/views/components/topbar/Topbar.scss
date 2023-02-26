@@ -1,0 +1,21 @@
+#account-menu {
+    .MuiPopover-paper {
+        margin-top: 15px;
+        min-width: 150px;
+    }
+}
+
+.admin-navbar {
+    position: fixed !important;
+    z-index: 10;
+    width: 100%;
+    // background: #FFF;
+    margin-bottom: 86px;
+    background-color:#0E86D4;
+}
+.username-topbar{
+    color: white;
+}
+.icon-notification{
+    color: white;
+}
