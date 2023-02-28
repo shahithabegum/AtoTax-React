@@ -110,7 +110,7 @@ const Login = () => {
         <Row className='m-0 w-full p-0 align-item-center' >
         <Col m={6} sm={12} lg={12} p={0} className="p-0  mt-3">
             <span className='text-muted mt-3'> 
-            Forgot ?<Link to="/forgotpassword">Password</Link>
+            Forgot?<Link to="/forgotpassword"> Password</Link>
             </span>
            
         </Col>

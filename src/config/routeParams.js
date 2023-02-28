@@ -62,6 +62,7 @@ import ForgotPassword from '../views/components/password/forgotpassword/ForgotPa
 import ResetPassword from '../views/components/password/resetpassword/ResetPassword';
 import Emailpopup from '../views/components/email/Emailpopup';
 import ConfirmEmailpage from '../views/components/email/ConfirmEmailpage';
+import ChangePassword from '../views/components/password/changepassword/ChangePassword';
 export const pathroutes=[
     {
         path: "/login",
@@ -74,6 +75,10 @@ export const pathroutes=[
     {
         path: "/resetpassword",
         DynComponent: ResetPassword
+    },
+    {
+        path:"/confirm-email",
+        DynComponent:ConfirmEmailpage
     },
     
     {
@@ -94,9 +99,10 @@ export const pathroutes=[
                 DynComponent: Emailpopup
             },
             {
-                path:"/confrim-email",
-                DynComponent:ConfirmEmailpage
+                path:"/changepassword",
+                DynComponent: ChangePassword
             },
+           
             // -------------GSTCLIENT-----------
             {
                 path: "/Gstclient",

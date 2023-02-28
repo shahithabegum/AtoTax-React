@@ -69,6 +69,7 @@ function Topbar(props) {
                             }}
                         >
                             <MenuItem alignItems='center' onClick={() => {handlelogout()}}>Logout</MenuItem>
+                            {/* <MenuItem alignItems='center' >Change Password</MenuItem> */}
                            
                         </Menu>
                     </div>

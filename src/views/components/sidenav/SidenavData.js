@@ -6,6 +6,7 @@ import { TiWeatherPartlySunny } from "react-icons/ti";
 import { IoIosPeople } from "react-icons/io";
 
 import { SiStatuspage } from "react-icons/si";
+import ChangePassword from '../password/changepassword/ChangePassword';
 export const SidenavData=[
     {
         path:"/dashboard",
@@ -113,6 +114,11 @@ export const SidenavData=[
         path:"/MediaTypes",
         title:"Media Type",
         icon:<MdOutlinePermMedia/>
+    },
+    {
+        path:"/changepassword",
+        title:"Change Password",
+        icon:""
     },
     // {
     //     path:"/Status",

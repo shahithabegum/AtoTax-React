@@ -14,8 +14,8 @@ const ConfirmEmailpage = () => {
  console.log("email",Email
  )
  const [email, setEmail] = useState({
-  token:"1223444",
-  Email:"shajua@gmail.com"
+  token:Token,
+  Email:Email
  })
     const handleSubmit =()=>{
       confirmEmail(email).then(res=>{
