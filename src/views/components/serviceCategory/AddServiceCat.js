@@ -57,12 +57,11 @@ const AddServiceCat = () => {
           id="serviceNameype"
           label="Service Name"
           span="*"
+          isTouched={formik.errors.serviceName}
+          error={formik.errors.serviceName}
           placeholder="Enter your Service Category"
           {...formik.getFieldProps("serviceName")}
           />
-                {formik.touched.serviceName && formik.errors.serviceName ? (
-           <p style={{color:"red",textAlign:"center"}}>{formik.errors.serviceName}</p>
-         ) : null}
           </Col>
           </Row>
           <Row className='my-3 mx-1' >
@@ -75,9 +74,6 @@ const AddServiceCat = () => {
           placeholder="Enter your Service Category Description"
           {...formik.getFieldProps("description")}
           />
-                {formik.touched.description && formik.errors.description ? (
-           <p style={{color:"red",textAlign:"center"}}>{formik.errors.description}</p>
-         ) : null}
           </Col>
           </Row>
           <Row className='my-3 mx-1' >
@@ -87,14 +83,13 @@ const AddServiceCat = () => {
           name="fixedCharge"
           id="fixedCharge"
           label="Fixed Charge"
+          isTouched={formik.errors.fixedCharge}
+          error={formik.errors.fixedCharge}
           type='number'
           span="*"
           placeholder="Enter Fixed Charge In Rupees"
           {...formik.getFieldProps("fixedCharge")}
           />
-                {formik.touched.fixedCharge && formik.errors.fixedCharge ? (
-           <p style={{color:"red",textAlign:"center"}}>{formik.errors.fixedCharge}</p>
-         ) : null}
           </Col>
           </Row>
           <Row className='my-3 mx-1' >

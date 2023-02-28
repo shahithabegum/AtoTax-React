@@ -58,10 +58,22 @@ import ServiceHistoryView from '../views/components/servicechargeHistory/Service
 import CreateGstClientAddressEx from '../views/components/gstclientaddressextensions/CreateGstClientAddressEx';
 import UpdateGstClientAddressEx from '../views/components/gstclientaddressextensions/UpdateGstClientAddressEx';
 import ViewGstClientAddressEx from '../views/components/gstclientaddressextensions/ViewGstClientAddressEx';
+import ForgotPassword from '../views/components/password/forgotpassword/ForgotPassword';
+import ResetPassword from '../views/components/password/resetpassword/ResetPassword';
+import Emailpopup from '../views/components/email/Emailpopup';
+import ConfirmEmailpage from '../views/components/email/ConfirmEmailpage';
 export const pathroutes=[
     {
         path: "/login",
         DynComponent: Login
+    },
+    {
+        path: "/forgotpassword",
+        DynComponent: ForgotPassword
+    },
+    {
+        path: "/resetpassword",
+        DynComponent: ResetPassword
     },
     
     {
@@ -76,6 +88,14 @@ export const pathroutes=[
             {
                 path: "/register",
                 DynComponent: Register
+            },
+            {
+                path:"/emailpopup",
+                DynComponent: Emailpopup
+            },
+            {
+                path:"/confrim_email",
+                DynComponent:ConfirmEmailpage
             },
             // -------------GSTCLIENT-----------
             {

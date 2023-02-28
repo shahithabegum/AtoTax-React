@@ -96,12 +96,11 @@ const GstEditing = () => {
       id="proprietorName"
       label="Proprietor Name"
       span="*"
+      isTouched={formik.errors.proprietorName}
+      error={formik.errors.proprietorName}
       placeholder="Enter GST Client Name"
       {...formik.getFieldProps("proprietorName")}
       />
-       {formik.touched.proprietorName && formik.errors.proprietorName ? (
-                 <p style={{color:"red"}}>{formik.errors.proprietorName}</p>
-               ) : null}
       </Col>
       
       <Col m={6} sm={10} lg={6} ml-0>
@@ -112,11 +111,10 @@ const GstEditing = () => {
       label="GST TIN"
       span="*"
       placeholder="Enter GST TIN Number"
+      isTouched={formik.errors.gstin}
+      error={formik.errors.gstin}
       {...formik.getFieldProps("gstin")}
       />
-       {formik.touched.gstin && formik.errors.gstin ? (
-                 <p style={{color:"red"}}>{formik.errors.gstin}</p>
-               ) : null}
       </Col>
       <Col m={6} sm={10} lg={6}>
       <Input 
@@ -125,11 +123,10 @@ const GstEditing = () => {
       label="GST UserName"
       span="*"
       placeholder="Enter GST User Name"
+      isTouched={formik.errors.gstUserName}
+      error={formik.errors.gstUserName}
       {...formik.getFieldProps("gstUserName")}
       />
-       {formik.touched.gstUserName && formik.errors.gstUserName ? (
-                 <p style={{color:"red"}}>{formik.errors.gstUserName}</p>
-               ) : null}
       </Col>
       <Col m={6} sm={10} lg={6} ml-0>
       <Input 
@@ -148,11 +145,11 @@ const GstEditing = () => {
       label="GST Email"
       span="*"
       placeholder="example@gmail.com"
+      isTouched={formik.errors.gstEmailId}
+      error={formik.errors.gstEmailId}
       {...formik.getFieldProps("gstEmailId")}
       />
-       {formik.touched.gstEmailId && formik.errors.gstEmailId ? (
-                 <p style={{color:"red"}}>{formik.errors.gstEmailId}</p>
-               ) : null}
+      
       </Col>
       <Col m={6} sm={10} lg={6} ml-0>
       <Input 
@@ -170,11 +167,11 @@ const GstEditing = () => {
       id="gstRecoveryEmailId"
       label="GST Recovery Email"
       placeholder="example@gmail.com"
+      isTouched={formik.errors.gstRecoveryEmailId}
+      error={formik.errors.gstRecoveryEmailId}
       {...formik.getFieldProps("gstRecoveryEmailId")}
       />
-       {formik.touched.gstRecoveryEmailId && formik.errors.gstRecoveryEmailId ? (
-                 <p style={{color:"red"}}>{formik.errors.gstRecoveryEmailId}</p>
-               ) : null}
+     
       </Col>
       <Col m={6} sm={10} lg={6}>
       <Input 
@@ -194,13 +191,12 @@ const GstEditing = () => {
       type="date"
       span="*"
       label="GST Reg Date"
-    
+      isTouched={formik.errors.gstRegDate}
+      error={formik.errors.gstRegDate}
       {...formik.getFieldProps("gstRegDate")}
       
       />
-       {formik.touched.gstRegDate && formik.errors.gstRegDate ? (
-                 <p style={{color:"red"}}>{formik.errors.gstRegDate}</p>
-               ) : null}
+      
       </Col>
       <Col m={6} sm={10} lg={6} ml-0>
       <Input 
@@ -241,11 +237,11 @@ const GstEditing = () => {
       id="contactName"
       label="Contact Name"
       placeholder="Enter your Contact Name"
+      isTouched={formik.errors.contactName}
+      error={formik.errors.contactName}
       {...formik.getFieldProps("contactName")}
       />
-       {formik.touched.contactName && formik.errors.contactName ? (
-                 <p style={{color:"red"}}>{formik.errors.contactName}</p>
-               ) : null}
+      
       </Col>
       <Col m={6} sm={10} lg={6} ml-0>
       <Input 
@@ -284,11 +280,11 @@ const GstEditing = () => {
       id="ewayBillUserName"
       label="Eway Bill UserName"
       placeholder="Enter Eway Bill UserName "
+      isTouched={formik.errors.ewayBillUserName}
+      error={formik.errors.ewayBillUserName}
       {...formik.getFieldProps("ewayBillUserName")}
       />
-       {formik.touched.ewayBillUserName && formik.errors.ewayBillUserName ? (
-                 <p style={{color:"red"}}>{formik.errors.ewayBillUserName}</p>
-               ) : null}
+      
       </Col>
       <Col m={6} sm={10} lg={6} ml-0>
       <Input 
@@ -317,7 +313,6 @@ const GstEditing = () => {
       {...formik.getFieldProps("tallyDataFilePath")}
       />
       </Col>
-      
       <Col m={6} sm={10} lg={6} ml-0 >
       <label htmlFor="Statusid" className='ml-2'>
        Status

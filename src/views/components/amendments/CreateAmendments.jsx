@@ -147,11 +147,11 @@ const CreateAmendments = () => {
           label="ARN :"
           span="*"
           placeholder="Enter ARN"
+          isTouched={formik.errors.arn}
+          error={formik.errors.arn}
           {...formik.getFieldProps("arn")}
           />
-                {formik.touched.arn && formik.errors.arn ? (
-           <p style={{color:"red",textAlign:"center"}}>{formik.errors.arn}</p>
-         ) : null}
+              
           </Col>
          </Row>
          <Row className='my-3 mx-1' >
@@ -185,13 +185,12 @@ const CreateAmendments = () => {
           id="sumittedDate"
           label="Sumitted Date"
           type="date"
-         
+          isTouched={formik.errors.sumittedDate}
+          error={formik.errors.sumittedDate}
           placeholder="Enter Sumitted Date"
           {...formik.getFieldProps("sumittedDate")}
           />
-                {formik.touched.sumittedDate && formik.errors.sumittedDate ? (
-           <p style={{color:"red",textAlign:"center"}}>{formik.errors.sumittedDate}</p>
-         ) : null}
+                
           </Col>
          </Row>
         

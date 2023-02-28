@@ -3,24 +3,13 @@ import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import {Link,Navigate,useNavigate} from 'react-router-dom'
 import { Col, Row } from 'react-bootstrap';
-import { Input } from '../../../shared/Input';
-import {login}from '../../../service/auth/authService'
-import {authService} from '../../../service/auth'
-import Logo from '../../../assets/image/testlogo.png'
-import './login.css'
-const Login = () => {
-  // useEffect(() => {
-  //   toast.promise(handleSubmit,{
-  //     pending:"loading",
-  //     success:"Login Success",
-  //     error:"user name or password incorrect"
-  //   });
-  // }, [])
-  let navigate=useNavigate();
+import Logo from '../../../../assets/image/testlogo.png'
+import {forgotpassword} from '../../../../service/auth/authService'
+const ForgotPassword = () => {
     const formik = useFormik({
         initialValues: {
-            userName:'',
-            password:''
+            username:'',
+            email:''
         },
         //validationSchema:AmendValidation,
         onSubmit: values => {
@@ -29,26 +18,22 @@ const Login = () => {
           },
         });
         const handleSubmit=(values)=>{
-           login(values).then(data=>{
-            console.log(data)
+           
+           forgotpassword(values).then(data=>{
             if(data?.data?.isSuccess){
-             toast.success("Login Success")
-             navigate('/dashboard')
-            authService.setAuthToken(data.data.result.token);
-            authService.setCurrentUser(data.data.result.user);
+              toast.success("mail has send successfully")
             } else {
               toast.error(data?.data?.errorMessages)
             }
-             
            })
+           
+             
+          
           
           
         }
-        if(authService.isAuthenticated()) {
-          return <Navigate to='/dashboard' />
-      }
   return (
-   <div className='containerlogin'>
+    <div className='containerlogin'>
      <div className='sidewrapper  col-12 '>
        < div className='innercontent d-flex '>
         <div className='sidediv col-lg-6 '>
@@ -61,61 +46,61 @@ const Login = () => {
         <div className='sidedivfrom col-lg-6 m-auto d-block'>
         
          <div className='formwarrapper '>
-         <h2 className='head p-0 m-0'><b>Welcome to AtoTax</b></h2>
-         <p className='text-muted mt-1'>Login to your AtoTax Account to Continue</p>
+         <h2 className='head p-0 m-0'><b>Forgot PassWord ?</b></h2>
          <form  onSubmit={formik.handleSubmit} className="mt-4" >
          <Row className='m-0 w-full p-0' >
          <Col m={6} sm={12} lg={12} ml-0 className="p-0">
         <div class="input-container d-flex">
         <i class="fa fa-user p-2" aria-hidden="true"></i>
         <input 
-        id="userName" 
-        name="userName" 
-        type="userName"
+        id="username" 
+        name="username" 
+        type="username"
         className='form-control p-2 inputlogin'
-        placeholder='Enter your User Name'
-        {...formik.getFieldProps("userName")}
+        placeholder="Reset using User-Name"
+        {...formik.getFieldProps("username")}
       />  
   </div>
           </Col>
-      {formik.touched.userName && formik.errors.userName ? (
-         <p style={{color:"red"}}>{formik.errors.userName}</p>
+      {formik.touched.username && formik.errors.username ? (
+         <p style={{color:"red"}}>{formik.errors.username}</p>
        ) : null}
   
         </Row>
-        <Row className='row m-0 w-full p-0 mt-3' >
+        <p className='text-center text-danger  m-1' style={{fontSize:"20px"}}>OR</p>
+        <Row className='row m-0 w-full p-0 ' >
         <Col m={6} sm={12} lg={12} ml-0 className="p-0">
         <div class="input-container d-flex  ">
-        <i class="fa fa-key p-1" aria-hidden="true"></i>
+        <i class="fa fa-envelope p-1" aria-hidden="true"></i>
     <input 
-        id="password" 
-        name="password" 
-        type="password"
+        id="email" 
+        name="email" 
+        type="email"
         className='form-control p-2 inputlogin'
-        placeholder='Enter your Password'
-        {...formik.getFieldProps("password")}
+        placeholder='Reset using  Email'
+        {...formik.getFieldProps("email")}
       />  
   </div>
           </Col>
        
         </Row>
-        <Row className='m-0 w-full p-0' >
+        {/* <Row className='m-0 w-full p-0' >
         <Col m={6} sm={12} lg={12} p={0} className="p-0 mt-3">
             <span className='text-muted'> 
-            By clicking Sign In, you agree to our<Link to="/resetpassword"> Privacy Policy</Link>
+            By clicking Sign In, you agree to our<Link to="#"> Privacy Policy</Link>
             </span>
         </Col>
         
-        </Row>
+        </Row> */}
         <Row className='m-0 w-full p-0 align-item-center' >
-        <Col m={6} sm={12} lg={12} p={0} className="p-0  mt-3">
+        {/* <Col m={6} sm={12} lg={12} p={0} className="p-0  mt-3">
             <span className='text-muted mt-3'> 
-            Forgot ?<Link to="/forgotpassword">Password</Link>
+            Forgot ? <Link>UserName</Link> or <Link>Password</Link>
             </span>
            
-        </Col>
+        </Col> */}
         <Col m={6} sm={12} lg={12} p={0} className="p-0  mt-3">
-        <button className="btn btn-info btn-block">Sign In</button>
+        <button className="btn btn-info btn-block">Request Reset Link</button>
           </Col>
         </Row>
         </form>
@@ -128,4 +113,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default ForgotPassword

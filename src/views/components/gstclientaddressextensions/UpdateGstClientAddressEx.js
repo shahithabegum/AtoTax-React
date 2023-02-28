@@ -146,6 +146,40 @@ const UpdateGstClientAddressEx = () => {
          <p style={{color:"red"}}>{formik.errors.addressTypeId}</p>
        ) : null}
       </Col>
+    
+      <Col m={6} sm={12} lg={6} ml-0>
+        <Input  
+        name="district"
+        id="district"
+        label="District"
+        placeholder="Enter your District "
+       
+        {...formik.getFieldProps("district")}
+        />
+        </Col>
+        </Row>
+         <Row className='my-1 mx-1' >
+         <Col m={6} sm={12} lg={6} ml-0>
+      <label htmlFor="addressTypeId" className='ml-0'>
+       Address Type<span style={{color:'red',fontSize:'20px'}}>*</span>
+      </label>
+      <select
+        name="addressTypeId"
+        type="number"
+        span="*"
+        {...formik.getFieldProps("addressTypeId")}
+        className='ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control'
+      >
+          <option value='' label="Select Status" />
+       {address.map(item=>(
+        <option value={item.id} label={item.addressTypeName} />
+        ))}
+      </select>
+      
+      {formik.touched.addressTypeId && formik.errors.addressTypeId ? (
+         <p style={{color:"red"}}>{formik.errors.addressTypeId}</p>
+       ) : null}
+      </Col>
       <Col m={6} sm={12} lg={6} ml-0>
         <Input  
         name="city"
@@ -153,12 +187,13 @@ const UpdateGstClientAddressEx = () => {
         label="City"
         placeholder="Enter your city"
         span="*"
+        isTouched={formik.errors.city}
+        error={formik.errors.city}
         {...formik.getFieldProps("city")}
         />
-              {formik.touched.city && formik.errors.city ? (
-         <p style={{color:"red"}}>{formik.errors.city}</p>
-       ) : null}
+             
         </Col>
+        
         </Row>
         <Row className='my-2 mx-1' >
         <Col m={6} sm={12} lg={6} ml-0>
@@ -168,11 +203,11 @@ const UpdateGstClientAddressEx = () => {
         label="Address Line 1 "
         placeholder="Enter your Address "
         span="*"
+        isTouched={formik.errors.addressLine1}
+        error={formik.errors.addressLine1}
         {...formik.getFieldProps("addressLine1")}
         />
-              {formik.touched.addressLine1 && formik.errors.addressLine1 ? (
-         <p style={{color:"red"}}>{formik.errors.addressLine1}</p>
-       ) : null}
+             
         </Col>
         <Col m={6} sm={12} lg={6} ml-0>
         <Input  
@@ -181,11 +216,11 @@ const UpdateGstClientAddressEx = () => {
         label="State"
         placeholder="Enter Your State"
         span="*"
+        isTouched={formik.errors.state}
+        error={formik.errors.state}
         {...formik.getFieldProps("state")}
         />
-              {formik.touched.state && formik.errors.state ? (
-         <p style={{color:"red"}}>{formik.errors.state}</p>
-       ) : null}
+            
         </Col>
        
         </Row>
@@ -196,12 +231,10 @@ const UpdateGstClientAddressEx = () => {
         id="addressLine2"
         label="Address Line 2"
         placeholder="Enter your Address "
-        span="*"
+        
         {...formik.getFieldProps("addressLine2")}
         />
-              {formik.touched.addressLine2 && formik.errors.addressLine2 ? (
-         <p style={{color:"red"}}>{formik.errors.addressLine2}</p>
-       ) : null}
+             
         </Col>
         
         <Col m={6} sm={12} lg={6} ml-0>
@@ -211,11 +244,10 @@ const UpdateGstClientAddressEx = () => {
         label="Pincode"
         placeholder="Enter your Pincode"
         span="*"
+        isTouched={formik.errors.pincode}
+        error={formik.errors.pincode}
         {...formik.getFieldProps("pincode")}
         />
-              {formik.touched.pincode && formik.errors.pincode ? (
-         <p style={{color:"red"}}>{formik.errors.pincode}</p>
-       ) : null}
         </Col>
         </Row>
         <Row className='my-1 mx-1' >
@@ -225,12 +257,9 @@ const UpdateGstClientAddressEx = () => {
         id="addressLine3"
         label="Address Line 3"
         placeholder="Enter your Address "
-        span="*"
+       
         {...formik.getFieldProps("addressLine3")}
         />
-              {formik.touched.addressLine3 && formik.errors.addressLine3 ? (
-         <p style={{color:"red"}}>{formik.errors.addressLine3}</p>
-       ) : null}
         </Col>
         <Col m={6} sm={12} lg={6} ml-0>
       <label htmlFor="Statusid" className='ml-0'>

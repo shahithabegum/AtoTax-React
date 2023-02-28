@@ -81,11 +81,11 @@ const UpdateEmployees = () => {
         label="First Name "
         placeholder="Enter your First Name "
         span="*"
+        isTouched={formik.errors.firstName}
+          error={formik.errors.firstName}
         {...formik.getFieldProps("firstName")}
         />
-              {formik.touched.firstName && formik.errors.firstName ? (
-         <p style={{color:"red"}}>{formik.errors.firstName}</p>
-       ) : null}
+              
         </Col>
         <Col m={6} sm={12} lg={6} ml-0>
         <Input  
@@ -94,11 +94,10 @@ const UpdateEmployees = () => {
         label="Last Name "
         placeholder="Enter your Last Name "
         span="*"
+        isTouched={formik.errors.lastName}
+        error={formik.errors.lastName}
         {...formik.getFieldProps("lastName")}
         />
-              {formik.touched.lastName && formik.errors.lastName ? (
-         <p style={{color:"red"}}>{formik.errors.lastName}</p>
-       ) : null}
         </Col>
         </Row>
         <Row className='my-3 mx-1' >
@@ -109,12 +108,11 @@ const UpdateEmployees = () => {
         type='date'
         label="Date of Birth"
         placeholder="Enter your Date of Birth "
+        isTouched={formik.errors.dob}
+          error={formik.errors.dob}
         span="*"
         {...formik.getFieldProps("dob")}
         />
-              {formik.touched.dob && formik.errors.dob ? (
-         <p style={{color:"red"}}>{formik.errors.dob}</p>
-       ) : null}
         </Col>
         
         <Col m={6} sm={12} lg={6} ml-0>
@@ -125,11 +123,10 @@ const UpdateEmployees = () => {
         label="Date of Join"
         placeholder="Enter your Date of Join "
         span="*"
+        isTouched={formik.errors.doj}
+        error={formik.errors.doj}
         {...formik.getFieldProps("doj")}
         />
-              {formik.touched.doj && formik.errors.doj ? (
-         <p style={{color:"red"}}>{formik.errors.doj}</p>
-       ) : null}
         </Col>
         </Row>
         <Row className='my-3 mx-1' >
@@ -140,11 +137,10 @@ const UpdateEmployees = () => {
         label="Email"
         placeholder="example@gmail.com"
         span="*"
+        isTouched={formik.errors.email}
+        error={formik.errors.email}
         {...formik.getFieldProps("email")}
         />
-              {formik.touched.email && formik.errors.email ? (
-         <p style={{color:"red"}}>{formik.errors.email}</p>
-       ) : null}
         </Col>
         <Col m={6} sm={12} lg={6} ml-0>
         <Input  
@@ -153,11 +149,10 @@ const UpdateEmployees = () => {
         label="Contact Number "
         placeholder="Enter your Contact Number "
         span="*"
+        isTouched={formik.errors.concactNo}
+        error={formik.errors.concactNo}
         {...formik.getFieldProps("concactNo")}
         />
-              {formik.touched.concactNo && formik.errors.concactNo ? (
-         <p style={{color:"red"}}>{formik.errors.concactNo}</p>
-       ) : null}
         </Col>
         </Row>
         <Row className='my-3 mx-1' >

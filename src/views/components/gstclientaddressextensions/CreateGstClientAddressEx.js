@@ -45,9 +45,9 @@ const CreateGstClientAddressEx = () => {
                 toast.success("Created Success")
                 navigate('/GStClientAddressEx')
               }
-              else{
-                toast.error(res?.data?.errorMessages)
-              }
+              // else{
+              //   toast.error(res?.data?.errorMessages)
+              // }
             })
            
          }
@@ -94,6 +94,7 @@ const CreateGstClientAddressEx = () => {
         name="gstClientId"
         type="number"
         span="*"
+       
         {...formik.getFieldProps("gstClientId")}
         className='ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control'
       >
@@ -117,9 +118,6 @@ const CreateGstClientAddressEx = () => {
        
         {...formik.getFieldProps("district")}
         />
-              {formik.touched.district && formik.errors.district ? (
-         <p style={{color:"red"}}>{formik.errors.district}</p>
-       ) : null}
         </Col>
         </Row>
          <Row className='my-1 mx-1' >
@@ -151,11 +149,11 @@ const CreateGstClientAddressEx = () => {
         label="City"
         placeholder="Enter your city"
         span="*"
+        isTouched={formik.errors.city}
+        error={formik.errors.city}
         {...formik.getFieldProps("city")}
         />
-              {formik.touched.city && formik.errors.city ? (
-         <p style={{color:"red"}}>{formik.errors.city}</p>
-       ) : null}
+             
         </Col>
         
         </Row>
@@ -167,11 +165,11 @@ const CreateGstClientAddressEx = () => {
         label="Address Line 1 "
         placeholder="Enter your Address "
         span="*"
+        isTouched={formik.errors.addressLine1}
+        error={formik.errors.addressLine1}
         {...formik.getFieldProps("addressLine1")}
         />
-              {formik.touched.addressLine1 && formik.errors.addressLine1 ? (
-         <p style={{color:"red"}}>{formik.errors.addressLine1}</p>
-       ) : null}
+             
         </Col>
         <Col m={6} sm={12} lg={6} ml-0>
         <Input  
@@ -180,11 +178,11 @@ const CreateGstClientAddressEx = () => {
         label="State"
         placeholder="Enter Your State"
         span="*"
+        isTouched={formik.errors.state}
+        error={formik.errors.state}
         {...formik.getFieldProps("state")}
         />
-              {formik.touched.state && formik.errors.state ? (
-         <p style={{color:"red"}}>{formik.errors.state}</p>
-       ) : null}
+            
         </Col>
        
         </Row>
@@ -198,9 +196,7 @@ const CreateGstClientAddressEx = () => {
         
         {...formik.getFieldProps("addressLine2")}
         />
-              {formik.touched.addressLine2 && formik.errors.addressLine2 ? (
-         <p style={{color:"red"}}>{formik.errors.addressLine2}</p>
-       ) : null}
+             
         </Col>
         
         <Col m={6} sm={12} lg={6} ml-0>
@@ -210,16 +206,12 @@ const CreateGstClientAddressEx = () => {
         label="Pincode"
         placeholder="Enter your Pincode"
         span="*"
+        isTouched={formik.errors.pincode}
+        error={formik.errors.pincode}
         {...formik.getFieldProps("pincode")}
         />
-              {formik.touched.pincode && formik.errors.pincode ? (
-         <p style={{color:"red"}}>{formik.errors.pincode}</p>
-       ) : null}
         </Col>
-       
-        
         </Row>
-       
         <Row className='my-1 mx-1' >
         <Col m={6} sm={12} lg={6} ml-0>
         <Input  
@@ -230,9 +222,6 @@ const CreateGstClientAddressEx = () => {
        
         {...formik.getFieldProps("addressLine3")}
         />
-              {formik.touched.addressLine3 && formik.errors.addressLine3 ? (
-         <p style={{color:"red"}}>{formik.errors.addressLine3}</p>
-       ) : null}
         </Col>
         
         <Col m={6} sm={12} lg={6} ml-0>

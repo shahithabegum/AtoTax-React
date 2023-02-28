@@ -33,9 +33,9 @@ const UpdateMedia = () => {
                 toast.success("Updated Scuccess")
                 navigate('/MediaTypes')
               }
-              else{
-                toast.error(res?.data?.errorMessages)
-              }
+              // else{
+              //   toast.error(res?.data?.errorMessages)
+              // }
             }).then()
             
          }
@@ -61,12 +61,11 @@ const UpdateMedia = () => {
               id="media"
               label="Media :"
               span="*"
+              isTouched={formik.errors.media}
+              error={formik.errors.media}
               placeholder="Enter your media Type"
               {...formik.getFieldProps("media")}
               />
-                    {formik.touched.media && formik.errors.media ? (
-               <p style={{color:"red",textAlign:"center"}}>{formik.errors.media}</p>
-             ) : null}
               </Col>
               </Row>
               <Row className='my-3 mx-1' >
@@ -78,9 +77,7 @@ const UpdateMedia = () => {
               placeholder="Enter your Media Description"
               {...formik.getFieldProps("description")}
               />
-                    {formik.touched.description && formik.errors.description ? (
-               <p style={{color:"red",textAlign:"center"}}>{formik.errors.description}</p>
-             ) : null}
+                  
               </Col>
               </Row>
               <Row className='my-3 mx-1' >

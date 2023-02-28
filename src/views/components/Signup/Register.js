@@ -1,4 +1,6 @@
-import React,{useEffect} from 'react'
+import React,{useState} from 'react'
+import Emailpopup from '../email/Emailpopup'
+import {FormModel} from '../../../shared/FormModel'
 import { useFormik } from 'formik';
 import { useNavigate} from 'react-router-dom'
 import {register}from '../../../service/auth/authService'
@@ -6,15 +8,14 @@ import { Col, Row } from 'react-bootstrap';
 import { SmallInput } from '../../../shared/SamllInput';
 import { toast } from 'react-toastify';
 import { RegisterValidation } from './RegisterValidation';
+
 const Register = () => {
    let navigate=useNavigate();
-  //  useEffect(() => {
-  //   toast.promise(handleSubmit,{
-  //     pending:"loading",
-  //     success:"Login Success",
-  //     error:"user name or password incorrect"
-  //   });
-  // }, [])
+    const [show, setShow] = useState(false);
+//    const handleClose = () =>{ setShow(false)
+//     console.log("modal")
+// }
+//   const handleShow = () => setShow(true);
     const formik = useFormik({
         initialValues: {
             userName:'',
@@ -34,7 +35,8 @@ const Register = () => {
               if(res?.data?.isSuccess){
                 toast.success("Register Success")
                 console.log(res.data)
-               navigate('/dashboard')
+              //  navigate('/emailpopup')
+               setShow(true);
               }
               else {
                 toast.error(res?.data?.errorMessages)
@@ -45,7 +47,9 @@ const Register = () => {
         }
         const handleCancle =()=>{
           navigate('/dashboard')
+           
         }
+        console.log("show",show)
   return (
     <div className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
    
@@ -58,12 +62,11 @@ const Register = () => {
         id="userName"
         label="User Name :"
         span="*"
+        isTouched={formik.errors.userName}
+        error={formik.errors.userName}
         placeholder="Enter User Name"
         {...formik.getFieldProps("userName")}
         />
-              {formik.touched.userName && formik.errors.userName ? (
-         <p style={{color:"red",textAlign:"center"}}>{formik.errors.userName}</p>
-       ) : null}
         </Col>
         </Row>
    
@@ -73,12 +76,11 @@ const Register = () => {
         name="name"
         id="name"
         label="Name :"
+        isTouched={formik.errors.name}
+        error={formik.errors.name}
         placeholder="Enter Your Name"
         {...formik.getFieldProps("name")}
         />
-              {formik.touched.name && formik.errors.name ? (
-         <p style={{color:"red",textAlign:"center"}}>{formik.errors.name}</p>
-       ) : null}
         </Col>
         </Row>
         <Row className='my-2 mx-1' >
@@ -88,12 +90,11 @@ const Register = () => {
         id="email"
         label="Email :"
         span="*"
+        isTouched={formik.errors.email}
+        error={formik.errors.email}
         placeholder="example@gamil.com"
         {...formik.getFieldProps("email")}
         />
-              {formik.touched.email && formik.errors.email ? (
-         <p style={{color:"red",textAlign:"center"}}>{formik.errors.email}</p>
-       ) : null}
         </Col>
         </Row>
         <Row className='my-2 mx-1' >
@@ -102,13 +103,13 @@ const Register = () => {
         name="password"
         id="password"
         label="Password :"
+        type="password"
+        isTouched={formik.errors.password}
+        error={formik.errors.password}
         span="*"
-        placeholder="Enter Your Password"
+        placeholder="Enter Your password"
         {...formik.getFieldProps("password")}
         />
-              {formik.touched.password && formik.errors.password ? (
-         <p style={{color:"red",textAlign:"center"}}>{formik.errors.password}</p>
-       ) : null}
         </Col>
         </Row>
         <Row className='my-3 mx-1 justify-content-center'>
@@ -121,7 +122,15 @@ const Register = () => {
                   </Col>
                 </Row>
     </form>
+     <FormModel 
+     show={show}
+     onHide={()=>{setShow(false)}}
+     title={<i class="fa fa-envelope-open" aria-hidden="true" style={{fontSize:"50px"}}></i>}
+     >
+      <Emailpopup onHide={()=>{setShow(false)}} email={formik.values.email}/>
+     </FormModel>
     </div>
+    
   )
 }
 

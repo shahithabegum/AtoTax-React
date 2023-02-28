@@ -57,12 +57,11 @@ const CreateGstFilingTypes = () => {
           id="filingType"
           label="Filing Type :"
           span="*"
+          isTouched={formik.errors.filingType}
+          error={formik.errors.filingType}
           placeholder="Enter Your Filing Type"
           {...formik.getFieldProps("filingType")}
           />
-                {formik.touched.filingType && formik.errors.filingType ? (
-           <p style={{color:"red",textAlign:"center"}}>{formik.errors.filingType}</p>
-         ) : null}
           </Col>
           </Row>
           <Row className='my-3 mx-1' >

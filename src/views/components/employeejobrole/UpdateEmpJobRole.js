@@ -55,34 +55,33 @@ const UpdateEmpJobRole = () => {
               <form id="formik-form" onSubmit={formik.handleSubmit}  className="ml-2 p-2 mt-2 m-auto col-lg-7">
               <h2 className="fromheading my-1 p-0 text-center">Update Job Role</h2>  
               <Row className='my-3 mx-1' >
-              <Col m={6} sm={12} lg={12} ml-0>
-              <SmallInput  
-              name="jobRole"
-              id="jobRole"
-              label="Job Role :"
-              span="*"
-              placeholder="Enter your Job Role"
-              {...formik.getFieldProps("jobRole")}
-              />
-                    {formik.touched.jobRole && formik.errors.jobRole ? (
-               <p style={{color:"red",textAlign:"center"}}>{formik.errors.jobRole}</p>
-             ) : null}
-              </Col>
-              </Row>
-              <Row className='my-3 mx-1' >
-              <Col m={6} sm={12} lg={12} ml-0>
-              <SmallInput  
-              name="jobDescription"
-              id="jobDescription"
-              label="Job Description :"
-              placeholder="Enter your Job Role Description"
-              {...formik.getFieldProps("jobDescription")}
-              />
-                    {formik.touched.jobDescription && formik.errors.jobDescription ? (
-               <p style={{color:"red",textAlign:"center"}}>{formik.errors.jobDescription}</p>
-             ) : null}
-              </Col>
-              </Row>
+          <Col m={6} sm={12} lg={12} ml-0>
+          <SmallInput  
+          name="jobRole"
+          id="jobRole"
+          label="Job Role :"
+          span="*"
+          isTouched={formik.errors.jobRole}
+          error={formik.errors.jobRole}
+          placeholder="Enter your Job Role"
+          {...formik.getFieldProps("jobRole")}
+          />
+          </Col>
+          </Row>
+          <Row className='my-3 mx-1' >
+          <Col m={6} sm={12} lg={12} ml-0>
+          <SmallInput  
+          name="jobDescription"
+          id="jobDescription"
+          label="Job Description :"
+          isTouched={formik.errors.jobDescription}
+          error={formik.errors.jobDescription}
+          placeholder="Enter your Job Role Description"
+          {...formik.getFieldProps("jobDescription")}
+          />
+              
+          </Col>
+          </Row>
               <Row className='my-3 mx-1' >
                     <Col m={6} sm={12} lg={4} ml-0  className='p-1'>
                     <label htmlFor="Statusid"className="form-label col-sm-12 col-lg-12 p-0 text-lg-right float-sm-left">

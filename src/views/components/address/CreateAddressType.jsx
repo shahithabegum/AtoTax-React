@@ -61,11 +61,10 @@ const CreateAddressType = () => {
                 label="Address Type :"
                 span="*"
                 placeholder="Enter your Address Type"
+                isTouched={formik.errors.addressTypeName}
+                error={formik.errors.addressTypeName}
                 {...formik.getFieldProps("addressTypeName")}
                 />
-                      {formik.touched.addressTypeName && formik.errors.addressTypeName ? (
-                 <p style={{color:"red",textAlign:"center"}}>{formik.errors.addressTypeName}</p>
-               ) : null}
                 </Col>
               
                 </Row>
@@ -76,11 +75,10 @@ const CreateAddressType = () => {
                 id="addressTypeDesc"
                 label="Address Type Desc :"
                 placeholder="Enter Address Type Description "
+                isTouched={formik.errors.addressTypeDesc}
+                error={formik.errors.addressTypeDesc}
                 {...formik.getFieldProps("addressTypeDesc")}
                 />
-                      {formik.touched.addressTypeDesc && formik.errors.addressTypeDesc ? (
-                 <p style={{color:"red",textAlign:"center",}}>{formik.errors.addressTypeDesc}</p>
-               ) : null}
                 </Col>
                 </Row>
                 <Row className='my-3 mx-1' >

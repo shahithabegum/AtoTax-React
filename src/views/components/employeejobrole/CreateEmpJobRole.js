@@ -57,12 +57,11 @@ const CreateEmpJobRole = () => {
           id="jobRole"
           label="Job Role :"
           span="*"
+          isTouched={formik.errors.jobRole}
+          error={formik.errors.jobRole}
           placeholder="Enter your Job Role"
           {...formik.getFieldProps("jobRole")}
           />
-                {formik.touched.jobRole && formik.errors.jobRole ? (
-           <p style={{color:"red" ,textAlign:"center"}}>{formik.errors.jobRole}</p>
-         ) : null}
           </Col>
           </Row>
           <Row className='my-3 mx-1' >
@@ -71,12 +70,12 @@ const CreateEmpJobRole = () => {
           name="jobDescription"
           id="jobDescription"
           label="Job Description :"
+          isTouched={formik.errors.jobDescription}
+          error={formik.errors.jobDescription}
           placeholder="Enter your Job Role Description"
           {...formik.getFieldProps("jobDescription")}
           />
-                {formik.touched.jobDescription && formik.errors.jobDescription ? (
-           <p style={{color:"red",textAlign:"center"}}>{formik.errors.jobDescription}</p>
-         ) : null}
+              
           </Col>
           </Row>
           <Row className='my-3 mx-1' >

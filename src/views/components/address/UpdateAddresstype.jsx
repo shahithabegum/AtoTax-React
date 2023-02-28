@@ -64,11 +64,10 @@ const UpdateAddresstype = () => {
                 label="Address Type :"
                 span="*"
                 placeholder="Enter your Address Type"
+                isTouched={formik.errors.addressTypeName}
+                error={formik.errors.addressTypeName}
                 {...formik.getFieldProps("addressTypeName")}
                 />
-                      {formik.touched.addressTypeName && formik.errors.addressTypeName ? (
-                 <p style={{color:"red",textAlign:"center"}}>{formik.errors.addressTypeName}</p>
-               ) : null}
                 </Col>
               
                 </Row>
@@ -79,11 +78,10 @@ const UpdateAddresstype = () => {
                 id="addressTypeDesc"
                 label="Address Type Desc :"
                 placeholder="Enter Address Type Description "
+                isTouched={formik.errors.addressTypeDesc}
+                error={formik.errors.addressTypeDesc}
                 {...formik.getFieldProps("addressTypeDesc")}
                 />
-                      {formik.touched.addressTypeDesc && formik.errors.addressTypeDesc ? (
-                 <p style={{color:"red",textAlign:"center",}}>{formik.errors.addressTypeDesc}</p>
-               ) : null}
                 </Col>
                 </Row>
                 <Row className='my-3 mx-1' >
@@ -95,7 +93,7 @@ const UpdateAddresstype = () => {
               
               <Col m={6} sm={12} ml-0 lg={6} className='p-1'>
                <select className='form-Control ml-0 col-sm-12 col-lg-12'
-                  style={{with:70,padding:'7px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
+                  style={{with:70,padding:'10px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
                 name="Statusid"
                 type="number"
                 {...formik.getFieldProps("statusId")}

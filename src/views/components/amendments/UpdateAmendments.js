@@ -152,6 +152,8 @@ const UpdateAmendments = () => {
           label="ARN :"
           span="*"
           placeholder="Enter ARN"
+          isTouched={formik.errors.arn}
+          error={formik.errors.arn}
           {...formik.getFieldProps("arn")}
           />
                 {formik.touched.arn && formik.errors.arn ? (
@@ -190,7 +192,8 @@ const UpdateAmendments = () => {
           id="sumittedDate"
           label="Sumitted Date"
           type="date"
-         
+          isTouched={formik.errors.sumittedDate}
+          error={formik.errors.sumittedDate}
           placeholder="Enter Sumitted Date"
           {...formik.getFieldProps("sumittedDate")}
           />

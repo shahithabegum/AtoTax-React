@@ -21,6 +21,7 @@ export const SmallInput = (props) => {
         autoComplete={props.type === 'password' ? 'new-password' : 'off'}
         disabled={props.disabled || false}
         />
+        { props.isTouched && props.error && <div className="pt-1  pl-2 form-error " style={{color:"red"}}>{props.error}</div>}
         </Col>
        </Row>
        <div>

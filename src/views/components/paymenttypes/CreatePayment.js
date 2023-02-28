@@ -57,13 +57,12 @@ const CreatePayment = () => {
               name="paymentMethod"
               id="paymentMethod"
               label="Payment Method :"
+              isTouched={formik.errors.paymentMethod}
+              error={formik.errors.paymentMethod}
               span="*"
               placeholder="Enter your Payment Method"
               {...formik.getFieldProps("paymentMethod")}
-              />
-                    {formik.touched.paymentMethod && formik.errors.paymentMethod ? (
-               <p style={{color:"red",textAlign:"center"}}>{formik.errors.paymentMethod}</p>
-             ) : null}
+              />    
               </Col>
               </Row>
               <Row className='my-3 mx-1' >

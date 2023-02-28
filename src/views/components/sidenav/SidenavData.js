@@ -8,7 +8,7 @@ import { IoIosPeople } from "react-icons/io";
 import { SiStatuspage } from "react-icons/si";
 export const SidenavData=[
     {
-        path:"/",
+        path:"/dashboard",
         title:"Dashboard",
         icon:<MdDashboard/>
     },
