@@ -57,7 +57,7 @@ const CreatePayment = () => {
               name="paymentMethod"
               id="paymentMethod"
               label="Payment Method :"
-              isTouched={formik.errors.paymentMethod}
+              isTouched={formik.touched.paymentMethod}
               error={formik.errors.paymentMethod}
               span="*"
               placeholder="Enter your Payment Method"

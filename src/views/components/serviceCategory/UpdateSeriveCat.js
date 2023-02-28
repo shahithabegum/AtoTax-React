@@ -59,7 +59,7 @@ const UpdateSeriveCat = () => {
           id="serviceNameype"
           label="Service Name"
           span="*"
-          isTouched={formik.errors.serviceName}
+          isTouched={formik.touched.serviceName}
           error={formik.errors.serviceName}
           placeholder="Enter your Service Category"
           {...formik.getFieldProps("serviceName")}
@@ -85,7 +85,7 @@ const UpdateSeriveCat = () => {
           name="fixedCharge"
           id="fixedCharge"
           label="Fixed Charge"
-          isTouched={formik.errors.fixedCharge}
+          isTouched={formik.touched.fixedCharge}
           error={formik.errors.fixedCharge}
           type='number'
           span="*"

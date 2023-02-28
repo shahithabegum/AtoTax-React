@@ -94,7 +94,7 @@ export const pathroutes=[
                 DynComponent: Emailpopup
             },
             {
-                path:"/confrim_email",
+                path:"/confrim-email",
                 DynComponent:ConfirmEmailpage
             },
             // -------------GSTCLIENT-----------

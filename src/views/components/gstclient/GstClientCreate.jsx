@@ -70,8 +70,8 @@ const GstForm = () => {
         toast.success("Created Success")
         navigate('/Gstclient')
       }
-      else{
-        toast.error(res?.data?.errorMessages)
+      else {
+        toast.error(res?.data?.errorMessages.toString())
       }
     })
     
@@ -104,7 +104,7 @@ const GstForm = () => {
       id="proprietorName"
       label="Proprietor Name"
       span="*"
-      isTouched={formik.errors.proprietorName}
+      isTouched={formik.touched.proprietorName}
       error={formik.errors.proprietorName}
       placeholder="Enter GST Client Name"
       {...formik.getFieldProps("proprietorName")}
@@ -119,7 +119,7 @@ const GstForm = () => {
       label="GST TIN"
       span="*"
       placeholder="Enter GST TIN Number"
-      isTouched={formik.errors.gstin}
+      isTouched={formik.touched.gstin}
       error={formik.errors.gstin}
       {...formik.getFieldProps("gstin")}
       />
@@ -131,7 +131,7 @@ const GstForm = () => {
       label="GST UserName"
       span="*"
       placeholder="Enter GST User Name"
-      isTouched={formik.errors.gstUserName}
+      isTouched={formik.touched.gstUserName}
       error={formik.errors.gstUserName}
       {...formik.getFieldProps("gstUserName")}
       />
@@ -153,7 +153,7 @@ const GstForm = () => {
       label="GST Email"
       span="*"
       placeholder="example@gmail.com"
-      isTouched={formik.errors.gstEmailId}
+      isTouched={formik.touched.gstEmailId}
       error={formik.errors.gstEmailId}
       {...formik.getFieldProps("gstEmailId")}
       />
@@ -175,7 +175,7 @@ const GstForm = () => {
       id="gstRecoveryEmailId"
       label="GST Recovery Email"
       placeholder="example@gmail.com"
-      isTouched={formik.errors.gstRecoveryEmailId}
+      isTouched={formik.touched.gstRecoveryEmailId}
       error={formik.errors.gstRecoveryEmailId}
       {...formik.getFieldProps("gstRecoveryEmailId")}
       />
@@ -200,7 +200,7 @@ const GstForm = () => {
       placeholder="dd-mm-yyyy"
       span="*"
       label="GST Reg Date"
-      isTouched={formik.errors.gstRegDate}
+      isTouched={formik.touched.gstRegDate}
       error={formik.errors.gstRegDate}
       {...formik.getFieldProps("gstRegDate")}
       
@@ -246,7 +246,7 @@ const GstForm = () => {
       id="contactName"
       label="Contact Name"
       placeholder="Enter your Contact Name"
-      isTouched={formik.errors.contactName}
+      isTouched={formik.touched.contactName}
       error={formik.errors.contactName}
       {...formik.getFieldProps("contactName")}
       />
@@ -289,7 +289,7 @@ const GstForm = () => {
       id="ewayBillUserName"
       label="Eway Bill UserName"
       placeholder="Enter Eway Bill UserName "
-      isTouched={formik.errors.ewayBillUserName}
+      isTouched={formik.touched.ewayBillUserName}
       error={formik.errors.ewayBillUserName}
       {...formik.getFieldProps("ewayBillUserName")}
       />

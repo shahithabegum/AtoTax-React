@@ -33,8 +33,8 @@ const UpdateEmpJobRole = () => {
                 toast.success("Updated Success")
                 navigate('/EmpJobRole')
               }
-              else{
-                toast.error(res?.data?.errorMessages)
+              else {
+                toast.error(res?.data?.errorMessages.toString())
               }
             }).then()
            
@@ -61,7 +61,7 @@ const UpdateEmpJobRole = () => {
           id="jobRole"
           label="Job Role :"
           span="*"
-          isTouched={formik.errors.jobRole}
+          isTouched={formik.touched.jobRole}
           error={formik.errors.jobRole}
           placeholder="Enter your Job Role"
           {...formik.getFieldProps("jobRole")}
@@ -74,7 +74,7 @@ const UpdateEmpJobRole = () => {
           name="jobDescription"
           id="jobDescription"
           label="Job Description :"
-          isTouched={formik.errors.jobDescription}
+          isTouched={formik.touched.jobDescription}
           error={formik.errors.jobDescription}
           placeholder="Enter your Job Role Description"
           {...formik.getFieldProps("jobDescription")}

@@ -59,7 +59,7 @@ const UpdatePayment = () => {
               id="paymentMethod"
               label="Payment Method :"
               span="*"
-              isTouched={formik.errors.paymentMethod}
+              isTouched={formik.touched.paymentMethod}
               error={formik.errors.paymentMethod}
               placeholder="Enter your Payment Method"
               {...formik.getFieldProps("paymentMethod")}

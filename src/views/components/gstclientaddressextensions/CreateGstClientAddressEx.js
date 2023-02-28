@@ -45,9 +45,9 @@ const CreateGstClientAddressEx = () => {
                 toast.success("Created Success")
                 navigate('/GStClientAddressEx')
               }
-              // else{
-              //   toast.error(res?.data?.errorMessages)
-              // }
+              else {
+                toast.error(res?.data?.errorMessages.toString())
+              }
             })
            
          }
@@ -149,7 +149,7 @@ const CreateGstClientAddressEx = () => {
         label="City"
         placeholder="Enter your city"
         span="*"
-        isTouched={formik.errors.city}
+        isTouched={formik.touched.city}
         error={formik.errors.city}
         {...formik.getFieldProps("city")}
         />
@@ -165,7 +165,7 @@ const CreateGstClientAddressEx = () => {
         label="Address Line 1 "
         placeholder="Enter your Address "
         span="*"
-        isTouched={formik.errors.addressLine1}
+        isTouched={formik.touched.addressLine1}
         error={formik.errors.addressLine1}
         {...formik.getFieldProps("addressLine1")}
         />
@@ -178,7 +178,7 @@ const CreateGstClientAddressEx = () => {
         label="State"
         placeholder="Enter Your State"
         span="*"
-        isTouched={formik.errors.state}
+        isTouched={formik.touched.state}
         error={formik.errors.state}
         {...formik.getFieldProps("state")}
         />
@@ -206,7 +206,7 @@ const CreateGstClientAddressEx = () => {
         label="Pincode"
         placeholder="Enter your Pincode"
         span="*"
-        isTouched={formik.errors.pincode}
+        isTouched={formik.touched.pincode}
         error={formik.errors.pincode}
         {...formik.getFieldProps("pincode")}
         />

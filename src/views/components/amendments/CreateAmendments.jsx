@@ -44,8 +44,8 @@ const CreateAmendments = () => {
             toast.success("Created SuccessFully")
             navigate('/amendments')
           }
-          else{
-            toast.error(res?.data?.errorMessages)
+          else {
+            toast.error(res?.data?.errorMessages.toString())
           }
         })
        }
@@ -147,7 +147,7 @@ const CreateAmendments = () => {
           label="ARN :"
           span="*"
           placeholder="Enter ARN"
-          isTouched={formik.errors.arn}
+          isTouched={formik.touched.arn}
           error={formik.errors.arn}
           {...formik.getFieldProps("arn")}
           />
@@ -185,7 +185,7 @@ const CreateAmendments = () => {
           id="sumittedDate"
           label="Sumitted Date"
           type="date"
-          isTouched={formik.errors.sumittedDate}
+          isTouched={formik.touched.sumittedDate}
           error={formik.errors.sumittedDate}
           placeholder="Enter Sumitted Date"
           {...formik.getFieldProps("sumittedDate")}

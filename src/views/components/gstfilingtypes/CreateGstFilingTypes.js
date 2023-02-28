@@ -29,8 +29,8 @@ const CreateGstFilingTypes = () => {
                 toast.success("Created Success")
                 navigate('/GstFilingTypes')
               }
-              else{
-                toast.error(res?.data?.errorMessages)
+              else {
+                toast.error(res?.data?.errorMessages.toString())
               }
             })
            
@@ -57,7 +57,7 @@ const CreateGstFilingTypes = () => {
           id="filingType"
           label="Filing Type :"
           span="*"
-          isTouched={formik.errors.filingType}
+          isTouched={formik.touched.filingType}
           error={formik.errors.filingType}
           placeholder="Enter Your Filing Type"
           {...formik.getFieldProps("filingType")}

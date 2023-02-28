@@ -119,7 +119,7 @@ const UpdateFeeCharge = () => {
               name="defaultCharge"
               id="defaultCharge"
               label="Default Charge"
-              isTouched={formik.errors.defaultCharge}
+              isTouched={formik.touched.defaultCharge}
               error={formik.errors.defaultCharge}
               placeholder="Enter Default Charge "
               span="*"

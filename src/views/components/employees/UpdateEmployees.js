@@ -44,8 +44,8 @@ const UpdateEmployees = () => {
                   toast.success("Updated Success")
                   navigate('/Employees')
                 }
-                else{
-                  toast.error(res?.data?.errorMessages)
+                else {
+                  toast.error(res?.data?.errorMessages.toString())
                 }
                })
             
@@ -81,7 +81,7 @@ const UpdateEmployees = () => {
         label="First Name "
         placeholder="Enter your First Name "
         span="*"
-        isTouched={formik.errors.firstName}
+        isTouched={formik.touched.firstName}
           error={formik.errors.firstName}
         {...formik.getFieldProps("firstName")}
         />
@@ -94,7 +94,7 @@ const UpdateEmployees = () => {
         label="Last Name "
         placeholder="Enter your Last Name "
         span="*"
-        isTouched={formik.errors.lastName}
+        isTouched={formik.touched.lastName}
         error={formik.errors.lastName}
         {...formik.getFieldProps("lastName")}
         />
@@ -108,7 +108,7 @@ const UpdateEmployees = () => {
         type='date'
         label="Date of Birth"
         placeholder="Enter your Date of Birth "
-        isTouched={formik.errors.dob}
+        isTouched={formik.touched.dob}
           error={formik.errors.dob}
         span="*"
         {...formik.getFieldProps("dob")}
@@ -123,7 +123,7 @@ const UpdateEmployees = () => {
         label="Date of Join"
         placeholder="Enter your Date of Join "
         span="*"
-        isTouched={formik.errors.doj}
+        isTouched={formik.touched.doj}
         error={formik.errors.doj}
         {...formik.getFieldProps("doj")}
         />
@@ -137,7 +137,7 @@ const UpdateEmployees = () => {
         label="Email"
         placeholder="example@gmail.com"
         span="*"
-        isTouched={formik.errors.email}
+        isTouched={formik.touched.email}
         error={formik.errors.email}
         {...formik.getFieldProps("email")}
         />
@@ -149,7 +149,7 @@ const UpdateEmployees = () => {
         label="Contact Number "
         placeholder="Enter your Contact Number "
         span="*"
-        isTouched={formik.errors.concactNo}
+        isTouched={formik.touched.concactNo}
         error={formik.errors.concactNo}
         {...formik.getFieldProps("concactNo")}
         />

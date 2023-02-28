@@ -61,7 +61,7 @@ const UpdateMedia = () => {
               id="media"
               label="Media :"
               span="*"
-              isTouched={formik.errors.media}
+              isTouched={formik.touched.media}
               error={formik.errors.media}
               placeholder="Enter your media Type"
               {...formik.getFieldProps("media")}

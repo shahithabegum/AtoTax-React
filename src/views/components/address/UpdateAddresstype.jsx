@@ -33,8 +33,8 @@ const UpdateAddresstype = () => {
                 toast.success("updated successfull")
                 navigate('/addressType')
               }
-              else{
-                toast.error(res?.data?.errorMessages)
+              else {
+                toast.error(res?.data?.errorMessages.toString())
               }
             })
            
@@ -64,7 +64,7 @@ const UpdateAddresstype = () => {
                 label="Address Type :"
                 span="*"
                 placeholder="Enter your Address Type"
-                isTouched={formik.errors.addressTypeName}
+                isTouched={formik.touched.addressTypeName}
                 error={formik.errors.addressTypeName}
                 {...formik.getFieldProps("addressTypeName")}
                 />
@@ -78,7 +78,7 @@ const UpdateAddresstype = () => {
                 id="addressTypeDesc"
                 label="Address Type Desc :"
                 placeholder="Enter Address Type Description "
-                isTouched={formik.errors.addressTypeDesc}
+                isTouched={formik.touched.addressTypeDesc}
                 error={formik.errors.addressTypeDesc}
                 {...formik.getFieldProps("addressTypeDesc")}
                 />

@@ -35,11 +35,11 @@ const Register = () => {
               if(res?.data?.isSuccess){
                 toast.success("Register Success")
                 console.log(res.data)
-              //  navigate('/emailpopup')
                setShow(true);
+              
               }
               else {
-                toast.error(res?.data?.errorMessages)
+                toast.error(res?.data?.errorMessages.toString())
               }
             })
              
@@ -62,7 +62,7 @@ const Register = () => {
         id="userName"
         label="User Name :"
         span="*"
-        isTouched={formik.errors.userName}
+        isTouched={formik.touched.userName}
         error={formik.errors.userName}
         placeholder="Enter User Name"
         {...formik.getFieldProps("userName")}
@@ -76,7 +76,7 @@ const Register = () => {
         name="name"
         id="name"
         label="Name :"
-        isTouched={formik.errors.name}
+        isTouched={formik.touched.name}
         error={formik.errors.name}
         placeholder="Enter Your Name"
         {...formik.getFieldProps("name")}
@@ -89,8 +89,9 @@ const Register = () => {
         name="email"
         id="email"
         label="Email :"
+        type="email"
         span="*"
-        isTouched={formik.errors.email}
+        isTouched={formik.touched.email}
         error={formik.errors.email}
         placeholder="example@gamil.com"
         {...formik.getFieldProps("email")}
@@ -104,7 +105,7 @@ const Register = () => {
         id="password"
         label="Password :"
         type="password"
-        isTouched={formik.errors.password}
+        isTouched={formik.touched.password}
         error={formik.errors.password}
         span="*"
         placeholder="Enter Your password"

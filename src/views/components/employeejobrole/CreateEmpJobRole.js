@@ -29,8 +29,8 @@ const CreateEmpJobRole = () => {
               toast.success("Created Success")
               navigate('/EmpJobRole')
             }
-            else{
-              toast.error(res?.data?.errorMessages)
+            else {
+              toast.error(res?.data?.errorMessages.toString())
             }
           })
             
@@ -57,7 +57,7 @@ const CreateEmpJobRole = () => {
           id="jobRole"
           label="Job Role :"
           span="*"
-          isTouched={formik.errors.jobRole}
+          isTouched={formik.touched.jobRole}
           error={formik.errors.jobRole}
           placeholder="Enter your Job Role"
           {...formik.getFieldProps("jobRole")}
@@ -70,7 +70,7 @@ const CreateEmpJobRole = () => {
           name="jobDescription"
           id="jobDescription"
           label="Job Description :"
-          isTouched={formik.errors.jobDescription}
+          isTouched={formik.touched.jobDescription}
           error={formik.errors.jobDescription}
           placeholder="Enter your Job Role Description"
           {...formik.getFieldProps("jobDescription")}

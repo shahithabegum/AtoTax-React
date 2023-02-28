@@ -1,8 +1,33 @@
-import React from 'react'
+import React,{useState} from 'react'
+import {useNavigate,useSearchParams} from 'react-router-dom'
+import { toast } from 'react-toastify'
+import {confirmEmail}from '../../../service/auth/authService'
+
 import './email.scss'
 const ConfirmEmailpage = () => {
+  let navigate=useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams([]);
+
+  const Token=searchParams.get('token')
+  const Email=searchParams.get('email')
+ console.log("token",Token)
+ console.log("email",Email
+ )
+ const [email, setEmail] = useState({
+  token:"1223444",
+  Email:"shajua@gmail.com"
+ })
     const handleSubmit =()=>{
-        
+      confirmEmail(email).then(res=>{
+        if(res?.data?.isSuccess){
+          toast.success("Verified")
+          navigate("/dashboard")
+        }
+        else {
+          toast.error(res?.data?.errorMessages.toString())
+        }
+      })
+       
     }
   return (
     <div className='email-container'>
