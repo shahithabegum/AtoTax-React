@@ -1,12 +1,12 @@
 import React from 'react';
-import { FaUserFriends,FaUserTie,FaRupeeSign,FaHome,FaBook,FaRegIdBadge,FaHistory} from "react-icons/fa";
+import { FaUserFriends,FaUserTie,FaRupeeSign,FaHome,FaBook,FaRegIdBadge,FaHistory,FaUser,FaKey,FaUserPlus} from "react-icons/fa";
 import { MdEditNote ,MdOutlinePayments,MdOutlinePermMedia,MdLocationOn,MdMiscellaneousServices,MdDashboard} from "react-icons/md";
 import { GiTakeMyMoney,GiFiles,GiReceiveMoney } from "react-icons/gi";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { IoIosPeople } from "react-icons/io";
 
 import { SiStatuspage } from "react-icons/si";
-import ChangePassword from '../password/changepassword/ChangePassword';
+
 export const SidenavData=[
     {
         path:"/dashboard",
@@ -32,11 +32,11 @@ export const SidenavData=[
                 title:"Filing Types",
                 icon:<GiFiles/>
             }
-            // , {
-            //     path:"/GstPaidDetails",
-            //     title:"Paid Details",
-            //     icon:<FaRupeeSign/>
-            // }, 
+            , {
+                path:"/GstPaidDetails",
+                title:"Paid Details",
+                icon:<FaRupeeSign/>
+            }, 
         ]
     },
     {
@@ -56,9 +56,19 @@ export const SidenavData=[
         ]
     },
     {
+        path:"/users",
+        title:"Users",
+        icon:<FaUser />
+    },
+    {
+        path:"/roles",
+        title:"Roles",
+        icon:""
+    },
+    {
         path:"/register",
         title:"Register",
-        icon:<FaRegIdBadge/>
+        icon:<FaUserPlus/>
     },
     {
         title: "Amendments",
@@ -118,7 +128,7 @@ export const SidenavData=[
     {
         path:"/changepassword",
         title:"Change Password",
-        icon:""
+        icon:<FaKey />
     },
     // {
     //     path:"/Status",

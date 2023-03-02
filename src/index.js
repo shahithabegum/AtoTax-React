@@ -26,13 +26,29 @@ axios.interceptors.request.use(
 // For POST requests
 axios.interceptors.response.use(
    (res) => {
+      let message;
       // Add configurations here
-      if (res.status === 201) {
-         console.log('Posted Successfully');
+      // if (res.status === 201) {
+      //    console.log('Posted Successfully');
+      // }
+      if(res){
+         if(res?.data?.statusCode===200){
+            message=res.data.successMessage
+            toast.success(message)
+         }
+         else if(res?.data?.statusCode===201){
+            message=res.data.successMessage
+            toast.success(message)
+         }
+         // else  if(res?.data?.statusCode===204){
+         //    message=res.data.successMessage
+         //    toast.error(message)
+         // }
       }
-     console.log("res")
-     console.log(res)
-
+      
+     console.log("successmessage",message)
+     console.log("TEST",res.data)
+     
       return res;
    },
    (err) => {

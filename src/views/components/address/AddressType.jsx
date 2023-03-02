@@ -3,8 +3,13 @@ import MaterialTable from 'material-table'
 import {Link,useNavigate} from 'react-router-dom'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
+import ViewAdressType from './ViewAdressType'
 import {GetAddressType,Delete_AddressType} from '../../../service/AddressTypesService'
+import {FormModel} from '../../../shared/FormModel'
+import { toast } from 'react-toastify';
 const AddressType = (props) => {
+  const [show, setShow] = useState(false);
+  const [value, setValue] = useState({});
   let navigate = useNavigate();
   const columns = [
     
@@ -13,9 +18,10 @@ const AddressType = (props) => {
     {title: "Address Type Desc", field:"addressTypeDesc"},
     {title: "Status", field:"status.statusType"},
   ]
-    const [address, setAddress] = useState([])
+    const [address, setAddress] = useState()
     useEffect(() => {
      GetDetails();
+    
     }, [])
     //getting client details
     const GetDetails = ()=>{
@@ -23,20 +29,35 @@ const AddressType = (props) => {
     }
     const GoEdit = (item)=>{
       console.log(props , item)
+      
       navigate('/editAddress', { state: item })
   }
-  const GoView = (item)=>{
-    console.log(props , item)
-    navigate('/viewAddress', { state: item })
-}
+//   const GoView = (item)=>{
+//     console.log("item",item)
+   
+//     const data=item
+//     console.log("data",data)
+   
+//     // setShow(true)
+ 
+  
+    
+// }
   const deleteAddressType = (item)=>{
     Delete_AddressType(item.id).then(res=>{
-      GetDetails();
+      if(res?.data?.isSuccess){
+        toast.error(res.data.successMessage)
+        GetDetails()
+      }else{
+        toast.error(res.data.errorMessages.toString())
+      }
+      
     })
     }
 
-  console.log("Addresstype",address)
   
+    console.log("rowdata",value)
+    console.log("show",show)
   return (
     <div className='Table-div'>
       <div className='headcontainer'>
@@ -53,17 +74,21 @@ const AddressType = (props) => {
            actions={[
             rowData=>({icon: ()=><FaEdit style={{color:"green"}}/>,
             tooltip: 'edit User',
-            onClick:(event,rowData)=>GoEdit(rowData)
+            onClick:(event,rowData)=>{GoEdit(rowData)
+             }
             }),
             rowData=>({icon: ()=><BsEye style={{color:"blue"}}/>,
             tooltip: 'view User',
-            onClick:(event,rowData)=>GoView(rowData)
+            onClick:(event,rowData)=>{ setValue(rowData)
+            setShow(true)}
             }),
             rowData=>( {
               icon: 'delete',
               iconProps: { color: 'secondary' },
               tooltip: 'dalete User',
               onClick:(event,rowData)=>deleteAddressType(rowData)
+              
+
             }),
           ]}
           options={{
@@ -74,8 +99,15 @@ const AddressType = (props) => {
           
         />
       </div>
-    
-  </div>
+      <FormModel 
+     show={show}
+     onHide={()=>{setShow(false)}}
+     title={<h2 className=" view ml-2">Address Types</h2>}
+     >
+     <ViewAdressType onHide={()=>{setShow(false)}}  item={value}/>
+     </FormModel>
+    </div>
+ 
   )
   
 }

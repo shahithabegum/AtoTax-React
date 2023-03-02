@@ -4,6 +4,7 @@ import MaterialTable from 'material-table'
 import {Link,useNavigate} from 'react-router-dom'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
+import { toast } from 'react-toastify';
 
 const Employees = (props) => {
   useEffect(() => {
@@ -35,7 +36,12 @@ const Employees = (props) => {
   const deleteEmployee = (item)=>{
     console.log(props , item)
     DeleteEmployee(item.id).then((res)=>{
-      GetDetails();
+      if(res?.data?.isSuccess){
+        toast.error(res.data.successMessage)
+        GetDetails()
+      }else{
+        toast.error(res.data.errorMessages.toString())
+      }
     })
 }
 
@@ -48,7 +54,7 @@ const Employees = (props) => {
         
       </div>
 
-  <div style={{ maxWidth: '100%' }} className='container mt-2 mx-0'>
+  <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
         <MaterialTable
            title="Employee"
            data={list}

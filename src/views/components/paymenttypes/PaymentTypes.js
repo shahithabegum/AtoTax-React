@@ -4,6 +4,7 @@ import {Link,useNavigate} from 'react-router-dom'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
 import {DeletPayments,GetPayments} from '../../../service/PaymentTypeService'
+import { toast } from 'react-toastify';
 const Paymenttypes = (props) => {
   let navigate = useNavigate();
   const columns = [
@@ -31,7 +32,12 @@ const Paymenttypes = (props) => {
 }
   const DeletePaymentType = (item)=>{
     DeletPayments(item.id).then(res=>{
-      GetDetails();
+      if(res?.data?.isSuccess){
+        toast.error(res.data.successMessage)
+        GetDetails()
+      }else{
+        toast.error(res.data.errorMessages.toString())
+      }
     })
     }
     return (
@@ -42,7 +48,7 @@ const Paymenttypes = (props) => {
           {/* <button className='btn btn-success ml-1  mt-2 ml-3' onClick={()=>setShowAdd(true)} >Add</button> */}
         </div>
   
-    <div style={{ maxWidth: '100%' }} className='container mt-2 mx-0'>
+    <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
           <MaterialTable
              title="Payments"
              data={payment}

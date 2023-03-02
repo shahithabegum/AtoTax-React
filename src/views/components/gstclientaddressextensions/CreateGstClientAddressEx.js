@@ -42,7 +42,6 @@ const CreateGstClientAddressEx = () => {
          const CreateAddressExtension = () =>{
             Create_GstClientAddress(formik.values).then(res=>{
               if(res?.data?.isSuccess){
-                toast.success("Created Success")
                 navigate('/GStClientAddressEx')
               }
               else {

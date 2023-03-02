@@ -63,6 +63,13 @@ import ResetPassword from '../views/components/password/resetpassword/ResetPassw
 import Emailpopup from '../views/components/email/Emailpopup';
 import ConfirmEmailpage from '../views/components/email/ConfirmEmailpage';
 import ChangePassword from '../views/components/password/changepassword/ChangePassword';
+import User from '../views/components/user/User';
+import UpdateUser from '../views/components/user/UpdateUser';
+import ViewUser from '../views/components/user/ViewUser';
+import Roles from '../views/components/roles/Roles';
+import CreateGstPaid from '../views/components/gstpaiddetails/CreateGstPaid';
+import UpdateGstPaid from '../views/components/gstpaiddetails/UpdateGstPaid';
+import ViewGstPaid from '../views/components/gstpaiddetails/ViewGstPaid';
 export const pathroutes=[
     {
         path: "/login",
@@ -120,11 +127,20 @@ export const pathroutes=[
                 path: "/gstview",
                 DynComponent: GstClientView
             },
-             // -------------Status-----------
-            {
-                path: "/Status",
-                DynComponent: Status
+              // -------------Uers-----------
+              {
+                path: "/users",
+                DynComponent: User
             },
+            {
+                path: "/updateuser",
+                DynComponent: UpdateUser
+            },
+            {
+                path: "/viewuser",
+                DynComponent: ViewUser
+            },
+          
              // -------------PaymentsTypes-----------
             {
                 path: "/PaymentTypes",
@@ -283,10 +299,26 @@ export const pathroutes=[
             path: "/GstPaidDetails",
             DynComponent: GstPaidDetails
         },
+        {
+            path: "/createGstPaiddetails",
+            DynComponent: CreateGstPaid
+        },
+        {
+            path: "/updateGstPaiddetails",
+            DynComponent: UpdateGstPaid
+        },
+        {
+            path: "/viewGstPaiddetails",
+            DynComponent: ViewGstPaid
+        },
         // -------------Status & Weatherforecast-----------
         {
             path: "/Status",
             DynComponent: Status
+        },
+        {
+            path: "/roles",
+            DynComponent: Roles
         },
         {
             path: "/addStatus",

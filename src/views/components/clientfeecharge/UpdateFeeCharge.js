@@ -33,7 +33,7 @@ const UpdateFeeCharge = () => {
     const data = Object.assign(formik.values, { id: location.state.id });
     Update_ClientFeeCharge(data, location.state.id).then((res) => {
       if (res?.data?.isSuccess) {
-        toast.success("Updated Success");
+        toast.success(res.data.successMessage)
         navigate("/Clientfeecharges");
       } else {
         toast.error(res?.data?.errorMessages);

@@ -21,7 +21,7 @@ const ConfirmEmailpage = () => {
       confirmEmail(email).then(res=>{
         if(res?.data?.isSuccess){
           toast.success("Verified")
-          navigate("/dashboard")
+          navigate("/login")
         }
         else {
           toast.error(res?.data?.errorMessages.toString())

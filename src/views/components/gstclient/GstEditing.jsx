@@ -61,7 +61,7 @@ const GstEditing = () => {
       try{
         UpdateGSTClient(data,location.state.id).then(res=>{
           if(res?.data?.isSuccess){
-            toast.success("Updated Sucesss")
+            toast.success(res.data.successMessage)
             navigate('/Gstclient')
           }
           else {

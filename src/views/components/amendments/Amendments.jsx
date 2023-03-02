@@ -4,6 +4,7 @@ import {GetAmendments,DeleteAmendments} from '../../../service/AmendmentsService
 import {Link,useNavigate} from 'react-router-dom'
 import { BsEye } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
+import { toast } from 'react-toastify';
 const Amendments = (props) => {
   let navigate = useNavigate();
   const columns = [
@@ -30,7 +31,12 @@ const Amendments = (props) => {
 }
   const deleteAmendments = (item)=>{
     DeleteAmendments(item.id).then(res=>{
-      GetDetails();
+      if(res?.data?.isSuccess){
+        toast.error(res.data.successMessage)
+        GetDetails()
+      }else{
+        toast.error(res.data.errorMessages.toString())
+      }
     })
     }
 
@@ -44,9 +50,9 @@ const Amendments = (props) => {
         {/* <button className='btn btn-success ml-1  mt-2 ml-3' onClick={()=>setShowAdd(true)} >Add</button> */}
       </div>
 
-  <div style={{ maxWidth: '100%' }} className='container mt-2 mx-0'>
+  <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
         <MaterialTable
-           title="Address Types"
+           title="Amendnmends"
            data={amendments}
            columns={columns}
            actions={[
@@ -74,22 +80,6 @@ const Amendments = (props) => {
         />
       </div>
       
-      {/* <FormModel
-                        show={showAdd}
-                        onHide={() =>setShowAdd(false)}
-                        submitButtonText={'CREATE'}
-                        title={'Create Gst'}
-                    >
-                        <GstForm onHide={() =>setShowAdd(false)  } />
-                    </FormModel> */}
-                    {/* <FormModel
-                        show={showEdit}
-                        onHide={() =>setShowAdd(false)}
-                        submitButtonText={'CREATE'}
-                        title={'Create Gst'}
-                    >
-                        <GstEditing onHide={() =>setShowAdd(false)  } />
-                    </FormModel> */}
   </div>
   )
   

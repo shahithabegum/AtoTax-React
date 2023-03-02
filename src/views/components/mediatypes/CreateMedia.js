@@ -27,12 +27,11 @@ const CreateMedia = () => {
              const CreateMediaType = () =>{
                 Create_Media(formik.values).then(res=>{
                   if(res?.data?.isSuccess){
-                    toast.success("Created Success")
                     navigate('/MediaTypes')
                   }
-                  // else{
-                  //   toast.error(res?.data?.errorMessages)
-                  // }
+                  else{
+                    toast.error(res?.data?.errorMessages.toString())
+                  }
                 })
                 
              }

@@ -26,7 +26,7 @@ const CreateGstFilingTypes = () => {
          const createFiling = () =>{
             Create_GstFilingType(formik.values).then(res=>{
               if(res?.data?.isSuccess){
-                toast.success("Created Success")
+               
                 navigate('/GstFilingTypes')
               }
               else {

@@ -30,7 +30,7 @@ const UpdateMedia = () => {
             const data = Object.assign(formik.values,{id:location.state.id})
             Update_Media(data,location.state.id).then(res=>{
               if(res?.data?.isSuccess){
-                toast.success("Updated Scuccess")
+                toast.success(res.data.successMessage)
                 navigate('/MediaTypes')
               }
               // else{

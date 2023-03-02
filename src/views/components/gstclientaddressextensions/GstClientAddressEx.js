@@ -4,6 +4,7 @@ import {Link,useNavigate} from 'react-router-dom'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
 import {GetGstClientAddress,DeleteGstClientAddress} from '../../../service/GstClientAddressService'
+import { toast } from 'react-toastify';
 const GstClientAddressEx = (props) => {
   let navigate = useNavigate();
   const columns = [
@@ -20,7 +21,7 @@ const GstClientAddressEx = (props) => {
     useEffect(() => {
      GetDetails();
     }, [])
-    //getting client details
+    
     const GetDetails = ()=>{
       GetGstClientAddress().then(res=>setAddressExtension(res.data.result));
     }
@@ -34,7 +35,12 @@ const GstClientAddressEx = (props) => {
 }
   const DeleteGSTClientAddressExtension = (item)=>{
     DeleteGstClientAddress(item.id).then(res=>{
-      GetDetails();
+      if(res?.data?.isSuccess){
+        toast.error(res.data.successMessage)
+        GetDetails()
+      }else{
+        toast.error(res.data.errorMessages.toString())
+      }
     })
     }
 

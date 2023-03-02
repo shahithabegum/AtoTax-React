@@ -46,7 +46,7 @@ console.log("AmendType",amendType)
         {/* <button className='btn btn-success ml-1  mt-2 ml-3' onClick={()=>setShowAdd(true)} >Add</button> */}
       </div>
 
-  <div style={{ maxWidth: '100%' }} className='container mt-2 mx-0'>
+  <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
         <MaterialTable
          title="AmendType"
            data={amendType}

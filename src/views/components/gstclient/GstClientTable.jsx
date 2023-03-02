@@ -39,9 +39,13 @@ const GstClientTable = (props) => {
     navigate('/gstview', { state: item })
 }
   const deleteGSTClient = (item)=>{
-    console.log(props , item)
     DeleteGSTClient(item.id).then((res)=>{
-      GetDetails();
+      if(res?.data?.isSuccess){
+        toast.error(res.data.successMessage)
+        GetDetails()
+      }else{
+        toast.error(res.data.errorMessages.toString())
+      }
     })
 }
 

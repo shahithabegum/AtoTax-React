@@ -43,7 +43,7 @@ const Clientfeecharges = (props) => {
         {/* <Link to="/addfeecharges"> <button className='btn btn-success ml-1  mt-2 ml-0 mt-2 ml-2' >Add</button></Link> */}
       </div>
 
-  <div style={{ maxWidth: '100%' }} className='container mt-2 mx-0'>
+  <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
         <MaterialTable
          title="Fee Charge"
            data={feeCharge}

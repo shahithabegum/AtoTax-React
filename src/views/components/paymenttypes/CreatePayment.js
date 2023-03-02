@@ -27,7 +27,6 @@ const CreatePayment = () => {
          const createPayment = () =>{
             Create_Payments(formik.values).then(res=>{
               if(res?.data?.isSuccess){
-                toast.success("Created Success")
                 navigate('/PaymentTypes')
               }
               else{

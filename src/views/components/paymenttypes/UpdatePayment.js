@@ -28,7 +28,7 @@ const UpdatePayment = () => {
         const data = Object.assign(formik.values,{id:location.state.id})
         Update_Payments(data,location.state.id).then(res=>{
           if(res?.data?.isSuccess){
-            toast.success("Update Success")
+            toast.success(res.data.successMessage)
             navigate('/PaymentTypes')
           }
           else{

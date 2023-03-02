@@ -4,6 +4,7 @@ import {Link,useNavigate} from 'react-router-dom'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
 import {GetGstFilingType,DeleteGstFilingType} from '../../../service/GstFilingTypesService'
+import { toast } from 'react-toastify';
 const GstFilingTypes = (props) => {
   let navigate = useNavigate();
   const columns = [
@@ -30,7 +31,12 @@ const GstFilingTypes = (props) => {
 }
   const deleteGstFiling = (item)=>{
     DeleteGstFilingType(item.id).then(res=>{
-      GetDetails();
+      if(res?.data?.isSuccess){
+        toast.error(res.data.successMessage)
+        GetDetails()
+      }else{
+        toast.error(res.data.errorMessages.toString())
+      }
     })
     }
 
@@ -42,8 +48,9 @@ const GstFilingTypes = (props) => {
           {/* <button className='btn btn-success ml-1  mt-2 ml-3' onClick={()=>setShowAdd(true)} >Add</button> */}
         </div>
   
-    <div style={{ maxWidth: '100%' }} className='container mt-2 mx-0'>
+    <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
           <MaterialTable
+          className="table-container"
              title="GSTFiling"
              data={address}
              columns={columns}

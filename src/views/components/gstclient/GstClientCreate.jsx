@@ -31,7 +31,7 @@ const GstForm = () => {
       gstRegDate:"",
       gstSurrenderedDate:'',
       gstRelievedDate:'',
-      gstAnnualTurnOver:100,
+      gstAnnualTurnOver:'',
       mobileNumber:'',
       phoneNumber:'',
       contactEmailId:'',
@@ -50,7 +50,7 @@ const GstForm = () => {
 
     onSubmit: values => {
       console.log(values)
-       createGstClientSubmit()
+     
       
     },
   });
@@ -67,7 +67,7 @@ const GstForm = () => {
     try{
     CreateGSTClient(formik.values).then((res)=>{
       if(res?.data?.isSuccess){
-        toast.success("Created Success")
+        // toast.success("Created Success")
         navigate('/Gstclient')
       }
       else {
@@ -345,7 +345,7 @@ const GstForm = () => {
        </Row>
        <Row className='my-3 mx-1  justify-content-center'>
                 <Col m={6} sm={8} lg={4} ml-0 >
-                <button type="submit" className='btn btn-block btn-outline-info mb-2  ' >Submit</button>
+                <button type="submit" className='btn btn-block btn-outline-info mb-2'onClick={()=>createGstClientSubmit()} >Submit</button>
               
                 </Col>
                 <Col m={6} sm={8} lg={4} ml-0>

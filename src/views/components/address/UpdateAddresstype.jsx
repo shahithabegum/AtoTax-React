@@ -30,7 +30,7 @@ const UpdateAddresstype = () => {
             const data = Object.assign(formik.values,{id:location.state.id})
             Update_AddressType(data,location.state.id).then(res=>{
               if(res?.data?.isSuccess){
-                toast.success("updated successfull")
+                toast.success(res.data.successMessage)
                 navigate('/addressType')
               }
               else {

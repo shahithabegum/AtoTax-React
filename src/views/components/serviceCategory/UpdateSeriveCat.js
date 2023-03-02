@@ -29,12 +29,12 @@ const UpdateSeriveCat = () => {
        const updateService = () =>{
         const data = Object.assign(formik.values,{id:location.state.id})
         Update_ServiceCategory(data,location.state.id).then(res=>{  if(res?.data?.isSuccess){
-          toast.success("Updated Success")
-          navigate('/MediaTypes')
+          toast.success(res.data.successMessage)
+          navigate('/serviceCat')
         }
         else{
           toast.error(res?.data?.errorMessages)
-        }}).then(navigate('/serviceCat'))
+        }})
          
        }
        const getStatus =()=>{

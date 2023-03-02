@@ -28,6 +28,32 @@ td{
     margin-top: 10px;
     border: 0;
  }
+ .displaylist{
+    padding: 20px;
+    margin: 20px;
+    width: 100% !important;
+    
+    -webkit-box-shadow: -1px 1px 22px 5px rgba(196,188,196,1);
+-moz-box-shadow: -1px 1px 22px 5px rgba(196,188,196,1);
+box-shadow: -1px 1px 22px 5px rgba(196,188,196,1);
+ }
+ /* .table{
+    width: 100%;
+   
+ }
+ td{
+   
+    color: #0b134b;
+    font-family: 'Montserrat', sans-serif !important;
+ }
+ .view-container{
+    width: 100% !important;
+    height: 100%;
+ } */
+ p{
+    color: #0b134b;
+    font-family: 'Montserrat', sans-serif !important;
+ }
  /* .btn-center{
     width: 100%;
    margin-left: 40%;

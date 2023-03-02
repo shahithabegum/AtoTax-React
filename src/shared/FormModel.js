@@ -15,7 +15,7 @@ export function FormModel(props) {
                     <Close/>
                 </button>
             </div>
-            <DialogContent>
+            <DialogContent style={{padding:"20px",with:"100%"}}>
             
                 {props.children}
             </DialogContent>

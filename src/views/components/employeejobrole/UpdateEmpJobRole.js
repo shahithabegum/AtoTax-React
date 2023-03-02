@@ -30,7 +30,7 @@ const UpdateEmpJobRole = () => {
             const data = Object.assign(formik.values,{id:location.state.id})
             Update_EmpJobRole(data,location.state.id).then(res=>{
               if(res?.data?.isSuccess){
-                toast.success("Updated Success")
+                toast.success(res.data.successMessage)
                 navigate('/EmpJobRole')
               }
               else {

@@ -28,7 +28,7 @@ const UpdateGstfilingTypes = () => {
             const data = Object.assign(formik.values,{id:location.state.id})
             Update_GstFilingType(data,location.state.id).then(res=>{
               if(res?.data?.isSuccess){
-                toast.success("Updated Success")
+                toast.success(res.data.successMessage)
                 navigate('/GstFilingTypes')
               }
               else {

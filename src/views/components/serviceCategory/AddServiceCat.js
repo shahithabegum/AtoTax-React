@@ -27,7 +27,7 @@ const AddServiceCat = () => {
           });
          const createService = () =>{
           Create_ServiceCategory(formik.values).then(res=>{ if(res?.data?.isSuccess){
-            toast.success("Created Success")
+           
             navigate('/serviceCat')
           }
           else{

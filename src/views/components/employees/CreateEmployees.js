@@ -39,7 +39,6 @@ const CreateEmployees = () => {
                formik.values.doj=doj;
                Create_Employee(formik.values).then(res=>{
                 if(res?.data?.isSuccess){
-                  toast.success("Created Success")
                   navigate('/Employees')
                 }
                 else {

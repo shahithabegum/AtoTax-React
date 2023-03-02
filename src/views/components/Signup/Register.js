@@ -11,7 +11,7 @@ import { RegisterValidation } from './RegisterValidation';
 
 const Register = () => {
    let navigate=useNavigate();
-    const [show, setShow] = useState(false);
+   const [show, setShow] = useState(false);
 //    const handleClose = () =>{ setShow(false)
 //     console.log("modal")
 // }
@@ -33,7 +33,7 @@ const Register = () => {
          
             register(formik.values).then(res=>{
               if(res?.data?.isSuccess){
-                toast.success("Register Success")
+               // toast.success("Register Success")
                 console.log(res.data)
                setShow(true);
               

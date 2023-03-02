@@ -4,6 +4,7 @@ import {Link,useNavigate} from 'react-router-dom'
 import {GetEmpJobRole,DeleteEmpJobRole} from '../../../service/EmpJobRoleService'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
+import { toast } from 'react-toastify';
 const EmpJobRole = (props) => {
   const [amendType, setAmendType] = useState([])
   useEffect(() => {
@@ -31,7 +32,12 @@ const EmpJobRole = (props) => {
 }
   const deleteJob = (item)=>{
     DeleteEmpJobRole(item.id).then(res=>{
-      GetDetails();
+      if(res?.data?.isSuccess){
+        toast.error(res.data.successMessage)
+        GetDetails()
+      }else{
+        toast.error(res.data.errorMessages.toString())
+      }
     })
     }
 
@@ -44,7 +50,7 @@ console.log("AmendType",amendType)
         <Link to="/addEmpJobRole"> <button className='btn btn-success ml-1  mt-2 m-0' >Add</button></Link>
       </div>
 
-  <div style={{ maxWidth: '100%' }} className='container mt-2 mx-0'>
+  <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
         <MaterialTable
          title="Job Role"
            data={amendType}

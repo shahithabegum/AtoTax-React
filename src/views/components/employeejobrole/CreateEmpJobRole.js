@@ -26,7 +26,7 @@ const CreateEmpJobRole = () => {
           });
          const CreateJob = () =>{
             Create_EmpJobRole(formik.values).then(res=>{if(res?.data?.isSuccess){
-              toast.success("Created Success")
+
               navigate('/EmpJobRole')
             }
             else {

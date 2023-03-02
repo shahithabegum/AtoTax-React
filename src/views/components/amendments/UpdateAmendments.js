@@ -46,7 +46,7 @@ const UpdateAmendments = () => {
          const data = Object.assign(formik.values,{id:location.state.id})
          Update_Amendments(data,location.state.id).then(res=>{
           if(res?.data?.isSuccess){
-            toast.success("SuccessFully Updated")
+            toast.success(res.data.successMessage)
             navigate('/amendments')
           }
           else {

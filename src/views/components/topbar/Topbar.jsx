@@ -22,6 +22,9 @@ function Topbar(props) {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+    const handlenavigate = (event) => {
+       navigate("/changepassword")
+    };
 
     const handleClose = () => {
         setAnchorEl(null);
@@ -69,7 +72,7 @@ function Topbar(props) {
                             }}
                         >
                             <MenuItem alignItems='center' onClick={() => {handlelogout()}}>Logout</MenuItem>
-                            {/* <MenuItem alignItems='center' >Change Password</MenuItem> */}
+                            <MenuItem alignItems='center' onClick={()=>{handlenavigate()}} >Change Password</MenuItem>
                            
                         </Menu>
                     </div>

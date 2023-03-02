@@ -41,7 +41,6 @@ const CreateAmendments = () => {
           formik.values.sumittedDate=isdob;
         Create_Amendments(formik.values).then(res=>{
           if(res?.data?.isSuccess){
-            toast.success("Created SuccessFully")
             navigate('/amendments')
           }
           else {
