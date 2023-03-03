@@ -32,7 +32,6 @@ const Login = () => {
            login(values).then(data=>{
             console.log(data)
             if(data?.data?.isSuccess){
-             toast.success("Login Success")
              navigate('/dashboard')
             authService.setAuthToken(data.data.result.token);
             authService.setCurrentUser(data.data.result.user);

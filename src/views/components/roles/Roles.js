@@ -3,16 +3,15 @@ import MaterialTable from 'material-table'
 import {useNavigate} from 'react-router-dom'
 // import { FaEdit } from "react-icons/fa";
 // import { BsEye } from "react-icons/bs";
-import {GetUsers} from '../../../service/RolesService'
+import {GetRoles} from '../../../service/RolesService'
 const Roles = () => {
   
         let navigate = useNavigate();
         const columns = [
           
-          {title: "Employee Id", field:"employeeId"},
-          {title: "User Name", field:"userName"},
-          {title: "Email", field:"email"},
-          {title: "Phone Number", field:"phoneNumber"},
+          {title: "Id", field:"id"},
+          {title: "Normalized Name", field:"normalizedName"},
+          {title: "Concurrency Stamp", field:"concurrencyStamp"},
         ]
           const [user, setUser] = useState([])
           useEffect(() => {
@@ -20,7 +19,7 @@ const Roles = () => {
           }, [])
           //getting client details
           const GetDetails = ()=>{
-            GetUsers().then(res=>setUser(res.data.result));
+            GetRoles().then(res=>setUser(res.data.result));
           }
     //       const GoEdit = (item)=>{
     //         console.log(props , item)

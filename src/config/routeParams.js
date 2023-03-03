@@ -70,6 +70,7 @@ import Roles from '../views/components/roles/Roles';
 import CreateGstPaid from '../views/components/gstpaiddetails/CreateGstPaid';
 import UpdateGstPaid from '../views/components/gstpaiddetails/UpdateGstPaid';
 import ViewGstPaid from '../views/components/gstpaiddetails/ViewGstPaid';
+import AsignRole from '../views/components/roles/AsignRole';
 export const pathroutes=[
     {
         path: "/login",
@@ -311,7 +312,7 @@ export const pathroutes=[
             path: "/viewGstPaiddetails",
             DynComponent: ViewGstPaid
         },
-        // -------------Status & Weatherforecast-----------
+        // -------------Status & Weatherforecast &Roles-----------
         {
             path: "/Status",
             DynComponent: Status
@@ -319,6 +320,10 @@ export const pathroutes=[
         {
             path: "/roles",
             DynComponent: Roles
+        },
+        {
+            path: "/assignroles",
+            DynComponent: AsignRole
         },
         {
             path: "/addStatus",

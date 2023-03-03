@@ -66,6 +66,11 @@ export const SidenavData=[
         icon:""
     },
     {
+        path:"/assignroles",
+        title:"Asign Roles",
+        icon:""
+    },
+    {
         path:"/register",
         title:"Register",
         icon:<FaUserPlus/>
