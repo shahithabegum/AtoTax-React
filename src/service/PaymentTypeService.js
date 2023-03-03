@@ -4,6 +4,9 @@ import { API_BASE_URL } from "../config/index";
 const GetPayments = ()=>{
     return axios.get(API_BASE_URL+'/api/PaymentTypes/GetPaymentTypes')
 }
+const GetPaymentsDD = ()=>{
+    return axios.get(API_BASE_URL+'/api/PaymentTypes/GetActivePaymentTypesForDD')
+}
 const GetPaymentsById = (id)=>{
     return axios.get(API_BASE_URL+`/api/PaymentTypes/GetPaymentType/${id}`)
 }
@@ -16,4 +19,4 @@ const Update_Payments = (data,id)=>{
 const DeletPayments = (id)=>{
     return axios.delete(API_BASE_URL+`/api/PaymentTypes/DeletePaymentType/${id}`)
 }
-export {GetPayments,GetPaymentsById,Create_Payments,Update_Payments,DeletPayments}
+export {GetPayments,GetPaymentsById,Create_Payments,Update_Payments,DeletPayments,GetPaymentsDD}

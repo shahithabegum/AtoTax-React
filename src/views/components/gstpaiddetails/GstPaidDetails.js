@@ -12,10 +12,11 @@ const GstPaidDetails = (props) => {
   let navigate = useNavigate();
   const columns = [
     
-    {title: "ID", field:"id"},
-    {title: "Address Type", field:"addressTypeName"},
-    {title: "Address Type Desc", field:"addressTypeDesc"},
-    {title: "Status", field:"status.statusType"},
+    {title: "GST Client", field:"gstClient"},
+    {title: "Service Category", field:"serviceCategory"},
+    {title: "Payment Type", field:"paymentType"},
+    {title: "Amount", field:"amount"},
+    
   ]
     const [address, setAddress] = useState()
     useEffect(() => {
@@ -29,7 +30,7 @@ const GstPaidDetails = (props) => {
     const GoEdit = (item)=>{
       console.log(props , item)
       
-      navigate('/editAddress', { state: item })
+      navigate('/updateGstPaiddetails', { state: item })
   }
 //   const GoView = (item)=>{
 //     console.log("item",item)
@@ -61,7 +62,7 @@ const GstPaidDetails = (props) => {
     <div className='Table-div'>
       <div className='headcontainer'>
         <h2 className="Tableheading ml-1">GST Paid Details</h2>
-        <Link to="/addAddress"> <button className='btn btn-success ml-1  mt-2 m-0' >Add</button></Link>
+        <Link to="/createGstPaiddetails"> <button className='btn btn-success ml-1  mt-2 m-0' >Add</button></Link>
         {/* <button className='btn btn-success ml-1  mt-2 ml-3' onClick={()=>setShowAdd(true)} >Add</button> */}
       </div>
 

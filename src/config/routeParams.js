@@ -71,6 +71,7 @@ import CreateGstPaid from '../views/components/gstpaiddetails/CreateGstPaid';
 import UpdateGstPaid from '../views/components/gstpaiddetails/UpdateGstPaid';
 import ViewGstPaid from '../views/components/gstpaiddetails/ViewGstPaid';
 import AsignRole from '../views/components/roles/AsignRole';
+
 export const pathroutes=[
     {
         path: "/login",
@@ -325,6 +326,7 @@ export const pathroutes=[
             path: "/assignroles",
             DynComponent: AsignRole
         },
+       
         {
             path: "/addStatus",
             DynComponent: CreateStatus

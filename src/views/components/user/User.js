@@ -28,7 +28,7 @@ const User = (props) => {
     }
     const GoView = (item)=>{
       console.log(props , item)
-      navigate('/viewuser', { state: item })
+      navigate('/', { state: item })
   }
     const deleteUser = (item)=>{
       DeleteUser(item.id).then(res=>{
@@ -42,7 +42,7 @@ const User = (props) => {
       console.log("id check",item.id)
       }
   
-    console.log("Addresstype",user)
+    
     
     return (
       <div className='Table-div'>

@@ -28,7 +28,7 @@ const GstEditing = () => {
       gstRegDate: new Date("2023-02-03"),
       gstSurrenderedDate:'2023-02-03',
       gstRelievedDate:'2023-02-03T11:19:57.149Z',
-      gstAnnualTurnOver:100,
+      gstAnnualTurnOver:location.state.gstAnnualTurnOver,
       mobileNumber:location.state.mobileNumber,
       phoneNumber:location.state.phoneNumber,
       contactEmailId:location.state.contactEmailId,
@@ -85,7 +85,7 @@ const GstEditing = () => {
     };
     return (
       <div className='containerform  p-2 col-11 col-sm-10 col-lg-12'>
-        <h2 className=' fromheading m-0 p-0'>Create New GST Client</h2>  
+        <h2 className=' fromheading m-0 p-0'>Update GST Client</h2>  
       
         <form id="formik-form" onSubmit={formik.handleSubmit} className="ml-1" >
     <div className="secondary-title my-2 p-3">GST Details</div>

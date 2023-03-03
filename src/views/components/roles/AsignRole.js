@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import{GetUser} from '../../../service/UserService'
-import{GetRoles} from '../../../service/RolesService'
+import{GetRoles,GetUserRoles} from '../../../service/RolesService'
 import {useNavigate} from 'react-router-dom'
 import { useFormik } from 'formik';
 import { Col, Row } from 'react-bootstrap';
@@ -10,12 +10,13 @@ import { toast } from 'react-toastify';
 const AssignRole = () => {
     const [userId,setUserId] =useState([])
     const [roles,setRoles] =useState([])
+    const [userforrole,setUserforrole] =useState([])
     const [val,setVal] =useState([])
     let navigate = useNavigate()
     useEffect(()=>{
         GetUserId();
         Get_Roles();
-       
+        Get_UserRoles();
     },[])
   
   let options=roles.map((item)=>{
@@ -65,11 +66,19 @@ const AssignRole = () => {
               setRoles(res.data.result)
             })
           }
+          const Get_UserRoles =()=>{
+            GetUserRoles().then(res=>{
+              console.log(res)
+             
+              setUserforrole(res.data.result)
+            })
+          }
         const handleCancle =()=>{
           navigate('/roles')
         }
        console.log("roles",val)
-        console.log("value",formik.test)
+       console.log("userforrole",userforrole)
+        console.log("value",formik.userId)
     return (
       <div  className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
           
