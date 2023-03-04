@@ -12,9 +12,9 @@ const GstPaidDetails = (props) => {
   let navigate = useNavigate();
   const columns = [
     
-    {title: "GST Client", field:"gstClient"},
-    {title: "Service Category", field:"serviceCategory"},
-    {title: "Payment Type", field:"paymentType"},
+    {title: "GST Client", field:"gstClient.proprietorName"},
+    {title: "Service Category", field:"serviceCategory.serviceName"},
+    {title: "Payment Type", field:"paymentType.paymentMethod"},
     {title: "Amount", field:"amount"},
     
   ]

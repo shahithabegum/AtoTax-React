@@ -28,7 +28,7 @@ const CreateAmendments = () => {
           arn:'',
           approvalStatusTypeId:'',
           sumittedDate:'',
-            statusId:''
+           
         },
         validationSchema:ValidationAmendments,
         onSubmit: values => {

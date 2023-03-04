@@ -1,15 +1,14 @@
-    import { CloudDone } from '@material-ui/icons'
+
     import React, { useEffect, useState } from 'react'
     import {useLocation,Link} from 'react-router-dom'
     
     const ViewAdressType = ({item}) => {
-        // const [item, setItem] = useState()
-        const location = useLocation()
-        // useEffect(() => {
-        //     setItem(location.state)
-        
-        // }, [])
         console.log("viewaddress",item)
+        const CreatedDate=item.createdDate
+         var CreatedlocalDate = new Date(CreatedDate).toLocaleDateString();
+         const ModifiedDate=item.lastModifiedDate
+         var ModifiedlocalDate = new Date(ModifiedDate).toLocaleDateString();
+       
         return (
         
             <div className='view-container w-full' >
@@ -32,10 +31,10 @@
                     </tr>
                     <tr>
                         <td><b>Created Date</b></td>
-                        <td>{item.createdDate}</td>
+                        <td>{CreatedlocalDate}</td>
                     </tr><tr>
                         <td><b>LastModified Date</b></td>
-                        <td>{item.lastModifiedDate}</td>
+                        <td>{ModifiedlocalDate}</td>
                     </tr>
                 
                 </tbody>

@@ -46,7 +46,7 @@ const AssignRole = () => {
                     navigate("/roles")
                 }
                 else{
-                   // toast.error(res?.data?.errorMessages.toString())
+                   toast.error(res?.data?.errorMessages.toString())
                 }
             })
             

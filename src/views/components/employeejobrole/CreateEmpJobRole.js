@@ -21,7 +21,7 @@ const CreateEmpJobRole = () => {
           },
           validationSchema:JobValidation,
           onSubmit: values => {
-              console.log(values)
+              console.log("jobrole",values)
             },
           });
          const CreateJob = () =>{

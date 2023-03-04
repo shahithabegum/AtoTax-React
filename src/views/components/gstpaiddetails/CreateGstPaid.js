@@ -5,6 +5,7 @@ import {GetPaymentsDD} from '../../../service/PaymentTypeService'
 import {GetMonth,GetYear} from '../../../service/MonthandYearService'
 import {GetGSTClientsDD} from '../../../service/GstClientService'
 import {GetServiceCategoryDD} from '../../../service/ServiceCategoryService'
+import {Create_PaidDetails} from '../../../service/GstPaidDetailService'
 import { Col, Row } from 'react-bootstrap';
 import { SmallInput } from '../../../shared/SamllInput';
 import { toast } from 'react-toastify';
@@ -21,27 +22,33 @@ const CreateGstPaid = () => {
     getServiceCatID();
     getPaymentTypeID();
     getMonth();
+    getYear();
   },[])
     const formik = useFormik({
         initialValues: {
           gstClientID:'',
-          serviceCategoryId:'',
-          paymentTypeId:'',
+          serviceCategoryId:1,
+          paymentTypeId:1,
+          paymentDueMonth:'2',
+          paymentDueYear:2022,
+          amount:100,
+          settledDate: "2023-03-04T06:23:55.562Z",
+          isPending: true
         },
        // validationSchema:PaymentValidation,
         onSubmit: values => {
             console.log(values)
           },
         });
-       const createPayment = () =>{
-          // Create_Payments(formik.values).then(res=>{
-          //   if(res?.data?.isSuccess){
-          //     navigate('/PaymentTypes')
-          //   }
-          //   else{
-          //     toast.error(res?.data?.errorMessages)
-          //   }
-          // })
+       const createpaidDetails = () =>{
+        Create_PaidDetails(formik.values).then(res=>{
+            if(res?.data?.isSuccess){
+              navigate('/GstPaidDetails')
+            }
+            else{
+              toast.error(res?.data?.errorMessages)
+            }
+          })
           
        }
        const getGstClientId =()=>{
@@ -80,7 +87,7 @@ const CreateGstPaid = () => {
         })
       }
       const handleCancle =()=>{
-        navigate('/PaymentTypes')
+        navigate('/GstPaidDetails')
       }
       return (
         <div  className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
@@ -97,6 +104,7 @@ const CreateGstPaid = () => {
              <select className='form-Control ml-0 col-sm-12 col-lg-12'
                 style={{with:70,padding:'10px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
               name="gstClientID"
+              type="text"
               {...formik.getFieldProps("gstClientID")}
              >
                 <option value='' label="Select Client" />
@@ -118,8 +126,11 @@ const CreateGstPaid = () => {
             
             <Col m={6} sm={12} ml-0 lg={6} className='p-1'>
              <select className='form-Control ml-0 col-sm-12 col-lg-12'
+            
                 style={{with:70,padding:'10px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
               name="serviceCategoryId"
+              id="serviceCategoryId"
+              type="number"
               {...formik.getFieldProps("serviceCategoryId")}
              >
                 <option value='' label="Select Service Category" />
@@ -143,11 +154,13 @@ const CreateGstPaid = () => {
              <select className='form-Control ml-0 col-sm-12 col-lg-12'
                 style={{with:70,padding:'10px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
               name="paymentTypeId"
+              id="paymentTypeId"
+              type="number"
               {...formik.getFieldProps("paymentTypeId")}
              >
                 <option value='' label="Select  Payment Type" />
              {paymentTypeId.map(item=>(
-               <option value={item.id} label={item.paymentType} />
+               <option value={item.id} label={item.paymentMethod} />
               ))}
             </select>
             {formik.touched.paymentTypeId && formik.errors.paymentTypeId ? (
@@ -157,30 +170,32 @@ const CreateGstPaid = () => {
               </Row>
               <Row className='my-3 mx-1' >
               <Col m={6} sm={12} lg={4} ml-0  className='p-1'>
-              <label htmlFor="paymentTypeId"className="form-label col-sm-10 col-lg-12 p-0 text-lg-right float-sm-left">
-            Month :<span style={{color:'red',fontSize:'20px'}}>*</span>
+              <label htmlFor="paymentDueMonth"className="form-label col-sm-10 col-lg-12 p-0 text-lg-right float-sm-left">
+               Month :<span style={{color:'red',fontSize:'20px'}}>*</span>
              </label>
              </Col>
             
             <Col m={6} sm={12} ml-0 lg={6} className='p-1'>
              <select className='form-Control ml-0 col-sm-12 col-lg-12'
                 style={{with:70,padding:'10px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
-              name="paymentTypeId"
-              {...formik.getFieldProps("paymentTypeId")}
+              name="paymentDueMonth"
+              id="paymentDueMonth"
+              type="text"
+              {...formik.getFieldProps("paymentDueMonth")}
              >
-                <option value='' label="Select  Payment Type" />
-             {paymentTypeId.map(item=>(
-               <option value={item.id} label={item.paymentType} />
+                <option value='' label="Select Payment Due Month" />
+             {month.map(item=>(
+               <option value={item.index} label={item.month} />
               ))}
             </select>
-            {formik.touched.paymentTypeId && formik.errors.paymentTypeId ? (
-               <p style={{color:"red",textAlign:"left"}}>{formik.errors.paymentTypeId}</p>
+            {formik.touched.paymentDueMonth && formik.errors.paymentDueMonth ? (
+               <p style={{color:"red",textAlign:"left"}}>{formik.errors.paymentDueMonth}</p>
              ) : null}
             </Col>
               </Row>
               <Row className='my-3 mx-1' >
               <Col m={6} sm={12} lg={4} ml-0  className='p-1'>
-              <label htmlFor="paymentTypeId"className="form-label col-sm-10 col-lg-12 p-0 text-lg-right float-sm-left">
+              <label htmlFor="paymentDueYear"className="form-label col-sm-10 col-lg-12 p-0 text-lg-right float-sm-left">
              Year :<span style={{color:'red',fontSize:'20px'}}>*</span>
              </label>
              </Col>
@@ -188,36 +203,39 @@ const CreateGstPaid = () => {
             <Col m={6} sm={12} ml-0 lg={6} className='p-1'>
              <select className='form-Control ml-0 col-sm-12 col-lg-12'
                 style={{with:70,padding:'10px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
-              name="paymentTypeId"
-              {...formik.getFieldProps("paymentTypeId")}
+              name="paymentDueYear"
+              id="paymentDueYear"
+              type="number"
+              {...formik.getFieldProps("paymentDueYear")}
              >
-                <option value='' label="Select  Payment Type" />
-             {paymentTypeId.map(item=>(
-               <option value={item.id} label={item.paymentType} />
-              ))}
+                <option value='' label="Select Payment Due Year" />
+             {year.map((item,index)=>(
+               <option key={index} value={item} label={item} />
+               ))} 
             </select>
-            {formik.touched.paymentTypeId && formik.errors.paymentTypeId ? (
-               <p style={{color:"red",textAlign:"left"}}>{formik.errors.paymentTypeId}</p>
+            {formik.touched.paymentDueYear && formik.errors.paymentDueYear ? (
+               <p style={{color:"red",textAlign:"left"}}>{formik.errors.paymentDueYear}</p>
              ) : null}
             </Col>
               </Row>
               <Row className='my-3 mx-1' >
             <Col m={6} sm={12} lg={12} ml-0>
             <SmallInput  
-            name="paymentMethod"
-            id="paymentMethod"
-            label="Payment Method :"
-            isTouched={formik.touched.paymentMethod}
-            error={formik.errors.paymentMethod}
+            name="amount"
+            id="amount"
+            label="Payment Amount :"
+            type="number"
+            isTouched={formik.touched.amount}
+            error={formik.errors.amount}
             span="*"
-            placeholder="Enter your Payment Method"
-            {...formik.getFieldProps("paymentMethod")}
+            placeholder="Enter your Payment Amount"
+            {...formik.getFieldProps("amount")}
             />    
             </Col>
             </Row>
               <Row className='my-3 mx-1 justify-content-center'>
               <Col m={6} sm={12} ml-0 lg={6}>
-              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 float-right' onClick={()=>createPayment()}>Submit</button>
+              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 float-right' onClick={()=>createpaidDetails()}>Submit</button>
               
               </Col>
               <Col m={6} sm={12} ml-0 lg={6}>
