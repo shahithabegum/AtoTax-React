@@ -185,7 +185,7 @@ const CreateGstPaid = () => {
              >
                 <option value='' label="Select Payment Due Month" />
              {month.map(item=>(
-               <option value={item.index} label={item.month} />
+               <option value={item.month} label={item.month} />
               ))}
             </select>
             {formik.touched.paymentDueMonth && formik.errors.paymentDueMonth ? (
