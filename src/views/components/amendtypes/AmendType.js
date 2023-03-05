@@ -41,13 +41,13 @@ console.log("AmendType",amendType)
   return (
     <div className='Table-div'>
       <div className='headcontainer'>
-        <h2 className="Tableheading ml-1">AmendType</h2>
+        <h2 className="Tableheading ml-1">Amend Types</h2>
       
       </div>
 
   <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
         <MaterialTable
-         title="AmendType"
+         title="Amend Types"
            data={amendType}
            columns={columns}
            actions={[

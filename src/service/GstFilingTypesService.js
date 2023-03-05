@@ -7,6 +7,9 @@ const GetGstFilingType = ()=>{
 const GetGstFilingTypesById = (id)=>{
     return axios.get(API_BASE_URL+`/api/GSTFilingTypes/GetGSTFilingType/${id}`)
 }
+const GetGstFilingDD = ()=>{
+    return axios.get(API_BASE_URL+'/api/GSTFilingTypes/GetActiveGSTFilingTypesForDD')
+}
 const Create_GstFilingType = (data)=>{
     return axios.post(API_BASE_URL+'/api/GSTFilingTypes/CreateGSTFilingType',data)
 }
@@ -16,4 +19,4 @@ const Update_GstFilingType = (data,id)=>{
 const DeleteGstFilingType = (id)=>{
     return axios.delete(API_BASE_URL+`/api/GSTFilingTypes/DeleteGSTFilingType/${id}`)
 }
-export {GetGstFilingType,GetGstFilingTypesById,Create_GstFilingType,Update_GstFilingType,DeleteGstFilingType}
+export {GetGstFilingType,GetGstFilingTypesById,Create_GstFilingType,Update_GstFilingType,DeleteGstFilingType,GetGstFilingDD}

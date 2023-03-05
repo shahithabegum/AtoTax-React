@@ -1,7 +1,7 @@
 import React from 'react';
-import { FaUserFriends,FaUserTie,FaRupeeSign,FaHome,FaBook,FaRegIdBadge,FaHistory,FaUser,FaKey,FaUserPlus} from "react-icons/fa";
-import { MdEditNote ,MdOutlinePayments,MdOutlinePermMedia,MdLocationOn,MdMiscellaneousServices,MdDashboard} from "react-icons/md";
-import { GiTakeMyMoney,GiFiles,GiReceiveMoney } from "react-icons/gi";
+import { FaUserFriends,FaUserTie,FaRupeeSign,FaHome,FaBook,FaUserShield,FaHistory,FaUser,FaKey,FaUserPlus,FaInfoCircle} from "react-icons/fa";
+import { MdEditNote ,MdOutlinePayments,MdOutlinePermMedia,MdLocationOn,MdMiscellaneousServices,MdDashboard,MdNaturePeople} from "react-icons/md";
+import { GiStabbedNote,GiFiles,GiReceiveMoney } from "react-icons/gi";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { IoIosPeople } from "react-icons/io";
 
@@ -37,6 +37,11 @@ export const SidenavData=[
                 title:"Paid Details",
                 icon:<FaRupeeSign/>
             }, 
+            {
+                path:"/billandfeecollection",
+                title:"Bill And Fee Collection",
+                icon:<GiStabbedNote/>
+            }, 
         ]
     },
     {
@@ -63,12 +68,12 @@ export const SidenavData=[
     {
         path:"/roles",
         title:"Roles",
-        icon:""
+        icon:<FaInfoCircle/>
     },
     {
         path:"/assignroles",
         title:"Assign Roles",
-        icon:""
+        icon:<MdNaturePeople/>
     },
     {
         path:"/register",

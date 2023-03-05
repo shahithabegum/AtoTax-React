@@ -43,14 +43,14 @@ const Paymenttypes = (props) => {
     return (
       <div className='Table-div'>
         <div className='headcontainer'>
-          <h2 className="Tableheading">Payments Types</h2>
+          <h2 className="Tableheading">Payment Types</h2>
           <Link to="/addPayment"> <button className='btn btn-success ml-1  mt-2 mx-1' >Add</button></Link>
           {/* <button className='btn btn-success ml-1  mt-2 ml-3' onClick={()=>setShowAdd(true)} >Add</button> */}
         </div>
   
     <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
           <MaterialTable
-             title="Payments"
+             title="Payment Types"
              data={payment}
              columns={columns}
              actions={[

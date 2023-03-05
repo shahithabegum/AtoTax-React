@@ -12,8 +12,8 @@ import CreatePayment from '../views/components/paymenttypes/CreatePayment';
 import UpdatePayment from '../views/components/paymenttypes/UpdatePayment';
 import ViewPayment from '../views/components/paymenttypes/ViewPayment'
 import AmendType from '../views/components/amendtypes/AmendType';
-import CreateAmendType from '../views/components/amendtypes/CreateAmendType'
-import UpdateAmendType from '../views/components/amendtypes/UpdateAmendType';
+// import CreateAmendType from '../views/components/amendtypes/CreateAmendType'
+// import UpdateAmendType from '../views/components/amendtypes/UpdateAmendType';
 import ViewAmendType from '../views/components/amendtypes/ViewAmendType';
 import AddressType from '../views/components/address/AddressType';
 import CreateAddressType from '../views/components/address/CreateAddressType';
@@ -71,6 +71,10 @@ import CreateGstPaid from '../views/components/gstpaiddetails/CreateGstPaid';
 import UpdateGstPaid from '../views/components/gstpaiddetails/UpdateGstPaid';
 import ViewGstPaid from '../views/components/gstpaiddetails/ViewGstPaid';
 import AsignRole from '../views/components/roles/AsignRole';
+import BillAndFeeCollection from '../views/components/billandfeecollection/BillAndFeeCollection';
+import CreateBillAndFeeCollection from '../views/components/billandfeecollection/CreateBillAndFeeCollection';
+import UpdateBillAndFeeCollection from '../views/components/billandfeecollection/UpdateBillAndFeeCollection';
+import ViewBillAndFeeCollection from '../views/components/billandfeecollection/ViewBillAndFeeCollection';
 
 export const pathroutes=[
     {
@@ -165,14 +169,14 @@ export const pathroutes=[
             path: "/AmendType",
             DynComponent: AmendType
         },
-        {
-            path: "/createadmend",
-            DynComponent: CreateAmendType
-        },
-        {
-            path: "/UpdateAmendType",
-            DynComponent: UpdateAmendType
-        },
+        // {
+        //     path: "/createadmend",
+        //     DynComponent: CreateAmendType
+        // },
+        // {
+        //     path: "/UpdateAmendType",
+        //     DynComponent: UpdateAmendType
+        // },
         {
             path: "/ViewAmendType",
             DynComponent: ViewAmendType
@@ -211,6 +215,7 @@ export const pathroutes=[
             path: "/viewEmpJobRole",
             DynComponent: ViewEmpJobRole
         },
+
          // -------------Media  TYPE-----------
          {
             path: "/MediaTypes",
@@ -368,6 +373,23 @@ export const pathroutes=[
         {
             path: "/viewServiceCat",
             DynComponent: ViewServiceCat
+        },
+         // ------------BillAndFeeCollection-----------
+         {
+            path: "/billandfeecollection",
+            DynComponent: BillAndFeeCollection
+        },
+        {
+            path: "/CreateBillAndFeeCollection",
+            DynComponent: CreateBillAndFeeCollection
+        },
+        {
+            path: "/UpdateBillAndFeeCollection",
+            DynComponent: UpdateBillAndFeeCollection
+        },
+        {
+            path: "/ViewBillAndFeeCollection",
+            DynComponent: ViewBillAndFeeCollection
         },
           // ------------Service Charge Update History-----------
           {

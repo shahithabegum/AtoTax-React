@@ -7,6 +7,9 @@ const Create_Employee =(data)=>{
 const GetEmployees = ()=>{
     return axios.get(API_BASE_URL+'/api/Employees/GetEmployees')
 }
+const GetEmployeesDD = ()=>{
+    return axios.get(API_BASE_URL+'/api/Employees/GetActiveEmployeesForDD')
+}
 
 const GetEmployeeById = (id)=>{
     return axios.get(API_BASE_URL+`/api/Employees/GetEmployee/${id}`)
@@ -23,5 +26,5 @@ export {Create_Employee,
     GetEmployeeById,
     DeleteEmployee,
     Update_Employee,
-   
+    GetEmployeesDD
 }

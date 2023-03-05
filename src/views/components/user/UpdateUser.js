@@ -11,12 +11,9 @@ const UpdateUser = () => {
     let navigate = useNavigate()
       const formik = useFormik({
           initialValues: {
-            newUserName:'',
-            password:location.state.passwordHash,
-            oldName:location.state.name,
-            newName:'',
-            oldEmail:location.state.email,
-            newEmail:''
+            newUserName:location.state.userName,
+            newName:location.state.name,
+            newEmail:location.state.email
           },
          validationSchema:UserValidation,
           onSubmit: values => {
@@ -27,7 +24,7 @@ const UpdateUser = () => {
             const data = Object.assign(formik.values,{id:location.state.id})
             Update_User(data,location.state.id).then(res=>{
               if(res?.data?.isSuccess){
-                toast.success(res.data.successMessage)
+              
                navigate('/users')
               }
               else {
@@ -52,8 +49,8 @@ const UpdateUser = () => {
                   name="newUserName"
                   id="newUserName"
                   label="New User Name:"
-                  span="*"
-                  placeholder="Enter your New User Name"
+                  
+                  placeholder="Update User Name"
                   isTouched={formik.touched.newUserName}
                   error={formik.errors.newUserName}
                   {...formik.getFieldProps("newUserName")}
@@ -61,43 +58,16 @@ const UpdateUser = () => {
                   </Col>
                 
                   </Row>
-                  <Row className='my-3 mx-1 ' >
-                  <Col m={6} sm={12} lg={12} ml-0>
-                  <SmallInput  
-                  name="password"
-                  id="password"
-                  label="Password :"
-                  type="password"
-                  placeholder="Enter Your Password"
-                  isTouched={formik.touched.password}
-                  error={formik.errors.password}
-                  {...formik.getFieldProps("password")}
-                  />
-                  </Col>
-                  </Row>
-                  <Row className='my-3 mx-1' >
-                  <Col m={6} sm={12} lg={12} ml-0>
-                  <SmallInput  
-                  name="oldName"
-                  id="oldName"
-                  label="Old Name :"
-                 
-                  placeholder="Enter your Old Name"
-                  isTouched={formik.touched.oldName}
-                  error={formik.errors.oldName}
-                  {...formik.getFieldProps("oldName")}
-                  />
-                  </Col>
+               
                 
-                  </Row>
                   <Row className='my-3 mx-1 ' >
                   <Col m={6} sm={12} lg={12} ml-0>
                   <SmallInput  
                   name="newName"
                   id="newName"
                   label="New Name :"
-                  span="*"
-                  placeholder="Enter Your New Name"
+                  
+                  placeholder="Update Name"
                   isTouched={formik.touched.newName}
                   error={formik.errors.newName}
                   {...formik.getFieldProps("newName")}
@@ -107,25 +77,11 @@ const UpdateUser = () => {
                   <Row className='my-3 mx-1 ' >
                   <Col m={6} sm={12} lg={12} ml-0>
                   <SmallInput  
-                  name="oldEmail"
-                  id="oldEmail"
-                  label="Old Email :"
-                  
-                  placeholder="Enter Your Old Email"
-                  isTouched={formik.touched.oldEmail}
-                  error={formik.errors.oldEmail}
-                  {...formik.getFieldProps("oldEmail")}
-                  />
-                  </Col>
-                  </Row>
-                  <Row className='my-3 mx-1 ' >
-                  <Col m={6} sm={12} lg={12} ml-0>
-                  <SmallInput  
                   name="newEmail"
                   id="newEmail"
                   label="New Email :"
-                  span="*"
-                  placeholder="Enter Your New Email"
+                 
+                  placeholder="Update Email"
                   isTouched={formik.touched.newEmail}
                   error={formik.errors.newEmail}
                   {...formik.getFieldProps("newEmail")}

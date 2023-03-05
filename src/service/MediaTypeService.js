@@ -7,6 +7,9 @@ const GetMedia = ()=>{
 const GetMediaById = (id)=>{
     return axios.get(API_BASE_URL+`/api/MultimediaTypes/GetMultimediaType/${id}`)
 }
+const GetMediaDD = ()=>{
+    return axios.get(API_BASE_URL+'/api/MultimediaTypes/GetActiveMultimediaTypesForDD')
+}
 const Create_Media = (data)=>{
     return axios.post(API_BASE_URL+'/api/MultimediaTypes/CreateMultimediaType',data)
 }
@@ -16,4 +19,4 @@ const Update_Media = (data,id)=>{
 const DeletMedia = (id)=>{
     return axios.delete(API_BASE_URL+`/api/MultimediaTypes/DeleteMultimediaType/${id}`)
 }
-export {GetMedia,GetMediaById,Create_Media,Update_Media,DeletMedia}
+export {GetMedia,GetMediaById,Create_Media,Update_Media,DeletMedia,GetMediaDD}

@@ -50,14 +50,14 @@ const Login = () => {
    <div className='containerlogin'>
      <div className='sidewrapper  col-12 '>
        < div className='innercontent d-flex '>
-        <div className='sidediv col-lg-6 '>
+        <div className='sidediv col-lg-6'>
           <div className='m-auto imgdiv'><img src={Logo} alt='image' className='logoimg' />
 
         </div>
         <p className='para text-center mt-4'>
             
             Your Reliable Tax Partner</p></div>
-        <div className='sidedivfrom col-lg-6 m-auto d-block'>
+        <div className='sidedivfrom col-lg-6 col-sm-12 m-auto'>
         
          <div className='formwarrapper '>
          <h2 className='head p-0 m-0'><b>Welcome to AtoTax</b></h2>

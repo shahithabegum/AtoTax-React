@@ -9,7 +9,7 @@ export const SmallInput = (props) => {
         </Col>
         <Col m={6} sm={12} lg={6} ml-0 className='p-1'>
          
-        <input className='form-Controlml-0 col-sm-12 col-lg-12'
+        <input className='form-Control ml-0 col-sm-12 col-lg-12'
         style={{with:70,padding:'9px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
         onClick={props.onClick}
         onChange={props.onChange}

@@ -15,7 +15,7 @@ const MediaTypes = (props) => {
     
     {title: "Media", field:"media"},
     {title: "Description", field:"description"},
-    {title: "Created Date", field:"createdDate"},
+   
     {title: "Status Id", field:"status.statusType"},
   ]
     const [media, setMedia] = useState([])

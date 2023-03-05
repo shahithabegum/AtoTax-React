@@ -45,13 +45,13 @@ const ServiceCat = (props) => {
       return (
         <div className='Table-div'>
           <div className='headcontainer'>
-            <h2 className="Tableheading ml-1">Service Category Types</h2>
+            <h2 className="Tableheading ml-1">Services</h2>
             <Link to="/addServiceCat"> <button className='btn btn-success ml-1  mt-2 ml-2' >Add</button></Link>
           </div>
     
       <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
             <MaterialTable
-               title="Service Category"
+               title="Service Categories"
                data={service}
                columns={columns}
                actions={[

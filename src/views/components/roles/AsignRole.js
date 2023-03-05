@@ -16,7 +16,6 @@ const AssignRole = () => {
     useEffect(()=>{
         GetUserId();
         Get_Roles();
-        // Get_UserRoles();
     },[])
   
   let options=roles.map((item)=>{
@@ -66,13 +65,6 @@ const AssignRole = () => {
               setRoles(res.data.result)
             })
           }
-          // const Get_UserRoles =()=>{
-          //   GetUserRoles().then(res=>{
-          //     console.log(res)
-             
-          //     setUserforrole(res.data.result)
-          //   })
-          // }
         const handleCancle =()=>{
           navigate('/roles')
         }
@@ -89,7 +81,7 @@ const AssignRole = () => {
     return (
       <div  className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
           
-          <form id="formik-form" onSubmit={formik.handleSubmit} className="ml-2 p-2 mt-2 m-auto col-lg-7">
+          <form id="formik-form" onSubmit={formik.handleSubmit} className="ml-2 p-2 mt-5 m-auto col-lg-7">
           <h2 className=' fromheading my-1 p-0 ml-3 text-center'>Assign Roles</h2>
           <Row className='my-3 mx-1' >
                 <Col m={6} sm={12} lg={4} ml-0  className='p-1'>
