@@ -115,7 +115,7 @@ const UpdateGstClientAddressEx = () => {
         name="district"
         id="district"
         label="District"
-        placeholder="Enter your District "
+        placeholder="Update District "
         span="*"
         {...formik.getFieldProps("district")}
         />
@@ -152,7 +152,7 @@ const UpdateGstClientAddressEx = () => {
         name="district"
         id="district"
         label="District"
-        placeholder="Enter your District "
+        placeholder="Update District "
        
         {...formik.getFieldProps("district")}
         />
@@ -185,7 +185,7 @@ const UpdateGstClientAddressEx = () => {
         name="city"
         id="city"
         label="City"
-        placeholder="Enter your city"
+        placeholder="Update city"
         span="*"
         isTouched={formik.touched.city}
         error={formik.errors.city}
@@ -201,7 +201,7 @@ const UpdateGstClientAddressEx = () => {
         name="addressLine1"
         id="addressLine1"
         label="Address Line 1 "
-        placeholder="Enter your Address "
+        placeholder="Update Address "
         span="*"
         isTouched={formik.touched.addressLine1}
         error={formik.errors.addressLine1}
@@ -214,7 +214,7 @@ const UpdateGstClientAddressEx = () => {
         name="state"
         id="state"
         label="State"
-        placeholder="Enter Your State"
+        placeholder="Update State"
         span="*"
         isTouched={formik.touched.state}
         error={formik.errors.state}
@@ -230,7 +230,7 @@ const UpdateGstClientAddressEx = () => {
         name="addressLine2"
         id="addressLine2"
         label="Address Line 2"
-        placeholder="Enter your Address "
+        placeholder="Update Address "
         
         {...formik.getFieldProps("addressLine2")}
         />
@@ -242,7 +242,7 @@ const UpdateGstClientAddressEx = () => {
         name="pincode"
         id="pincode"
         label="Pincode"
-        placeholder="Enter your Pincode"
+        placeholder="Update Pincode"
         span="*"
         isTouched={formik.touched.pincode}
         error={formik.errors.pincode}
@@ -256,7 +256,7 @@ const UpdateGstClientAddressEx = () => {
         name="addressLine3"
         id="addressLine3"
         label="Address Line 3"
-        placeholder="Enter your Address "
+        placeholder="Update Address "
        
         {...formik.getFieldProps("addressLine3")}
         />

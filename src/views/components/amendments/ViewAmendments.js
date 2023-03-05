@@ -40,12 +40,13 @@ const ViewAmendments = ({item}) => {
             <tr>
                         <td  className='tilte-td'><b>Created Date</b></td>
                         <td  className='tilte-td'><b>: </b>{CreatedlocalDate}</td>
-                        <td  className='tilte-td'><b>LastModified Date</b></td>
-                        <td  className='tilte-td'><b>: </b>{ModifiedlocalDate}</td>
+                        <td className='tilte-td'><b>Approval Status</b></td>
+                        <td className='tilte-td'><b>: </b>{item.approvalStatusType.statusType}</td>
+                       
             </tr>
             <tr>
-                <td className='tilte-td'><b>Approval Status Type</b></td>
-                <td className='tilte-td'><b>: </b>{item.approvalStatusType.statusType}</td>
+            <td  className='tilte-td'><b>Last Modified Date</b></td>
+                        <td  className='tilte-td'><b>: </b>{ModifiedlocalDate}</td>
             </tr>
            
            </tbody>

@@ -1,15 +1,15 @@
 import React,{useState,useEffect} from 'react'
 import MaterialTable from 'material-table'
-import {useNavigate} from 'react-router-dom'
+//import {useNavigate} from 'react-router-dom'
 // import { FaEdit } from "react-icons/fa";
 // import { BsEye } from "react-icons/bs";
 import {GetRoles} from '../../../service/RolesService'
 const Roles = () => {
   
-        let navigate = useNavigate();
+        // let navigate = useNavigate();
         const columns = [
           
-          {title: "Id", field:"id"},
+          // {title: "Id", field:"id"},
           {title: "Normalized Name", field:"normalizedName"},
           {title: "Concurrency Stamp", field:"concurrencyStamp"},
         ]
@@ -41,7 +41,7 @@ const Roles = () => {
         return (
           <div className='Table-div'>
             <div className='headcontainer'>
-              <h2 className="Tableheading ml-1">Roles Details</h2>
+              <h2 className="Tableheading ml-1">Roles</h2>
             </div>
       
         <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>

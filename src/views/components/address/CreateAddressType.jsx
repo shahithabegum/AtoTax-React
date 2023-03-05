@@ -59,7 +59,7 @@ const CreateAddressType = () => {
                 id="addressTypeName"
                 label="Address Type :"
                 span="*"
-                placeholder="Enter your Address Type"
+                placeholder="Enter Address Type"
                 isTouched={formik.touched.addressTypeName}
                 error={formik.errors.addressTypeName}
                 {...formik.getFieldProps("addressTypeName")}

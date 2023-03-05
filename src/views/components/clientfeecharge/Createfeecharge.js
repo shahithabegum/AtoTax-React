@@ -38,7 +38,7 @@ const Createfeecharge = () => {
       }
   return (
     <div className='container p-2 col-11 col-sm-10 col-lg-12'>
-        <h2 className='fromheading my-1 p-0'>Create Client Charge</h2>  
+        <h2 className='fromheading my-1 p-0'>Create Client Fee Map</h2>  
         <form id="formik-form" onSubmit={formik.handleSubmit} className="ml-2 p-2 mt-2  col-lg-7">
         <Row className='my-3 ml-2' >
         <Col m={6} sm={12} lg={12} ml-0>

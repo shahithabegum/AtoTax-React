@@ -63,7 +63,7 @@ const UpdateEmpJobRole = () => {
           span="*"
           isTouched={formik.touched.jobRole}
           error={formik.errors.jobRole}
-          placeholder="Enter your Job Role"
+          placeholder="Update Job Role"
           {...formik.getFieldProps("jobRole")}
           />
           </Col>
@@ -76,7 +76,7 @@ const UpdateEmpJobRole = () => {
           label="Job Description :"
           isTouched={formik.touched.jobDescription}
           error={formik.errors.jobDescription}
-          placeholder="Enter your Job Role Description"
+          placeholder="Update Job Role Description"
           {...formik.getFieldProps("jobDescription")}
           />
               

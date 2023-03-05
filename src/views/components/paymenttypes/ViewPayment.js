@@ -1,43 +1,35 @@
-import React, { useEffect, useState } from 'react'
-import {Link,useLocation} from 'react-router-dom'
+import React from 'react'
 
-const ViewPayment = () => {
+const ViewPayment = ({item}) => {
   
-    const [item, setItem] = useState([])
-    const location = useLocation()
-    useEffect(() => {
-        setItem(location.state)
+    const CreatedDate=item.createdDate
+         var CreatedlocalDate = new Date(CreatedDate).toLocaleDateString();
+         const ModifiedDate=item.lastModifiedDate
+         var ModifiedlocalDate = new Date(ModifiedDate).toLocaleDateString();
        
-    }, [])
     return (
     
-      <div className='container ml-0'>
-           <div style={{display:'flex',justifyContent:"space-between"}}>
-            <h2 className="view ml-2">Payment Types</h2>
-            <Link to='/PaymentTypes'><button type="button" className="btn btn-warning ml-0 mt-3">Go Back</button></Link>
-      </div>
-          <div className='displaylist mt-2'>
-          <table class="table table-striped table-responsive ml-5 w-full">
-             <tbody>
+        <div className='container' >
+                
+        
+        <div className='displaylist mt-2 ml-0 m-auto p-5'>
+<table class="view-table table table-responsive ml-0 w-full m-auto ">
+        <tbody className='view-table-body '>
               <tr>
-                  <td><b>ID</b></td>
-                  <td>{item.id}</td>
+                  <td className='tilte-td'><b>Payment Method </b></td>
+                  <td className='tilte-td'><b>: </b>{item.paymentMethod}</td>
               </tr>
               <tr>
-                  <td><b>Payment Method </b></td>
-                  <td>{item.paymentMethod}</td>
+                  <td className='tilte-td'><b>Status</b></td>
+                  <td className='tilte-td'><b>: </b>{item.status.statusType}</td>
               </tr>
               <tr>
-                  <td><b>Status ID</b></td>
-                  <td>{item.statusId}</td>
-              </tr>
-              <tr>
-                  <td><b>Created Date</b></td>
-                  <td>{item.createdDate}</td>
-              </tr><tr>
-                  <td><b>LastModified Date</b></td>
-                  <td>{item.lastModifiedDate}</td>
-              </tr>
+                        <td  className='tilte-td'><b>Created Date</b></td>
+                        <td  className='tilte-td'><b>: </b>{CreatedlocalDate}</td>
+                    </tr><tr>
+                        <td  className='tilte-td'><b>Last Modified Date</b></td>
+                        <td  className='tilte-td'><b>: </b>{ModifiedlocalDate}</td>
+                    </tr>
              
              </tbody>
              </table>

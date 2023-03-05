@@ -51,7 +51,7 @@ const GstFilingTypes = (props) => {
     <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
           <MaterialTable
           className="table-container"
-             title="GSTFiling"
+             title="GST Filing"
              data={address}
              columns={columns}
              actions={[

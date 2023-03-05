@@ -64,7 +64,7 @@ const UpdateFeeCharge = () => {
         className="ml-2 p-2 mt-2 m-auto col-lg-7"
       >
         <h2 className=" fromheading my-1 p-0 text-center">
-          Update Client Charge
+          Update Client Fee Map
         </h2>
 
         <Row className="my-3 mx-1">
@@ -107,7 +107,7 @@ const UpdateFeeCharge = () => {
             <SmallInput
               name="previousCharge"
               id="previousCharge"
-              label="Previous Charge"
+              label="Previous Charge :"
               disabled="true"
               {...formik.getFieldProps("previousCharge")}
             />
@@ -121,7 +121,7 @@ const UpdateFeeCharge = () => {
               label="Default Charge :"
               isTouched={formik.touched.defaultCharge}
               error={formik.errors.defaultCharge}
-              placeholder="Enter Default Charge "
+              placeholder="UpdateDefault Charge "
               span="*"
               {...formik.getFieldProps("defaultCharge")}
             />

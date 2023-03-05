@@ -98,7 +98,7 @@ const GstEditing = () => {
       span="*"
       isTouched={formik.touched.proprietorName}
       error={formik.errors.proprietorName}
-      placeholder="Enter GST Client Name"
+      placeholder="UpdateGST Client Name"
       {...formik.getFieldProps("proprietorName")}
       />
       </Col>
@@ -110,7 +110,7 @@ const GstEditing = () => {
       id="gstin"
       label="GST TIN"
       span="*"
-      placeholder="Enter GST TIN Number"
+      placeholder="UpdateGST TIN Number"
       isTouched={formik.touched.gstin}
       error={formik.errors.gstin}
       {...formik.getFieldProps("gstin")}
@@ -122,7 +122,7 @@ const GstEditing = () => {
       id="gstUserName"
       label="GST UserName"
       span="*"
-      placeholder="Enter GST User Name"
+      placeholder="UpdateGST User Name"
       isTouched={formik.touched.gstUserName}
       error={formik.errors.gstUserName}
       {...formik.getFieldProps("gstUserName")}
@@ -134,7 +134,7 @@ const GstEditing = () => {
       id="gstUserPassword"
       label="GST User Password"
       type="password"
-      placeholder="Enter GST User Password"
+      placeholder="UpdateGST User Password"
       {...formik.getFieldProps("gstUserPassword")}
       />
       </Col>
@@ -157,7 +157,7 @@ const GstEditing = () => {
       id="gstEmailPassword"
       label="GST Email Password"
       type="password"
-      placeholder="Enter GST Email Password"
+      placeholder="UpdateGST Email Password"
       {...formik.getFieldProps("gstEmailPassword")}
       />
       </Col>
@@ -179,7 +179,7 @@ const GstEditing = () => {
       id="gstRecoveryEmailPassword"
       label="GST Recovery Email Password"
       type="password"
-      placeholder="Enter GST Recovery Email Password"
+      placeholder="UpdateGST Recovery Email Password"
       {...formik.getFieldProps("gstRecoveryEmailPassword")}
       />
       
@@ -214,7 +214,7 @@ const GstEditing = () => {
       id="gstAnnualTurnOver"
       label="GST Annual TurnOver"
       span="*"
-      placeholder="Enter in Rupees"
+      placeholder="Updatein Rupees"
       type="number"
       {...formik.getFieldProps("gstAnnualTurnOver")}
       />
@@ -236,7 +236,7 @@ const GstEditing = () => {
       name="contactName"
       id="contactName"
       label="Contact Name"
-      placeholder="Enter your Contact Name"
+      placeholder="UpdateContact Name"
       isTouched={formik.touched.contactName}
       error={formik.errors.contactName}
       {...formik.getFieldProps("contactName")}
@@ -257,7 +257,7 @@ const GstEditing = () => {
       name="mobileNumber"
       id="mobileNumber"
       label="Mobile Number"
-      placeholder="Enter client Moblie Number"
+      placeholder="Updateclient Moblie Number"
       {...formik.getFieldProps("mobileNumber")}
       />
       </Col>
@@ -267,7 +267,7 @@ const GstEditing = () => {
       id="phoneNumber"
       label="Phone Number"
       span="*"
-      placeholder="Enter client Phone Number"
+      placeholder="Updateclient Phone Number"
       {...formik.getFieldProps("phoneNumber")}
       />
       </Col>
@@ -279,7 +279,7 @@ const GstEditing = () => {
       name="ewayBillUserName"
       id="ewayBillUserName"
       label="Eway Bill UserName"
-      placeholder="Enter Eway Bill UserName "
+      placeholder="UpdateEway Bill UserName "
       isTouched={formik.touched.ewayBillUserName}
       error={formik.errors.ewayBillUserName}
       {...formik.getFieldProps("ewayBillUserName")}
@@ -300,7 +300,7 @@ const GstEditing = () => {
       name="rackFileNo"
       id="rackFileNo"
       label="Rack File No"
-      placeholder="Enter Rack File Number"
+      placeholder="UpdateRack File Number"
       {...formik.getFieldProps("rackFileNo")}
       />
       </Col>
@@ -309,7 +309,7 @@ const GstEditing = () => {
       name="tallyDataFilePath"
       id="tallyDataFilePath"
       label="Tally Data FilePath"
-      placeholder="Enter Tally Data FilePath"
+      placeholder="UpdateTally Data FilePath"
       {...formik.getFieldProps("tallyDataFilePath")}
       />
       </Col>

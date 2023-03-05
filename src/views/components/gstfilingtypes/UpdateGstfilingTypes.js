@@ -61,7 +61,7 @@ const UpdateGstfilingTypes = () => {
               span="*"
               isTouched={formik.touched.filingType}
               error={formik.errors.filingType}
-              placeholder="Enter Your Filing Type"
+              placeholder="Update Filing Type"
               {...formik.getFieldProps("filingType")}
               />
               </Col>

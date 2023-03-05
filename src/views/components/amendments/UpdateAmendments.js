@@ -94,7 +94,7 @@ const UpdateAmendments = () => {
     <div className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
           
           <form id="formik-form" onSubmit={formik.handleSubmit} className="ml-2 p-2 mt-2 m-auto col-lg-7">
-          <h2 className=' fromheading my-1 p-0 text-center'>Update Amendments</h2>  
+          <h2 className=' fromheading my-1 p-0 text-center'>Update Amendment</h2>  
           {/* <span className=' my-1 text-danger text-center'> All Fileds Are Required</span> */}
           <Row className='my-3 mx-1' >
                 <Col m={6} sm={12} lg={4} ml-0  className='p-1'>
@@ -151,14 +151,11 @@ const UpdateAmendments = () => {
           id="arn"
           label="ARN :"
           span="*"
-          placeholder="Enter ARN"
+          placeholder="Update ARN"
           isTouched={formik.touched.arn}
           error={formik.errors.arn}
           {...formik.getFieldProps("arn")}
           />
-                {formik.touched.arn && formik.errors.arn ? (
-           <p style={{color:"red"}}>{formik.errors.arn}</p>
-         ) : null}
           </Col>
          </Row>
          <Row className='my-3 mx-1' >
@@ -194,7 +191,7 @@ const UpdateAmendments = () => {
           type="date"
           isTouched={formik.touched.sumittedDate}
           error={formik.errors.sumittedDate}
-          placeholder="Enter Sumitted Date"
+          placeholder="UpdateSumitted Date"
           {...formik.getFieldProps("sumittedDate")}
           />
                 {formik.touched.sumittedDate && formik.errors.sumittedDate ? (
@@ -210,7 +207,7 @@ const UpdateAmendments = () => {
               label="Approved Date"
               type="date"
               span="*"
-              placeholder="Enter Approved Date"
+              placeholder="UpdateApproved Date"
               {...formik.getFieldProps("approvedDate")}
               />
                     {formik.touched.approvedDate && formik.errors.approvedDate ? (

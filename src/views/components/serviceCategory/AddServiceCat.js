@@ -59,7 +59,7 @@ const AddServiceCat = () => {
           span="*"
           isTouched={formik.touched.serviceName}
           error={formik.errors.serviceName}
-          placeholder="Enter your Service Category"
+          placeholder="Enter Service Category"
           {...formik.getFieldProps("serviceName")}
           />
           </Col>
@@ -71,7 +71,7 @@ const AddServiceCat = () => {
           id="description"
           label="Description"
          
-          placeholder="Enter your Service Category Description"
+          placeholder="Enter Service Category Description"
           {...formik.getFieldProps("description")}
           />
           </Col>

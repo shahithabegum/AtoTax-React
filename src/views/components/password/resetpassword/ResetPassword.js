@@ -65,7 +65,7 @@ const ResetPassword = () => {
                 name="newPassword" 
                 type="password"
                 className='form-control p-2 inputlogin'
-                placeholder='Enter Your New newPassword'
+                placeholder='Enter New newPassword'
                 {...formik.getFieldProps("newPassword")}
               />  
           </div>

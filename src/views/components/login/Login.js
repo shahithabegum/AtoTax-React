@@ -36,7 +36,7 @@ const Login = () => {
             authService.setAuthToken(data.data.result.token);
             authService.setCurrentUser(data.data.result.user);
             } else {
-              toast.error(data?.data?.errorMessages)
+              toast.error(data?.data?.errorMessages.toString())
             }
              
            })
@@ -72,7 +72,7 @@ const Login = () => {
         name="userName" 
         type="userName"
         className='form-control p-2 inputlogin'
-        placeholder='Enter your User Name'
+        placeholder='Enter User Name'
         {...formik.getFieldProps("userName")}
       />  
   </div>
@@ -91,7 +91,7 @@ const Login = () => {
         name="password" 
         type="password"
         className='form-control p-2 inputlogin'
-        placeholder='Enter your Password'
+        placeholder='Enter Password'
         {...formik.getFieldProps("password")}
       />  
   </div>

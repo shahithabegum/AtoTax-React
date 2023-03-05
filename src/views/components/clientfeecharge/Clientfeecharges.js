@@ -40,13 +40,13 @@ const Clientfeecharges = (props) => {
   return (
     <div className='Table-div'>
       <div className='headcontainer'>
-        <h2 className="Tableheading ml-1">Client Fee Charge</h2>
+        <h2 className="Tableheading ml-1">Client Fee Map</h2>
         {/* <Link to="/addfeecharges"> <button className='btn btn-success ml-1  mt-2 ml-0 mt-2 ml-2' >Add</button></Link> */}
       </div>
 
   <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
         <MaterialTable
-         title="Fee Charge"
+         title="Fee Map"
            data={feeCharge}
            columns={columns}
            actions={[

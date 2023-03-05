@@ -53,7 +53,7 @@ const UpdateMedia = () => {
           <div  className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
             
               <form id="formik-form" onSubmit={formik.handleSubmit} className="ml-2 p-2 mt-2 m-auto col-lg-7">
-              <h2 className=' fromheading my-1 p-0 text-center'>Update Media Types</h2>  
+              <h2 className=' fromheading my-1 p-0 text-center'>Update Media Type</h2>  
               <Row className='my-3 mx-1' >
               <Col m={6} sm={12} lg={12} ml-0>
               <SmallInput  
@@ -63,7 +63,7 @@ const UpdateMedia = () => {
               span="*"
               isTouched={formik.touched.media}
               error={formik.errors.media}
-              placeholder="Enter your media Type"
+              placeholder="Update media Type"
               {...formik.getFieldProps("media")}
               />
               </Col>
@@ -74,7 +74,7 @@ const UpdateMedia = () => {
               name="description"
               id="description"
               label="Description :"
-              placeholder="Enter your Media Description"
+              placeholder="Update Media Description"
               {...formik.getFieldProps("description")}
               />
                   

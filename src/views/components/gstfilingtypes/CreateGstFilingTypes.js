@@ -49,7 +49,7 @@ const CreateGstFilingTypes = () => {
       <div  className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
           
           <form id="formik-form" onSubmit={formik.handleSubmit} className="ml-2 p-2 mt-2 m-auto col-lg-7">
-          <h2 className=' fromheading my-1 p-0 ml-3 text-center'>Create GST Filing Types</h2>
+          <h2 className=' fromheading my-1 p-0 ml-3 text-center'>Create GST Filing Type</h2>
           <Row className='my-3 mx-1' >
           <Col m={6} sm={12} lg={12} ml-0>
           <SmallInput  
@@ -59,7 +59,7 @@ const CreateGstFilingTypes = () => {
           span="*"
           isTouched={formik.touched.filingType}
           error={formik.errors.filingType}
-          placeholder="Enter Your Filing Type"
+          placeholder="Enter Filing Type"
           {...formik.getFieldProps("filingType")}
           />
           </Col>

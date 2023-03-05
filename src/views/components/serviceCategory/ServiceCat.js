@@ -51,7 +51,7 @@ const ServiceCat = (props) => {
     
       <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
             <MaterialTable
-               title="GSTFiling"
+               title="Service Category"
                data={service}
                columns={columns}
                actions={[

@@ -88,7 +88,7 @@ const CreateAmendments = () => {
     <div className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
           
           <form id="formik-form" onSubmit={formik.handleSubmit} className="ml-2 p-2 mt-2 m-auto col-lg-7">
-          <h2 className=' fromheading my-1 p-0 text-center'>Create Amendments</h2>  
+          <h2 className=' fromheading my-1 p-0 text-center'>Create Amendment</h2>  
           {/* <span className=' my-1 text-danger text-center'> All Fileds Are Required</span> */}
           <Row className='my-3 mx-1' >
                 <Col m={6} sm={12} lg={4} ml-0  className='p-1'>
@@ -156,7 +156,7 @@ const CreateAmendments = () => {
          <Row className='my-3 mx-1' >
                 <Col m={6} sm={12} lg={4} ml-0  className='p-1'>
                 <label htmlFor="approvalStatusTypeId"className="form-label col-sm-10 col-lg-12 p-0 text-right float-right">
-                Approval Status Type:<span style={{color:'red',fontSize:'20px'}}>*</span>
+                Approval Status :<span style={{color:'red',fontSize:'20px'}}>*</span>
                </label>
                </Col>
               
@@ -167,7 +167,7 @@ const CreateAmendments = () => {
                 type="number"
                 {...formik.getFieldProps("approvalStatusTypeId")}
                >
-                    <option value=" " label="Select Amend Type"/>
+                    <option value=" " label="Select Approval Status"/>
                {aprrovelStatus.map(item=>(
                 <option value={item.id} label={item.statusType} />
                 ))}

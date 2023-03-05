@@ -9,7 +9,7 @@ import {Create_PaidDetails} from '../../../service/GstPaidDetailService'
 import { Col, Row } from 'react-bootstrap';
 import { SmallInput } from '../../../shared/SamllInput';
 import { toast } from 'react-toastify';
-
+import PaidDetailValidation from './PaidDetailValidation'
 const CreateGstPaid = () => {
   const [clientId,setClientId] =useState([])
   const [serviceCatID,setserviceCatID] =useState([])
@@ -33,7 +33,7 @@ const CreateGstPaid = () => {
           paymentDueYear:'',
           amount:'',
         },
-       // validationSchema:PaymentValidation,
+        validationSchema:PaidDetailValidation,
         onSubmit: values => {
             console.log(values)
           },
@@ -220,7 +220,7 @@ const CreateGstPaid = () => {
             isTouched={formik.touched.amount}
             error={formik.errors.amount}
             span="*"
-            placeholder="Enter your Payment Amount"
+            placeholder="Enter Payment Amount"
             {...formik.getFieldProps("amount")}
             />    
             </Col>

@@ -45,7 +45,7 @@ return (
           <tr>
              <td  className='tilte-td'><b>Created Date</b></td>
              <td  className='tilte-td'><b>: </b>{CreatedlocalDate}</td>
-             <td  className='tilte-td'><b>LastModified Date</b></td>
+             <td  className='tilte-td'><b>Last Modified Date</b></td>
              <td  className='tilte-td'><b>: </b>{ModifiedlocalDate}</td>
           </tr>
 

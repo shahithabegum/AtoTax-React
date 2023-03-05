@@ -63,7 +63,7 @@ const UpdateAddresstype = () => {
                 id="addressTypeName"
                 label="Address Type :"
                 span="*"
-                placeholder="Enter your Address Type"
+                placeholder="Update Address Type"
                 isTouched={formik.touched.addressTypeName}
                 error={formik.errors.addressTypeName}
                 {...formik.getFieldProps("addressTypeName")}
@@ -77,7 +77,7 @@ const UpdateAddresstype = () => {
                 name="addressTypeDesc"
                 id="addressTypeDesc"
                 label="Address Type Desc :"
-                placeholder="Enter Address Type Description "
+                placeholder="Update Address Type Description "
                 isTouched={formik.touched.addressTypeDesc}
                 error={formik.errors.addressTypeDesc}
                 {...formik.getFieldProps("addressTypeDesc")}

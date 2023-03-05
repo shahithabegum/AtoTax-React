@@ -79,7 +79,7 @@ const UpdateEmployees = () => {
         name="firstName"
         id="firstName"
         label="First Name "
-        placeholder="Enter your First Name "
+        placeholder="Update First Name "
         span="*"
         isTouched={formik.touched.firstName}
           error={formik.errors.firstName}
@@ -92,7 +92,7 @@ const UpdateEmployees = () => {
         name="lastName"
         id="lastName"
         label="Last Name "
-        placeholder="Enter your Last Name "
+        placeholder="Update Last Name "
         span="*"
         isTouched={formik.touched.lastName}
         error={formik.errors.lastName}
@@ -107,7 +107,7 @@ const UpdateEmployees = () => {
         id="dob"
         type='date'
         label="Date of Birth"
-        placeholder="Enter your Date of Birth "
+        placeholder="Update Date of Birth "
         isTouched={formik.touched.dob}
           error={formik.errors.dob}
         span="*"
@@ -121,7 +121,7 @@ const UpdateEmployees = () => {
         id="doj"
         type='date'
         label="Date of Join"
-        placeholder="Enter your Date of Join "
+        placeholder="Update Date of Join "
         span="*"
         isTouched={formik.touched.doj}
         error={formik.errors.doj}
@@ -147,7 +147,7 @@ const UpdateEmployees = () => {
         name="concactNo"
         id="concactNo"
         label="Contact Number "
-        placeholder="Enter your Contact Number "
+        placeholder="Update Contact Number "
         span="*"
         isTouched={formik.touched.concactNo}
         error={formik.errors.concactNo}

@@ -9,7 +9,7 @@ import {Update_PaidDetails} from '../../../service/GstPaidDetailService'
 import { Col, Row } from 'react-bootstrap';
 import { SmallInput } from '../../../shared/SamllInput';
 import { toast } from 'react-toastify';
-
+import PaidDetailValidation from './PaidDetailValidation'
 const UpdateGstPaid = () => {
   const [clientId,setClientId] =useState([])
   const [serviceCatID,setserviceCatID] =useState([])
@@ -34,7 +34,7 @@ const UpdateGstPaid = () => {
           paymentDueYear:location.state.paymentDueYear,
           amount:location.state.amount,
         },
-       // validationSchema:PaymentValidation,
+        validationSchema:PaidDetailValidation,
         onSubmit: values => {
             console.log(values)
           },
@@ -222,7 +222,7 @@ const UpdateGstPaid = () => {
             isTouched={formik.touched.amount}
             error={formik.errors.amount}
             span="*"
-            placeholder="Enter your Payment Amount"
+            placeholder="Update Payment Amount"
             {...formik.getFieldProps("amount")}
             />    
             </Col>

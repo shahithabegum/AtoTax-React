@@ -113,7 +113,7 @@ const CreateGstClientAddressEx = () => {
         name="district"
         id="district"
         label="District"
-        placeholder="Enter your District "
+        placeholder="Enter District "
        
         {...formik.getFieldProps("district")}
         />
@@ -146,7 +146,7 @@ const CreateGstClientAddressEx = () => {
         name="city"
         id="city"
         label="City"
-        placeholder="Enter your city"
+        placeholder="Enter City"
         span="*"
         isTouched={formik.touched.city}
         error={formik.errors.city}
@@ -162,7 +162,7 @@ const CreateGstClientAddressEx = () => {
         name="addressLine1"
         id="addressLine1"
         label="Address Line 1 "
-        placeholder="Enter your Address "
+        placeholder="Enter Address "
         span="*"
         isTouched={formik.touched.addressLine1}
         error={formik.errors.addressLine1}
@@ -175,7 +175,7 @@ const CreateGstClientAddressEx = () => {
         name="state"
         id="state"
         label="State"
-        placeholder="Enter Your State"
+        placeholder="Enter State"
         span="*"
         isTouched={formik.touched.state}
         error={formik.errors.state}
@@ -191,7 +191,7 @@ const CreateGstClientAddressEx = () => {
         name="addressLine2"
         id="addressLine2"
         label="Address Line 2"
-        placeholder="Enter your Address "
+        placeholder="Enter Address "
         
         {...formik.getFieldProps("addressLine2")}
         />
@@ -203,7 +203,7 @@ const CreateGstClientAddressEx = () => {
         name="pincode"
         id="pincode"
         label="Pincode"
-        placeholder="Enter your Pincode"
+        placeholder="Enter Pincode"
         span="*"
         isTouched={formik.touched.pincode}
         error={formik.errors.pincode}
@@ -217,7 +217,7 @@ const CreateGstClientAddressEx = () => {
         name="addressLine3"
         id="addressLine3"
         label="Address Line 3"
-        placeholder="Enter your Address "
+        placeholder="Enter Address "
        
         {...formik.getFieldProps("addressLine3")}
         />

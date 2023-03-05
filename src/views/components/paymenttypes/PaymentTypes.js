@@ -4,14 +4,17 @@ import {Link,useNavigate} from 'react-router-dom'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
 import {DeletPayments,GetPayments} from '../../../service/PaymentTypeService'
+import {FormModel} from '../../../shared/FormModel'
+import ViewPayment from './ViewPayment'
 import { toast } from 'react-toastify';
 const Paymenttypes = (props) => {
+  const [show, setShow] = useState(false);
+  const [value, setValue] = useState({});
   let navigate = useNavigate();
   const columns = [
     
     {title: "Id", field:"id"},
     {title: "Payment Method", field:"paymentMethod"},
-    {title: "Created Date", field:"createdDate"},
     {title: "Status ", field:"status.statusType"},
   ]
     const [payment, setPayment] = useState([])
@@ -26,10 +29,7 @@ const Paymenttypes = (props) => {
       console.log(props , item)
       navigate('/editPayment', { state: item })
   }
-  const GoView = (item)=>{
-    console.log(props , item)
-    navigate('/viewPayment', { state: item })
-}
+ 
   const DeletePaymentType = (item)=>{
     DeletPayments(item.id).then(res=>{
       if(res?.data?.isSuccess){
@@ -60,7 +60,8 @@ const Paymenttypes = (props) => {
               }),
               rowData=>({icon: ()=><BsEye style={{color:"blue"}}/>,
               tooltip: 'view User',
-              onClick:(event,rowData)=>GoView(rowData)
+              onClick:(event,rowData)=>{ setValue(rowData)
+              setShow(true)}
               }),
               rowData=>( {
                 icon: 'delete',
@@ -78,22 +79,13 @@ const Paymenttypes = (props) => {
           />
         </div>
         
-        {/* <FormModel
-                          show={showAdd}
-                          onHide={() =>setShowAdd(false)}
-                          submitButtonText={'CREATE'}
-                          title={'Create Gst'}
-                      >
-                          <GstForm onHide={() =>setShowAdd(false)  } />
-                      </FormModel> */}
-                      {/* <FormModel
-                          show={showEdit}
-                          onHide={() =>setShowAdd(false)}
-                          submitButtonText={'CREATE'}
-                          title={'Create Gst'}
-                      >
-                          <GstEditing onHide={() =>setShowAdd(false)  } />
-                      </FormModel> */}
+        <FormModel 
+     show={show}
+     onHide={()=>{setShow(false)}}
+     title={<h2 className=" view ml-2">Payment Type</h2>}
+     >
+     <ViewPayment onHide={()=>{setShow(false)}}  item={value}/>
+     </FormModel>
     </div>
     )
 }

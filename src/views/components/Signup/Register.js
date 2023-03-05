@@ -80,7 +80,7 @@ const Register = () => {
         label="Name :"
         isTouched={formik.touched.name}
         error={formik.errors.name}
-        placeholder="Enter Your Name"
+        placeholder="Enter Name"
         {...formik.getFieldProps("name")}
         />
         </Col>
@@ -110,7 +110,7 @@ const Register = () => {
         isTouched={formik.touched.password}
         error={formik.errors.password}
         span="*"
-        placeholder="Enter Your password"
+        placeholder="Enter password"
         {...formik.getFieldProps("password")}
         />
         </Col>
@@ -123,7 +123,7 @@ const Register = () => {
             label="Confirm Password:"
             span="*"
             type="password"
-            placeholder="Enter Your Confirm Password"
+            placeholder="Enter Confirm Password"
             isTouched={formik.touched.confirmPassword}
             error={formik.errors.confirmPassword}
             {...formik.getFieldProps("confirmPassword")}

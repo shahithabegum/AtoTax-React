@@ -67,7 +67,7 @@ export const SidenavData=[
     },
     {
         path:"/assignroles",
-        title:"Asign Roles",
+        title:"Assign Roles",
         icon:""
     },
     {
@@ -103,7 +103,7 @@ export const SidenavData=[
             },
             {
                 path:"/serviceCat",
-                title:"Service Categary",
+                title:"Service Category",
                 icon:<FaRupeeSign/>
             },
             {
@@ -116,7 +116,7 @@ export const SidenavData=[
     },
     {
         path:"/addressType",
-        title:"Address Types",
+        title:"Address Type",
         icon:<FaHome/>
     },
    

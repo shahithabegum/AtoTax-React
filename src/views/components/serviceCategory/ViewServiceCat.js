@@ -33,10 +33,6 @@ const ViewServiceCat = ({item}) => {
                 <td className='tilte-td'><b>: </b>{item.previousCharge}</td>
             </tr>
             <tr>
-                <td className='tilte-td'><b>Status ID</b></td>
-                <td className='tilte-td'><b>: </b>{item.statusId}</td>
-            </tr>
-            <tr>
                 <td className='tilte-td'><b>Service Name</b></td>
                 <td className='tilte-td'><b>: </b>{item.serviceName}</td>
             </tr>
@@ -45,7 +41,7 @@ const ViewServiceCat = ({item}) => {
                 <td className='tilte-td'><b>: </b>{item.status.statusType}</td>
             </tr>
             <tr>
-                <td className='tilte-td'><b>LastModified Date</b></td>
+                <td className='tilte-td'><b>Last Modified Date</b></td>
                 <td className='tilte-td'><b>: </b>{item.lastModifiedDate}</td>
             </tr>
            

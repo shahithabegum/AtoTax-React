@@ -43,7 +43,7 @@ const GstForm = () => {
       ewayBillPassword:'',
       rackFileNo:'',
       tallyDataFilePath:'',
-      statusId:1,
+      statusId:'',
     },
     
       validationSchema: Gstlistschema,
@@ -245,7 +245,7 @@ const GstForm = () => {
       name="contactName"
       id="contactName"
       label="Contact Name"
-      placeholder="Enter your Contact Name"
+      placeholder="Enter Contact Name"
       isTouched={formik.touched.contactName}
       error={formik.errors.contactName}
       {...formik.getFieldProps("contactName")}
@@ -266,7 +266,7 @@ const GstForm = () => {
       name="mobileNumber"
       id="mobileNumber"
       label="Mobile Number"
-      placeholder="Enter client Moblie Number"
+      placeholder="Enter Client Moblie Number"
       {...formik.getFieldProps("mobileNumber")}
       />
       </Col>
@@ -276,7 +276,7 @@ const GstForm = () => {
       id="phoneNumber"
       label="Phone Number"
       span="*"
-      placeholder="Enter client Phone Number"
+      placeholder="Enter Client Phone Number"
       {...formik.getFieldProps("phoneNumber")}
       />
       </Col>
