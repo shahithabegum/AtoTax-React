@@ -32,17 +32,6 @@ const AddressType = (props) => {
       
       navigate('/editAddress', { state: item })
   }
-//   const GoView = (item)=>{
-//     console.log("item",item)
-   
-//     const data=item
-//     console.log("data",data)
-   
-//     // setShow(true)
- 
-  
-    
-// }
   const deleteAddressType = (item)=>{
     Delete_AddressType(item.id).then(res=>{
       if(res?.data?.isSuccess){
@@ -63,7 +52,7 @@ const AddressType = (props) => {
       <div className='headcontainer'>
         <h2 className="Tableheading ml-1">Address Types</h2>
         <Link to="/addAddress"> <button className='btn btn-success ml-1  mt-2 m-0' >Add</button></Link>
-        {/* <button className='btn btn-success ml-1  mt-2 ml-3' onClick={()=>setShowAdd(true)} >Add</button> */}
+
       </div>
 
   <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
@@ -102,7 +91,7 @@ const AddressType = (props) => {
       <FormModel 
      show={show}
      onHide={()=>{setShow(false)}}
-     title={<h2 className=" view ml-2">Address Types</h2>}
+     title={<h2 className=" view ml-2">Address Type</h2>}
      >
      <ViewAdressType onHide={()=>{setShow(false)}}  item={value}/>
      </FormModel>

@@ -4,8 +4,12 @@ import {Link,useNavigate} from 'react-router-dom'
 import {GetClientFeeCharge,DeleteClientFeeCharge}from "../../../service/ClientFeeChargeSerivce"
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
+import {FormModel} from '../../../shared/FormModel'
+import ViewFeeCharge from './ViewFeeCharge'
 const Clientfeecharges = (props) => {
   const [feeCharge, setFeeCharge] = useState([])
+  const [show, setShow] = useState(false);
+  const [value, setValue] = useState({});
   useEffect(() => {
    GetDetails();
   }, [])
@@ -26,10 +30,7 @@ const Clientfeecharges = (props) => {
       console.log(props , item)
       navigate('/editfeecharges', { state: item })
   }
-  const GoView = (item)=>{
-    console.log(props , item)
-    navigate('/viewFeeCharge', { state: item })
-}
+ 
   // const deleteFeeCharge = (item)=>{
   //   DeleteClientFeeCharge(item.id).then(res=>{
   //     GetDetails();
@@ -55,7 +56,8 @@ const Clientfeecharges = (props) => {
             }),
             rowData=>({icon: ()=><BsEye style={{color:"blue"}}/>,
             tooltip: 'view User',
-            onClick:(event,rowData)=>GoView(rowData)
+            onClick:(event,rowData)=>{ setValue(rowData)
+            setShow(true)}
             }),
             // rowData=>( {
             //   icon: 'delete',
@@ -73,7 +75,13 @@ const Clientfeecharges = (props) => {
         />
          
       </div>
-      
+      <FormModel 
+     show={show}
+     onHide={()=>{setShow(false)}}
+     title={<h2 className=" view ml-2">Client Fee Map</h2>}
+     >
+     <ViewFeeCharge onHide={()=>{setShow(false)}}  item={value}/>
+     </FormModel>
   </div>
   )
 }

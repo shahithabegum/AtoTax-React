@@ -80,7 +80,7 @@ const UpdateGstfilingTypes = () => {
                     type="number"
                     {...formik.getFieldProps("statusId")}
                    >
-                      
+                      <option value='' label="Select Status" /> 
                    {status.map(item=>(
                     <option value={item.id} label={item.statusType} />
                     ))}

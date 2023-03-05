@@ -4,7 +4,7 @@ const GetRoles = ()=>{
     return axios.get(API_BASE_URL+'/api/Users/GetAllRoles')
 }
 const GetUserRoles = (id)=>{
-    return axios.get(API_BASE_URL+`/api/Users/GetRolesforUser?${id}`)
+    return axios.get(API_BASE_URL+`/api/Users/GetRolesforUser?id=${id}`)
 }
 const Assign_Role = (data)=>{
     return axios.post(API_BASE_URL+'/api/Users/AssignRoles',data)

@@ -3,9 +3,13 @@ import MaterialTable from 'material-table'
 import {Link,useNavigate} from 'react-router-dom'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
+import {FormModel} from '../../../shared/FormModel'
+import ViewGstClientAddressEx from "./ViewGstClientAddressEx"
 import {GetGstClientAddress,DeleteGstClientAddress} from '../../../service/GstClientAddressService'
 import { toast } from 'react-toastify';
 const GstClientAddressEx = (props) => {
+  const [show, setShow] = useState(false);
+  const [value, setValue] = useState({});
   let navigate = useNavigate();
   const columns = [
     
@@ -29,10 +33,10 @@ const GstClientAddressEx = (props) => {
       console.log(props , item)
       navigate('/UpdateGStClientAddressEx', { state: item })
   }
-  const GoView = (item)=>{
-    console.log(props , item)
-    navigate('/ViewGStClientAddressEx', { state: item })
-}
+//   const GoView = (item)=>{
+//     console.log(props , item)
+//     navigate('/ViewGStClientAddressEx', { state: item })
+// }
   const DeleteGSTClientAddressExtension = (item)=>{
     DeleteGstClientAddress(item.id).then(res=>{
       if(res?.data?.isSuccess){
@@ -66,7 +70,8 @@ const GstClientAddressEx = (props) => {
             }),
             rowData=>({icon: ()=><BsEye style={{color:"blue"}}/>,
             tooltip: 'view User',
-            onClick:(event,rowData)=>GoView(rowData)
+            onClick:(event,rowData)=>{ setValue(rowData)
+            setShow(true)}
             }),
             rowData=>( {
               icon: 'delete',
@@ -83,7 +88,13 @@ const GstClientAddressEx = (props) => {
           
         />
       </div>
-    
+      <FormModel 
+     show={show}
+     onHide={()=>{setShow(false)}}
+     title={<h2 className=" view ml-2">GST Client Address Extension</h2>}
+     >
+     <ViewGstClientAddressEx onHide={()=>{setShow(false)}}  item={value}/>
+     </FormModel>
   </div>
   )
 }

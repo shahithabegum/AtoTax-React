@@ -3,9 +3,13 @@ import MaterialTable from 'material-table'
 import {useNavigate} from 'react-router-dom'
 import {GetAmendTypes}from "../../../service/AmendTypesServices"
 //import { FaEdit } from "react-icons/fa";
+import ViewAmendType from './ViewAmendType'
+import {FormModel} from '../../../shared/FormModel'
 import { BsEye } from "react-icons/bs";
 const AmendType = (props) => {
   const [amendType, setAmendType] = useState([])
+  const [show, setShow] = useState(false);
+  const [value, setValue] = useState({});
   useEffect(() => {
    GetDetails();
   }, [])
@@ -26,10 +30,6 @@ const AmendType = (props) => {
   //     console.log(props , item)
   //     navigate('/UpdateAmendType', { state: item })
   // }
-  const GoView = (item)=>{
-    console.log(props , item)
-    navigate('/ViewAmendType', { state: item })
-}
   // const deleteAmendments = (item)=>{
   //   DeleteAmendType(item.id).then(res=>{
   //     GetDetails();
@@ -42,8 +42,7 @@ console.log("AmendType",amendType)
     <div className='Table-div'>
       <div className='headcontainer'>
         <h2 className="Tableheading ml-1">AmendType</h2>
-        {/* <Link to="/createadmend"> <button className='btn btn-success ml-1  mt-2 ml-2 mt-2' >Add</button></Link> */}
-        {/* <button className='btn btn-success ml-1  mt-2 ml-3' onClick={()=>setShowAdd(true)} >Add</button> */}
+      
       </div>
 
   <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
@@ -56,9 +55,10 @@ console.log("AmendType",amendType)
             // tooltip: 'edit User',
             // onClick:(event,rowData)=>GoEdit(rowData)
             // }),
-            rowData=>({icon: ()=><BsEye style={{color:" #3949AB"}}/>,
+            rowData=>({icon: ()=><BsEye style={{color:"blue"}}/>,
             tooltip: 'view User',
-            onClick:(event,rowData)=>GoView(rowData)
+            onClick:(event,rowData)=>{ setValue(rowData)
+            setShow(true)}
             }),
             // rowData=>( {
             //   icon: 'delete',
@@ -76,7 +76,13 @@ console.log("AmendType",amendType)
         />
          
       </div>
-      
+      <FormModel 
+     show={show}
+     onHide={()=>{setShow(false)}}
+     title={<h2 className=" view ml-2">Amend Type</h2>}
+     >
+     <ViewAmendType onHide={()=>{setShow(false)}}  item={value}/>
+     </FormModel>
   </div>
   )
   

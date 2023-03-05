@@ -1,65 +1,51 @@
-import React, { useEffect, useState } from 'react'
-import {useLocation,Link} from 'react-router-dom'
+import react from 'react'
 
-const ViewAmendments = () => {
-  const location = useLocation()
+
+const ViewAmendments = ({item}) => {
+    const CreatedDate=item.createdDate
+    var CreatedlocalDate = new Date(CreatedDate).toLocaleDateString();
+    const ModifiedDate=item.lastModifiedDate
+    var ModifiedlocalDate = new Date(ModifiedDate).toLocaleDateString();
+    const sumittedDate=item.sumittedDate
+    var SumittedDate = new Date(sumittedDate).toLocaleDateString();
+    const approvedDate=item.approvedDate
+    var ApprovedDate = new Date(approvedDate).toLocaleDateString();
+    
   return (
     
-    <div className='container ml-0' >
-         <div style={{display:'flex',justifyContent:"space-between"}}>
-        <h2 className="view ml-2">Amendment</h2>
-        <Link to='/amendments'><button type="button" className="btn btn-warning ml-5 mt-3">Go Back</button></Link>
-  </div>
-        <div className='displaylist mt-2'>
-        <table class="table table-striped table-responsive ml-5 w-full ">
-           <tbody>
+    <div className='container' >
+                
+        
+    <div className='displaylist mt-2 ml-0 m-auto p-5'>
+<table class="view-table table table-responsive ml-0 w-full m-auto ">
+    <tbody className='view-table-body '>
             <tr>
-                <td><b>Amendment Id</b></td>
-                <td>{location.state.id}</td>
-            </tr>
-            <tr>
-                <td><b>Proprietor Name</b></td>
-                <td>{location.state.gstClient.proprietorName}</td>
+                <td className='tilte-td'><b>Proprietor Name</b></td>
+                <td className='tilte-td'><b>: </b>{item.gstClient.proprietorName}</td>
+                <td className='tilte-td'><b>GST TIN</b></td>
+                <td className='tilte-td'><b>: </b>{item.gstClient.gstin}</td>
             </tr> 
             <tr>
-                <td><b>GST TIN</b></td>
-                <td>{location.state.gstClient.gstin}</td>
+                <td className='tilte-td'><b>Amend Type Name</b></td>
+                <td className='tilte-td'><b>: </b>{item.amendType.amendTypeName}</td>
+                <td className='tilte-td'><b>ARN</b></td>
+                <td className='tilte-td'><b>: </b>{item.arn}</td>
+            </tr>   
+            <tr>
+                <td className='tilte-td'><b>Sumitted Date</b></td>
+                <td className='tilte-td'><b>: </b>{SumittedDate}</td>
+                <td className='tilte-td'><b>Approved Date</b></td>
+                <td className='tilte-td'><b>: </b>{ApprovedDate}</td>
+            </tr>  
+            <tr>
+                        <td  className='tilte-td'><b>Created Date</b></td>
+                        <td  className='tilte-td'><b>: </b>{CreatedlocalDate}</td>
+                        <td  className='tilte-td'><b>LastModified Date</b></td>
+                        <td  className='tilte-td'><b>: </b>{ModifiedlocalDate}</td>
             </tr>
             <tr>
-                <td><b>Amend Type Id</b></td>
-                <td>{location.state.amendTypeId}</td>
-            </tr>
-            <tr>
-                <td><b>Amend Type Name</b></td>
-                <td>{location.state.amendType.amendTypeName}</td>
-            </tr> 
-            <tr>
-                <td><b>arn</b></td>
-                <td>{location.state.arn}</td>
-            </tr>
-            <tr>
-                <td><b>Sumitted Date</b></td>
-                <td>{location.state.sumittedDate}</td>
-            </tr>
-            <tr>
-                <td><b>Approved Date</b></td>
-                <td>{location.state.approvedDate}</td>
-            </tr>
-            
-            <tr>
-                <td><b>Status ID</b></td>
-                <td>{location.state.statusId}</td>
-            </tr>
-            <tr>
-                <td><b>Status Type</b></td>
-                <td>{location.state.approvalStatusType.statusType}</td>
-            </tr>
-            <tr>
-                <td><b>Created Date</b></td>
-                <td>{location.state.createdDate}</td>
-            </tr><tr>
-                <td><b>LastModified Date</b></td>
-                <td>{location.state.lastModifiedDate}</td>
+                <td className='tilte-td'><b>Approval Status Type</b></td>
+                <td className='tilte-td'><b>: </b>{item.approvalStatusType.statusType}</td>
             </tr>
            
            </tbody>

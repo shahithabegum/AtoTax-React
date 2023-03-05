@@ -7,16 +7,9 @@
 .btn-success{
     color: white;
 }
-td{
-    width: 60%;
-}
-.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-    background-color: #6a79ec;
-   
-  }
  .view{
     color: #000C66;
-    text-shadow: 1px 1px 1px rgb(255, 251, 251);
+    text-shadow: 1px 1px 1px rgb(131, 127, 127);
     margin-top: 10px;
     border: 0;
     margin-top: 10px;
@@ -32,29 +25,13 @@ td{
     padding: 20px;
     margin: 20px;
     width: 100% !important;
-    
     -webkit-box-shadow: -1px 1px 22px 5px rgba(196,188,196,1);
 -moz-box-shadow: -1px 1px 22px 5px rgba(196,188,196,1);
 box-shadow: -1px 1px 22px 5px rgba(196,188,196,1);
  }
- /* .table{
-    width: 100%;
-   
+ .tilte-td{
+    border-style: none !important; 
+    color: #0b134b; 
  }
- td{
-   
-    color: #0b134b;
-    font-family: 'Montserrat', sans-serif !important;
- }
- .view-container{
-    width: 100% !important;
-    height: 100%;
- } */
- p{
-    color: #0b134b;
-    font-family: 'Montserrat', sans-serif !important;
- }
- /* .btn-center{
-    width: 100%;
-   margin-left: 40%;
- } */
+
+ 

@@ -38,7 +38,7 @@ const UpdateUser = () => {
          }
        
         const handleCancle =()=>{
-          navigate('/addressType')
+          navigate('/users')
         }
         console.log("valuse",location.state)
         return (

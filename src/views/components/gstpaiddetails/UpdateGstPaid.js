@@ -27,7 +27,7 @@ const UpdateGstPaid = () => {
   },[])
     const formik = useFormik({
         initialValues: {
-          gstClientID:location.state.getGstClientId,
+          gstClientID:location.state.gstClientId,
           serviceCategoryId:location.state.serviceCategoryId,
           paymentTypeId:location.state.paymentTypeId,
           paymentDueMonth:location.state.paymentDueMonth,
@@ -46,7 +46,7 @@ const UpdateGstPaid = () => {
               navigate('/GstPaidDetails')
             }
             else{
-              toast.error(res?.data?.errorMessages)
+              toast.error(res?.data?.errorMessages.toString())
             }
           })
           
@@ -155,8 +155,8 @@ const UpdateGstPaid = () => {
               {...formik.getFieldProps("paymentTypeId")}
              >
                 <option value='' label="Select  Payment Type" />
-             {paymentTypeId.map(item=>(
-               <option value={item.id} label={item.paymentType} />
+                {paymentTypeId.map(item=>(
+               <option value={item.id} label={item.paymentMethod} />
               ))}
             </select>
             {formik.touched.paymentTypeId && formik.errors.paymentTypeId ? (
@@ -175,12 +175,12 @@ const UpdateGstPaid = () => {
              <select className='form-Control ml-0 col-sm-12 col-lg-12'
                 style={{with:70,padding:'10px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
               name="paymentDueMonth"
-        
+              
               {...formik.getFieldProps("paymentDueMonth")}
              >
                 <option value='' label="Select Payment Due Month" />
-             {month.map(item=>(
-               <option value={item.index} label={item.month} />
+                {month.map((item,index)=>(
+               <option key={index} value={item.month} label={item.month} />
               ))}
             </select>
             {formik.touched.paymentDueMonth && formik.errors.paymentDueMonth ? (
@@ -203,9 +203,9 @@ const UpdateGstPaid = () => {
               {...formik.getFieldProps("paymentDueYear")}
              >
                 <option value='' label="Select Payment Due Year" />
-             {year.map(item=>(
-               <option value={item.result} label={item.result} />
-              ))}
+                {year.map((item,index)=>(
+               <option key={index} value={item} label={item} />
+               ))} 
             </select>
             {formik.touched.paymentDueYear && formik.errors.paymentDueYear ? (
                <p style={{color:"red",textAlign:"left"}}>{formik.errors.paymentDueYear}</p>

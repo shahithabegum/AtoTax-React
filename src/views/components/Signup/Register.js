@@ -21,7 +21,8 @@ const Register = () => {
             userName:'',
             name:'',
             email:'',
-            password:''
+            password:'',
+            confirmPassword:''
         },
         validationSchema:RegisterValidation,
         onSubmit: values => {
@@ -50,6 +51,7 @@ const Register = () => {
            
         }
         console.log("show",show)
+        const isEnable=formik.values.password===formik.values.confirmPassword
   return (
     <div className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
    
@@ -113,9 +115,24 @@ const Register = () => {
         />
         </Col>
         </Row>
+        <Row className='my-3 mx-1 ' >
+            <Col m={6} sm={12} lg={12} ml-0>
+            <SmallInput  
+            name="confirmPassword"
+            id="confirmPassword"
+            label="Confirm Password:"
+            span="*"
+            type="password"
+            placeholder="Enter Your Confirm Password"
+            isTouched={formik.touched.confirmPassword}
+            error={formik.errors.confirmPassword}
+            {...formik.getFieldProps("confirmPassword")}
+            />
+            </Col>
+            </Row>
         <Row className='my-3 mx-1 justify-content-center'>
                 <Col m={6} sm={12} ml-0 lg={6}>
-                <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 float-right' onClick={()=>Adduser()}>Register</button>
+                <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 float-right' disabled={!isEnable} onClick={()=>Adduser()}>Register</button>
                 
                 </Col>
                 <Col m={6} sm={12} ml-0 lg={6}>

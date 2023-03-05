@@ -5,7 +5,11 @@ import {Link,useNavigate} from 'react-router-dom'
 import { BsEye } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
 import { toast } from 'react-toastify';
+import ViewAmendments from './ViewAmendments'
+import {FormModel} from '../../../shared/FormModel'
 const Amendments = (props) => {
+  const [show, setShow] = useState(false);
+  const [value, setValue] = useState({});
   let navigate = useNavigate();
   const columns = [
     {title: "Client Name", field:"gstClient.proprietorName"},
@@ -25,10 +29,6 @@ const Amendments = (props) => {
       console.log(props , item)
       navigate('/updateAmendments', { state: item })
   }
-  const GoView = (item)=>{
-    console.log(props , item)
-    navigate('/viewamendments', { state: item })
-}
   const deleteAmendments = (item)=>{
     DeleteAmendments(item.id).then(res=>{
       if(res?.data?.isSuccess){
@@ -62,7 +62,8 @@ const Amendments = (props) => {
             }),
             rowData=>({icon: ()=><BsEye style={{color:"blue"}}/>,
             tooltip: 'view User',
-            onClick:(event,rowData)=>GoView(rowData)
+            onClick:(event,rowData)=>{ setValue(rowData)
+            setShow(true)}
             }),
             rowData=>( {
               icon: 'delete',
@@ -79,7 +80,13 @@ const Amendments = (props) => {
           
         />
       </div>
-      
+      <FormModel 
+     show={show}
+     onHide={()=>{setShow(false)}}
+     title={<h2 className=" view ml-2">Amendment Details</h2>}
+     >
+     <ViewAmendments onHide={()=>{setShow(false)}}  item={value}/>
+     </FormModel>
   </div>
   )
   

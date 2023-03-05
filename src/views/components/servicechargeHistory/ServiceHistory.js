@@ -4,8 +4,12 @@ import {Link,useNavigate} from 'react-router-dom'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
 import {GetServiceHistory} from '../../../service/ServiceChargeUpdate'
+import {FormModel} from '../../../shared/FormModel'
+import ServiceHistoryView from './ServiceHistoryView'
 const ServiceHistory = (props) => {
     let navigate = useNavigate();
+    const [show, setShow] = useState(false);
+    const [value, setValue] = useState({});
     const columns = [
       
         {title: "Proprietor Name", field:"gstClient.proprietorName"},
@@ -40,7 +44,6 @@ const ServiceHistory = (props) => {
           <div className='Table-div'>
             <div className='headcontainer'>
               <h2 className="Tableheading ml-1">Service Charge Update History</h2>
-              {/* <Link to="/addServiceCat"> <button className='btn btn-success ml-1  mt-2 ml-2' >Add</button></Link> */}
             </div>
       
         <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
@@ -53,10 +56,11 @@ const ServiceHistory = (props) => {
                 //   tooltip: 'edit User',
                 //   onClick:(event,rowData)=>GoEdit(rowData)
                 //   }),
-                  // rowData=>({icon: ()=><BsEye style={{color:"blue"}}/>,
-                  // tooltip: 'view User',
-                  // onClick:(event,rowData)=>GoView(rowData)
-                  // }),
+                rowData=>({icon: ()=><BsEye style={{color:"blue"}}/>,
+                tooltip: 'view User',
+                onClick:(event,rowData)=>{ setValue(rowData)
+                setShow(true)}
+                }),
                 //   rowData=>( {
                 //     icon: 'delete',
                 //     iconProps: { color: 'secondary' },
@@ -72,7 +76,13 @@ const ServiceHistory = (props) => {
                 
               />
             </div>
-  
+            <FormModel 
+     show={show}
+     onHide={()=>{setShow(false)}}
+     title={<h2 className=" view ml-2">Service Charge Update History</h2>}
+     >
+     <ServiceHistoryView onHide={()=>{setShow(false)}}  item={value}/>
+     </FormModel>
         </div>
         )
 }

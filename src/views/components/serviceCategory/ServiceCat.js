@@ -4,8 +4,12 @@ import {Link,useNavigate} from 'react-router-dom'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
 import {GetServiceCategory,DeleteServiceCategory} from '../../../service/ServiceCategoryService'
+import {FormModel} from '../../../shared/FormModel'
+import ViewServiceCat from './ViewServiceCat'
 import { toast } from 'react-toastify';
 const ServiceCat = (props) => {
+  const [show, setShow] = useState(false);
+  const [value, setValue] = useState({});
     let navigate = useNavigate();
     const columns = [
       
@@ -26,10 +30,7 @@ const ServiceCat = (props) => {
         console.log(props , item)
         navigate('/editSeriveCat', { state: item })
     }
-    const GoView = (item)=>{
-      console.log(props , item)
-      navigate('/viewServiceCat', { state: item })
-  }
+   
     const deleteService = (item)=>{
         DeleteServiceCategory(item.id).then(res=>{
           if(res?.data?.isSuccess){
@@ -60,7 +61,8 @@ const ServiceCat = (props) => {
                 }),
                 rowData=>({icon: ()=><BsEye style={{color:"blue"}}/>,
                 tooltip: 'view User',
-                onClick:(event,rowData)=>GoView(rowData)
+                onClick:(event,rowData)=>{ setValue(rowData)
+                setShow(true)}
                 }),
                 rowData=>( {
                   icon: 'delete',
@@ -77,7 +79,13 @@ const ServiceCat = (props) => {
               
             />
           </div>
-
+          <FormModel 
+     show={show}
+     onHide={()=>{setShow(false)}}
+     title={<h2 className=" view ml-2">Service Category Details</h2>}
+     >
+     <ViewServiceCat onHide={()=>{setShow(false)}}  item={value}/>
+     </FormModel>
       </div>
       )
 }

@@ -27,13 +27,11 @@ const CreateGstPaid = () => {
     const formik = useFormik({
         initialValues: {
           gstClientID:'',
-          serviceCategoryId:1,
-          paymentTypeId:1,
-          paymentDueMonth:'2',
-          paymentDueYear:2022,
-          amount:100,
-          settledDate: "2023-03-04T06:23:55.562Z",
-          isPending: true
+          serviceCategoryId:'',
+          paymentTypeId:'',
+          paymentDueMonth:'',
+          paymentDueYear:'',
+          amount:'',
         },
        // validationSchema:PaymentValidation,
         onSubmit: values => {
@@ -93,7 +91,7 @@ const CreateGstPaid = () => {
         <div  className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
            <form id="formik-form" onSubmit={formik.handleSubmit} className="ml-2 p-2 mt-2 m-auto col-lg-7">
            <h2 className=' fromheading my-1 p-0 text-center'>Create GST Paid Details</h2>  
-            <Row className='my-3 mx-1' >
+           <Row className='my-3 mx-1' >
               <Col m={6} sm={12} lg={4} ml-0  className='p-1'>
               <label htmlFor="gstClientID"className="form-label col-sm-10 col-lg-12 p-0 text-lg-right float-sm-left">
              GST Client :<span style={{color:'red',fontSize:'20px'}}>*</span>
@@ -104,7 +102,6 @@ const CreateGstPaid = () => {
              <select className='form-Control ml-0 col-sm-12 col-lg-12'
                 style={{with:70,padding:'10px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
               name="gstClientID"
-              type="text"
               {...formik.getFieldProps("gstClientID")}
              >
                 <option value='' label="Select Client" />
@@ -126,10 +123,8 @@ const CreateGstPaid = () => {
             
             <Col m={6} sm={12} ml-0 lg={6} className='p-1'>
              <select className='form-Control ml-0 col-sm-12 col-lg-12'
-            
                 style={{with:70,padding:'10px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
               name="serviceCategoryId"
-              id="serviceCategoryId"
               type="number"
               {...formik.getFieldProps("serviceCategoryId")}
              >
@@ -154,12 +149,11 @@ const CreateGstPaid = () => {
              <select className='form-Control ml-0 col-sm-12 col-lg-12'
                 style={{with:70,padding:'10px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
               name="paymentTypeId"
-              id="paymentTypeId"
               type="number"
               {...formik.getFieldProps("paymentTypeId")}
              >
                 <option value='' label="Select  Payment Type" />
-             {paymentTypeId.map(item=>(
+                {paymentTypeId.map(item=>(
                <option value={item.id} label={item.paymentMethod} />
               ))}
             </select>
@@ -171,7 +165,7 @@ const CreateGstPaid = () => {
               <Row className='my-3 mx-1' >
               <Col m={6} sm={12} lg={4} ml-0  className='p-1'>
               <label htmlFor="paymentDueMonth"className="form-label col-sm-10 col-lg-12 p-0 text-lg-right float-sm-left">
-               Month :<span style={{color:'red',fontSize:'20px'}}>*</span>
+            Month :<span style={{color:'red',fontSize:'20px'}}>*</span>
              </label>
              </Col>
             
@@ -179,13 +173,12 @@ const CreateGstPaid = () => {
              <select className='form-Control ml-0 col-sm-12 col-lg-12'
                 style={{with:70,padding:'10px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
               name="paymentDueMonth"
-              id="paymentDueMonth"
-              type="text"
+              
               {...formik.getFieldProps("paymentDueMonth")}
              >
                 <option value='' label="Select Payment Due Month" />
-             {month.map(item=>(
-               <option value={item.month} label={item.month} />
+                {month.map((item,index)=>(
+               <option key={index} value={item.month} label={item.month} />
               ))}
             </select>
             {formik.touched.paymentDueMonth && formik.errors.paymentDueMonth ? (
@@ -204,12 +197,11 @@ const CreateGstPaid = () => {
              <select className='form-Control ml-0 col-sm-12 col-lg-12'
                 style={{with:70,padding:'10px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
               name="paymentDueYear"
-              id="paymentDueYear"
               type="number"
               {...formik.getFieldProps("paymentDueYear")}
              >
                 <option value='' label="Select Payment Due Year" />
-             {year.map((item,index)=>(
+                {year.map((item,index)=>(
                <option key={index} value={item} label={item} />
                ))} 
             </select>

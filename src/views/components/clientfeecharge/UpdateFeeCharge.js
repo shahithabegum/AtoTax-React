@@ -33,10 +33,10 @@ const UpdateFeeCharge = () => {
     const data = Object.assign(formik.values, { id: location.state.id });
     Update_ClientFeeCharge(data, location.state.id).then((res) => {
       if (res?.data?.isSuccess) {
-        toast.success(res.data.successMessage)
+        toast.success(res.data.successMessage.toString())
         navigate("/Clientfeecharges");
       } else {
-        toast.error(res?.data?.errorMessages);
+        toast.error(res?.data?.errorMessages.toString());
       }
     });
   };
@@ -118,7 +118,7 @@ const UpdateFeeCharge = () => {
             <SmallInput
               name="defaultCharge"
               id="defaultCharge"
-              label="Default Charge"
+              label="Default Charge :"
               isTouched={formik.touched.defaultCharge}
               error={formik.errors.defaultCharge}
               placeholder="Enter Default Charge "

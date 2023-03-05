@@ -4,8 +4,12 @@ import {Link,useNavigate} from 'react-router-dom'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
 import {GetUser,DeleteUser} from '../../../service/UserService'
+import {FormModel} from '../../../shared/FormModel'
+import ViewUser from './ViewUser'
 import { toast } from 'react-toastify';
 const User = (props) => {
+  const [show, setShow] = useState(false);
+  const [value, setValue] = useState({});
     let navigate = useNavigate();
     const columns = [
       
@@ -26,10 +30,7 @@ const User = (props) => {
         console.log(props , item)
         navigate('/updateuser', { state: item })
     }
-    const GoView = (item)=>{
-      console.log(props , item)
-      navigate('/', { state: item })
-  }
+ 
     const deleteUser = (item)=>{
       DeleteUser(item.id).then(res=>{
         if(res?.data?.isSuccess){
@@ -62,7 +63,8 @@ const User = (props) => {
               }),
               rowData=>({icon: ()=><BsEye style={{color:"blue"}}/>,
               tooltip: 'view User',
-              onClick:(event,rowData)=>GoView(rowData)
+              onClick:(event,rowData)=>{ setValue(rowData)
+              setShow(true)}
               }),
               rowData=>( {
                 icon: 'delete',
@@ -79,7 +81,13 @@ const User = (props) => {
             
           />
         </div>
-      
+        <FormModel 
+     show={show}
+     onHide={()=>{setShow(false)}}
+     title={<h2 className=" view ml-2">User Details</h2>}
+     >
+     <ViewUser onHide={()=>{setShow(false)}}  item={value}/>
+     </FormModel>
     </div>
     )
 }

@@ -4,6 +4,7 @@ import {Link,useNavigate} from 'react-router-dom'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
 import {GetPaidDetails,DeletPaidDetails} from '../../../service/GstPaidDetailService'
+import ViewGstPaid from './ViewGstPaid'
 import {FormModel} from '../../../shared/FormModel'
 import { toast } from 'react-toastify';
 const GstPaidDetails = (props) => {
@@ -32,17 +33,6 @@ const GstPaidDetails = (props) => {
       
       navigate('/updateGstPaiddetails', { state: item })
   }
-//   const GoView = (item)=>{
-//     console.log("item",item)
-   
-//     const data=item
-//     console.log("data",data)
-   
-//     // setShow(true)
- 
-  
-    
-// }
   const deletepaidDetails = (item)=>{
     DeletPaidDetails(item.id).then(res=>{
       if(res?.data?.isSuccess){
@@ -63,7 +53,7 @@ const GstPaidDetails = (props) => {
       <div className='headcontainer'>
         <h2 className="Tableheading ml-1">GST Paid Details</h2>
         <Link to="/createGstPaiddetails"> <button className='btn btn-success ml-1  mt-2 m-0' >Add</button></Link>
-        {/* <button className='btn btn-success ml-1  mt-2 ml-3' onClick={()=>setShowAdd(true)} >Add</button> */}
+       
       </div>
 
   <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
@@ -99,13 +89,13 @@ const GstPaidDetails = (props) => {
           
         />
       </div>
-      {/* <FormModel 
+      <FormModel 
      show={show}
      onHide={()=>{setShow(false)}}
-     title={<h2 className=" view ml-2">Address Types</h2>}
+     title={<h2 className=" view ml-2">GST Paid Details</h2>}
      >
-     <ViewAdressType onHide={()=>{setShow(false)}}  item={value}/>
-     </FormModel> */}
+     <ViewGstPaid onHide={()=>{setShow(false)}}  item={value}/>
+     </FormModel>
     </div>
  
   )

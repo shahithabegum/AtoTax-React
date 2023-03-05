@@ -1,12 +1,16 @@
 /* eslint-disable no-undef */
 import React ,{useState,useEffect} from 'react'
 import { GetGSTClients , DeleteGSTClient } from '../../../service/GstClientService'
+import GstClientView from './GstClientView'
 import MaterialTable from 'material-table'
 import {Link,useNavigate} from 'react-router-dom'
+import {FormModel} from '../../../shared/FormModel'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
 
 const GstClientTable = (props) => {
+  const [show, setShow] = useState(false);
+  const [value, setValue] = useState({});
   let navigate = useNavigate();
   const columns = [
     
@@ -34,15 +38,15 @@ const GstClientTable = (props) => {
       console.log(props , item)
       navigate('/gstedit', { state: item })
   }
-  const GoView = (item)=>{
-    console.log(props , item)
-    navigate('/gstview', { state: item })
-}
+//   const GoView = (item)=>{
+//     console.log(props , item)
+//     navigate('/gstview', { state: item })
+// }
   const deleteGSTClient = (item)=>{
     DeleteGSTClient(item.id).then((res)=>{
       if(res?.data?.isSuccess){
-        toast.error(res.data.successMessage)
-        GetDetails()
+        toast.error(res.data.successMessage.toString())
+        GetDetails();
       }else{
         toast.error(res.data.errorMessages.toString())
       }
@@ -71,7 +75,8 @@ const GstClientTable = (props) => {
             }),
             rowData=>({icon: ()=><BsEye style={{color:"blue"}}/>,
             tooltip: 'view User',
-            onClick:(event,rowData)=>GoView(rowData)
+            onClick:(event,rowData)=>{ setValue(rowData)
+            setShow(true)}
             }),
             rowData=>( {
               icon: 'delete',
@@ -88,7 +93,16 @@ const GstClientTable = (props) => {
           }}
           
         />
+        
       </div>
+      <FormModel 
+     show={show}
+     onHide={()=>{setShow(false)}}
+     title={<h2 className=" view ml-2">GST Client Details</h2>}
+     >
+     <GstClientView onHide={()=>{setShow(false)}}  item={value}/>
+     </FormModel>
+   
   </div>
   )
 }

@@ -8,7 +8,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 export function FormModel(props) {
     return (
-        <Dialog open={props.show} onClose={props.onHide} TransitionComponent={Transition} maxWidth={'md'} style={{marginLeft:"20%"}}>
+        <Dialog open={props.show} onClose={props.onHide} TransitionComponent={Transition} maxWidth={'md'}  style={{marginLeft:"20%"}}>
             <div className="d-flex justify-content-between align-items-center  py-2 px-3">
                 <div className="primary-title text-capitalize">{props.title}</div>
                 <button onClick={props.onHide} className="closeButton">

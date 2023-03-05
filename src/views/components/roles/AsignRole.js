@@ -16,7 +16,7 @@ const AssignRole = () => {
     useEffect(()=>{
         GetUserId();
         Get_Roles();
-        Get_UserRoles();
+        // Get_UserRoles();
     },[])
   
   let options=roles.map((item)=>{
@@ -66,15 +66,22 @@ const AssignRole = () => {
               setRoles(res.data.result)
             })
           }
-          const Get_UserRoles =()=>{
-            GetUserRoles().then(res=>{
-              console.log(res)
+          // const Get_UserRoles =()=>{
+          //   GetUserRoles().then(res=>{
+          //     console.log(res)
              
-              setUserforrole(res.data.result)
-            })
-          }
+          //     setUserforrole(res.data.result)
+          //   })
+          // }
         const handleCancle =()=>{
           navigate('/roles')
+        }
+        const handleselect =(e)=>{
+          console.log(e.target.value)
+          GetUserRoles(e.target.value).then(res=>{
+            console.log("res",res.data.result.listRoles)
+            setVal(res.data.result.listRoles)
+          })
         }
        console.log("roles",val)
        console.log("userforrole",userforrole)
@@ -96,11 +103,13 @@ const AssignRole = () => {
                   style={{with:70,padding:'9px',borderRadius:'5px' ,border:' 1px solid lightgray'}}
                 name="userId"
                 {...formik.getFieldProps("userId")}
+                onChange={handleselect}
                >
                   <option value="" label="Select User" />
                {userId.map(item=>(
                 <option value={item.id} label={item.userName} />
                 ))}
+                
               </select>
               {formik.touched.userId && formik.errors.userId ? (
                  <p style={{color:"red",textAlign:"left"}}>{formik.errors.userId}</p>

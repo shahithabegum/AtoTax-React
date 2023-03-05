@@ -33,9 +33,11 @@ const ChangePassword = () => {
           }) 
        }
        const handleCancle =()=>{
-        navigate('/addressType')
+        navigate('/dashboard')
       }
+      const isEnable=formik.values.newPassword===formik.values.confirmPassword
        return (
+       
         <div className='container p-2 col-11 col-sm-10 col-lg-12 mt-5 '>
           
             <form id="formik-form" onSubmit={formik.handleSubmit} className="ml-2 p-2 mt-2 m-auto col-lg-7">
@@ -102,7 +104,7 @@ const ChangePassword = () => {
             </Row>
             <Row className='my-3 mx-1 justify-content-center'>
             <Col m={6} sm={12} ml-0 lg={6}>
-            <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 float-right' onClick={()=>change_password()}>Submit</button>
+            <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 float-right' disabled={!isEnable} onClick={()=>change_password()}>Submit</button>
             
             </Col>
             <Col m={6} sm={12} ml-0 lg={6}>

@@ -2,20 +2,24 @@ import React,{useState,useEffect} from 'react'
 import MaterialTable from 'material-table'
 import {Link,useNavigate} from 'react-router-dom'
 import {GetEmpJobRole,DeleteEmpJobRole} from '../../../service/EmpJobRoleService'
+import {FormModel} from '../../../shared/FormModel'
+import ViewEmpJobRole from './ViewEmpJobRole'
 import { FaEdit } from "react-icons/fa";
 import { BsEye } from "react-icons/bs";
 import { toast } from 'react-toastify';
 const EmpJobRole = (props) => {
   const [amendType, setAmendType] = useState([])
+  const [show, setShow] = useState(false);
+  const [value, setValue] = useState({});
   useEffect(() => {
    GetDetails();
   }, [])
   let navigate = useNavigate();
 
   const columns = [
-    {title: "Job Id", field:"id"},
     {title: "Job Role", field:"jobRole"},
-    {title: "Created Date", field:"createdDate"},
+    {title: "Job Description", field:"jobDescription"},
+    {title: "Status", field:"status.statusType"},
   
   ]
     //getting client details
@@ -26,10 +30,6 @@ const EmpJobRole = (props) => {
       console.log(props , item)
       navigate('/editEmpJobRole', { state: item })
   }
-  const GoView = (item)=>{
-    console.log(props , item)
-    navigate('/viewEmpJobRole', { state: item })
-}
   const deleteJob = (item)=>{
     DeleteEmpJobRole(item.id).then(res=>{
       if(res?.data?.isSuccess){
@@ -62,7 +62,8 @@ console.log("AmendType",amendType)
             }),
             rowData=>({icon: ()=><BsEye style={{color:"blue"}}/>,
             tooltip: 'view User',
-            onClick:(event,rowData)=>GoView(rowData)
+            onClick:(event,rowData)=>{ setValue(rowData)
+            setShow(true)}
             }),
             rowData=>( {
               icon: 'delete',
@@ -80,7 +81,13 @@ console.log("AmendType",amendType)
         />
          
       </div>
-      
+      <FormModel 
+     show={show}
+     onHide={()=>{setShow(false)}}
+     title={<h2 className=" view ml-2">Job Role Details</h2>}
+     >
+     <ViewEmpJobRole onHide={()=>{setShow(false)}}  item={value}/>
+     </FormModel>
      
   </div>
   )
