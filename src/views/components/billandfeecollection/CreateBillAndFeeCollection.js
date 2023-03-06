@@ -5,7 +5,6 @@ import {GetGstFilingDD} from '../../../service/GstFilingTypesService'
 import {GetMonth,GetYear} from '../../../service/MonthandYearService'
 import {GetGSTClientsDD} from '../../../service/GstClientService'
 import {GetMediaDD} from '../../../service/MediaTypeService'
-import {GetEmployeesDD} from '../../../service/EmployeeService'
 import {Create_BillAndFee} from '../../../service/BIllAndFeeCollectionService'
 import { Col, Row } from 'react-bootstrap';
 import { Input } from '../../../shared/Input';
@@ -17,7 +16,7 @@ const CreateBillAndFeeCollection = () => {
   const [multiMedia,setMultiMedia] =useState([])
   const [fillingType,setFillingType] =useState([])
   const [month,setMonth] =useState([])
-  const [employee,setEmployee] =useState([])
+  
   const [year,setYear] =useState([])
   let navigate = useNavigate()
   useEffect(()=>{
@@ -26,7 +25,7 @@ const CreateBillAndFeeCollection = () => {
     GetFillingDD();
     getMonth();
     getYear();
-    GetEmployee();
+   
   },[])
     const formik = useFormik({
         initialValues: {
@@ -38,8 +37,7 @@ const CreateBillAndFeeCollection = () => {
           feesAmount:'',
           feesPaidAmt:'',
           balance:'',
-          receivedBy:'',
-          filedBy:''
+        
         },
         //validationSchema:PaidDetailValidation,
         onSubmit: values => {
@@ -52,7 +50,7 @@ const CreateBillAndFeeCollection = () => {
               navigate('/billandfeecollection')
             }
             else{
-              toast.error(res?.data?.errorMessages)
+              toast.error(res?.data?.errorMessages.toString())
             }
           })
           
@@ -92,13 +90,7 @@ const CreateBillAndFeeCollection = () => {
           setYear(res.data.result)
         })
       }
-      const GetEmployee =()=>{
-        GetEmployeesDD().then(res=>{
-          console.log(res)
-         
-          setEmployee(res.data.result)
-        })
-      }
+     
       const handleCancle =()=>{
         navigate('/billandfeecollection')
       }
@@ -115,15 +107,15 @@ const CreateBillAndFeeCollection = () => {
               </h2>
               <Row className='my-1 mx-1' >
               <Col m={6} sm={12} lg={6} ml-0>
-      <label htmlFor="gstClientId" className='ml-0'>
+      <label htmlFor="gstClientID" className='ml-0'>
       GST Client<span style={{color:'red',fontSize:'20px'}}>*</span>
       </label>
       <select
-        name="gstClientId"
+        name="gstClientID"
         type="number"
         span="*"
        
-        {...formik.getFieldProps("gstClientId")}
+        {...formik.getFieldProps("gstClientID")}
         className='ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control'
       >
           <option value='' label="Select Client" />
@@ -132,8 +124,8 @@ const CreateBillAndFeeCollection = () => {
         ))}
       </select>
       
-      {formik.touched.gstClientId && formik.errors.gstClientId ? (
-         <p style={{color:"red"}}>{formik.errors.gstClientId}</p>
+      {formik.touched.gstClientID && formik.errors.gstClientID ? (
+         <p style={{color:"red"}}>{formik.errors.gstClientID}</p>
        ) : null}
       </Col>
       
@@ -210,15 +202,14 @@ const CreateBillAndFeeCollection = () => {
       </Col>
         
         </Row>
-        <Row className='my-2 mx-1' >
+        <Row className='my-1 mx-1' >
         <Col m={6} sm={12} lg={6} ml-0>
-        <label htmlFor="multimediaTypeId" className='ml-0'>
-       Multi Media<span style={{color:'red',fontSize:'20px'}}>*</span>
+        <label htmlFor="multimediaTypeId" className='ml-0 mt-2'>
+       Multi Media
       </label>
       <select
         name="multimediaTypeId"
         type="number"
-        span="*"
         {...formik.getFieldProps("multimediaTypeId")}
         className='ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control'
       >
@@ -237,9 +228,9 @@ const CreateBillAndFeeCollection = () => {
         <Input  
         name="feesAmount"
         id="feesAmount"
+        type="number"
         label="Fees Amount"
         placeholder="Enter Fees Amount"
-        span="*"
         isTouched={formik.touched.feesAmount}
         error={formik.errors.feesAmount}
         {...formik.getFieldProps("feesAmount")}
@@ -253,6 +244,7 @@ const CreateBillAndFeeCollection = () => {
         <Input  
         name="feesPaidAmt"
         id="feesPaidAmt"
+        type="number"
         label="Fees Paid Amount"
         placeholder="Enter Fees Paid Amount"
         
@@ -265,62 +257,14 @@ const CreateBillAndFeeCollection = () => {
         <Input  
         name="balance"
         id="balance"
+        type="number"
         label="Balance"
         placeholder="Enter Balance"
-        span="*"
         isTouched={formik.touched.balance}
         error={formik.errors.balance}
         {...formik.getFieldProps("balance")}
         />
         </Col>
-        </Row>
-        <Row className='my-1 mx-1' >
-              <Col m={6} sm={12} lg={6} ml-0>
-      <label htmlFor="receivedBy" className='ml-0'>
-      Received By<span style={{color:'red',fontSize:'20px'}}>*</span>
-      </label>
-      <select
-        name="receivedBy"
-        type="number"
-        span="*"
-       
-        {...formik.getFieldProps("receivedBy")}
-        className='ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control'
-      >
-          <option value='' label="Select Employee" />
-       {/* {employee.map(item=>(
-        <option value={item.id} label={item.gstClientAndGSTIN} />
-        ))} */}
-      </select>
-      
-      {formik.touched.receivedBy && formik.errors.receivedBy ? (
-         <p style={{color:"red"}}>{formik.errors.receivedBy}</p>
-       ) : null}
-      </Col>
-      
-      <Col m={6} sm={12} lg={6} ml-0>
-      <label htmlFor="filedBy" className='ml-0'>
-      Filed By<span style={{color:'red',fontSize:'20px'}}>*</span>
-      </label>
-      <select
-        name="filedBy"
-        type="number"
-        span="*"
-       
-        {...formik.getFieldProps("filedBy")}
-        className='ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control'
-      >
-          <option value='' label="Select Employee" />
-       {/* {employee.map(item=>(
-        <option value={item.id} label={item.gstClientAndGSTIN} />
-        ))} */}
-      </select>
-      
-      {formik.touched.filedBy && formik.errors.filedBy ? (
-         <p style={{color:"red"}}>{formik.errors.filedBy}</p>
-       ) : null}
-      </Col>
-      
         </Row>
           
               <Row className='my-3 mx-1 justify-content-center'>

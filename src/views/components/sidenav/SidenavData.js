@@ -45,22 +45,6 @@ export const SidenavData=[
         ]
     },
     {
-        title: "Employees",
-        icon: <FaUserFriends/>,
-        "childrens": [
-            {
-                path:"/Employees",
-                title:"Employee",
-                icon:<FaUserFriends/>
-            },
-            {
-                path:"/EmpJobRole",
-                title:"Job Role",
-                icon:<FaUserTie/>
-            },
-        ]
-    },
-    {
         path:"/users",
         title:"Users",
         icon:<FaUser />

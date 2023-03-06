@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import {useNavigate,useSearchParams} from 'react-router-dom'
 import { Col, Row } from 'react-bootstrap';
-
+import RessetPasswordValidation from './RestpasswordValidation'
 import {resetpassword}from '../../../../service/auth/authService'
 
 import Logo from '../../../../assets/image/testlogo.png'
@@ -20,8 +20,10 @@ const ResetPassword = () => {
         initialValues: {
           token:Token,
           email:Email,
-          newPassword:''
+          newPassword:'',
+          confirmPassword:''
         },
+        validationSchema:RessetPasswordValidation,
         onSubmit: values => {
             console.log(values)
             handleSubmit()
@@ -30,15 +32,15 @@ const ResetPassword = () => {
         const handleSubmit=()=>{
            resetpassword(formik.values).then( data=>{
             if(data?.data?.isSuccess){
-              toast.success("Password has Reset Successfully")
               navigate('/login')
             } else {
-              toast.error(data?.data?.errorMessages)
+              toast.error(data?.data?.errorMessages.toString())
             }
          } )
            
           console.log("value",formik.values.password)
         }
+        const isEnable=formik.values.newPassword>0 && formik.values.newPassword===formik.values.confirmPassword
         return (
             <div className='containerlogin'>
              <div className='sidewrapper  col-12 '>
@@ -57,7 +59,7 @@ const ResetPassword = () => {
                  <form  onSubmit={formik.handleSubmit} className="mt-4" >
                  <Row className='m-0 w-full p-0' >
                  <Col m={6} sm={12} lg={12} ml-0 className="p-0">
-                    <label htmlFor='newPassword' className='text-muted'>New newPassword</label>
+                    <label htmlFor='newPassword' className='text-muted'>New Password</label>
                 <div class="input-container d-flex">
                 <i class="fa fa-key p-2" aria-hidden="true"></i>
                 <input 
@@ -65,7 +67,7 @@ const ResetPassword = () => {
                 name="newPassword" 
                 type="password"
                 className='form-control p-2 inputlogin'
-                placeholder='Enter New newPassword'
+                placeholder='Enter New Password'
                 {...formik.getFieldProps("newPassword")}
               />  
           </div>
@@ -75,10 +77,29 @@ const ResetPassword = () => {
                ) : null}
           
                 </Row>
-              
+                <Row className='m-0 w-full p-0 mt-3' >
+                 <Col m={6} sm={12} lg={12} ml-0 className="p-0">
+                    <label htmlFor='confirmPassword' className='text-muted'>Confirm Password</label>
+                <div class="input-container d-flex">
+                <i class="fa fa-key p-2" aria-hidden="true"></i>
+                <input 
+                id="confirmPassword" 
+                name="confirmPassword" 
+                type="password"
+                className='form-control p-2 inputlogin'
+                placeholder='Enter Confirm Password'
+                {...formik.getFieldProps("confirmPassword")}
+              />  
+          </div>
+                  </Col>
+              {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+                 <p style={{color:"red"}}>{formik.errors.confirmPassword}</p>
+               ) : null}
+          
+                </Row>
                 <Row className='m-0 w-full p-0 align-item-center' >
                 <Col m={6} sm={12} lg={12} p={0} className="p-0  mt-3">
-                <button className="btn btn-info btn-block">Reset password</button>
+                <button className="btn btn-info btn-block" disabled={!isEnable}>Reset password</button>
                   </Col>
                 </Row>
                 </form>

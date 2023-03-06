@@ -19,17 +19,17 @@ import AddressType from '../views/components/address/AddressType';
 import CreateAddressType from '../views/components/address/CreateAddressType';
 import UpdateAddresstype from '../views/components/address/UpdateAddresstype';
 import ViewAdressType from '../views/components/address/ViewAdressType';
-import EmpJobRole from '../views/components/employeejobrole/EmpJobRole'
-import CreateEmpJobRole from '../views/components/employeejobrole/CreateEmpJobRole'
-import UpdateEmpJobRole from '../views/components/employeejobrole/UpdateEmpJobRole'
-import ViewEmpJobRole from '../views/components/employeejobrole/ViewEmpJobRole'
+// import EmpJobRole from '../views/components/employeejobrole/EmpJobRole'
+// import CreateEmpJobRole from '../views/components/employeejobrole/CreateEmpJobRole'
+// import UpdateEmpJobRole from '../views/components/employeejobrole/UpdateEmpJobRole'
+// import ViewEmpJobRole from '../views/components/employeejobrole/ViewEmpJobRole'
 import MediaTypes from '../views/components/mediatypes/MediaTypes'
 import CreateMedia from '../views/components/mediatypes/CreateMedia'
 import UpdateMedia from '../views/components/mediatypes/UpdateMedia'
 import ViewMedia from '../views/components/mediatypes/ViewMedia'
 import Amendments from '../views/components/amendments/Amendments'
 import CreateAmendments from  '../views/components/amendments/CreateAmendments'
-import Employees from '../views/components/employees/Employees'
+// import Employees from '../views/components/employees/Employees'
 import GStClientAddressEx from '../views/components/gstclientaddressextensions/GstClientAddressEx'
 import GstFilingTypes from '../views/components/gstfilingtypes/GstFilingTypes'
 import CreateGstFilingTypes from '../views/components/gstfilingtypes/CreateGstFilingTypes'
@@ -45,9 +45,9 @@ import ServiceCat from '../views/components/serviceCategory/ServiceCat'
 import AddServiceCat from '../views/components/serviceCategory/AddServiceCat'
 import UpdateSeriveCat from '../views/components/serviceCategory/UpdateSeriveCat'
 import ViewServiceCat from '../views/components/serviceCategory/ViewServiceCat'
-import ViewEmployees from '../views/components/employees/ViewEmployees'
-import CreateEmployees from '../views/components/employees/CreateEmployees'
-import UpdateEmployees from '../views/components/employees/UpdateEmployees'
+// import ViewEmployees from '../views/components/employees/ViewEmployees'
+// import CreateEmployees from '../views/components/employees/CreateEmployees'
+// import UpdateEmployees from '../views/components/employees/UpdateEmployees'
 import Login from '../views/components/login/Login';
 import Register from '../views/components/Signup/Register';
 import UpdateAmendments from '../views/components/amendments/UpdateAmendments';
@@ -198,23 +198,23 @@ export const pathroutes=[
             path: "/viewAddress",
             DynComponent: ViewAdressType
         },
-         // -------------JOBROLE-----------
-         {
-            path: "/EmpJobRole",
-            DynComponent: EmpJobRole
-        },
-        {
-            path: "/addEmpJobRole",
-            DynComponent: CreateEmpJobRole
-        },
-        {
-            path: "/editEmpJobRole",
-            DynComponent: UpdateEmpJobRole
-        },
-        {
-            path: "/viewEmpJobRole",
-            DynComponent: ViewEmpJobRole
-        },
+        //  // -------------JOBROLE-----------
+        //  {
+        //     path: "/EmpJobRole",
+        //     DynComponent: EmpJobRole
+        // },
+        // {
+        //     path: "/addEmpJobRole",
+        //     DynComponent: CreateEmpJobRole
+        // },
+        // {
+        //     path: "/editEmpJobRole",
+        //     DynComponent: UpdateEmpJobRole
+        // },
+        // {
+        //     path: "/viewEmpJobRole",
+        //     DynComponent: ViewEmpJobRole
+        // },
 
          // -------------Media  TYPE-----------
          {
@@ -250,23 +250,23 @@ export const pathroutes=[
             path: "/viewamendments",
             DynComponent: ViewAmendments
         },
-        // -------------Employee-----------
-        {
-            path: "/Employees",
-            DynComponent: Employees
-        },
-        {
-            path: "/createEmployees",
-            DynComponent: CreateEmployees
-        },
-        {
-            path: "/updateEmployees",
-            DynComponent: UpdateEmployees
-        },
-        {
-            path: "/emplView",
-            DynComponent: ViewEmployees
-        },
+        // // -------------Employee-----------
+        // {
+        //     path: "/Employees",
+        //     DynComponent: Employees
+        // },
+        // {
+        //     path: "/createEmployees",
+        //     DynComponent: CreateEmployees
+        // },
+        // {
+        //     path: "/updateEmployees",
+        //     DynComponent: UpdateEmployees
+        // },
+        // {
+        //     path: "/emplView",
+        //     DynComponent: ViewEmployees
+        // },
          // -------------GST CLient Address-----------
          {
             path: "/GStClientAddressEx",
