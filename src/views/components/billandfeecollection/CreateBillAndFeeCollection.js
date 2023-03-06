@@ -9,14 +9,14 @@ import {Create_BillAndFee} from '../../../service/BIllAndFeeCollectionService'
 import { Col, Row } from 'react-bootstrap';
 import { Input } from '../../../shared/Input';
 import { toast } from 'react-toastify';
-
+import {GetServiceCategoryDD } from '../../../service/ServiceCategoryService'
 
 const CreateBillAndFeeCollection = () => {
   const [clientId,setClientId] =useState([])
   const [multiMedia,setMultiMedia] =useState([])
   const [fillingType,setFillingType] =useState([])
   const [month,setMonth] =useState([])
-  
+  const [servicecatid,setServicecatid] =useState([])
   const [year,setYear] =useState([])
   let navigate = useNavigate()
   useEffect(()=>{
@@ -25,7 +25,7 @@ const CreateBillAndFeeCollection = () => {
     GetFillingDD();
     getMonth();
     getYear();
-   
+    getServiceCatDD();
   },[])
     const formik = useFormik({
         initialValues: {
@@ -37,7 +37,7 @@ const CreateBillAndFeeCollection = () => {
           feesAmount:'',
           feesPaidAmt:'',
           balance:'',
-        
+          serviceCategoryId:''
         },
         //validationSchema:PaidDetailValidation,
         onSubmit: values => {
@@ -88,6 +88,13 @@ const CreateBillAndFeeCollection = () => {
           console.log(res)
          
           setYear(res.data.result)
+        })
+      }
+      const getServiceCatDD =()=>{
+        GetServiceCategoryDD().then(res=>{
+          console.log(res)
+         
+          setServicecatid(res.data.result)
         })
       }
      
@@ -225,6 +232,30 @@ const CreateBillAndFeeCollection = () => {
        ) : null}
         </Col>
         <Col m={6} sm={12} lg={6} ml-0>
+        <label htmlFor="serviceCategoryId" className='ml-0 mt-2'>
+      Service category
+      </label>
+      <select
+        name="serviceCategoryId"
+        type="number"
+        {...formik.getFieldProps("serviceCategoryId")}
+        className='ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control'
+      >
+         <option value='' label="Select Service categary" />
+             {servicecatid.map(item=>(
+               <option value={item.id} label={item.serviceNameAndDesc} />
+              ))}
+
+      </select>
+      
+      {formik.touched.serviceCategoryId && formik.errors.serviceCategoryId ? (
+         <p style={{color:"red"}}>{formik.errors.serviceCategoryId}</p>
+       ) : null}
+       </Col>
+       
+        </Row>
+        <Row className='my-1 mx-1' >
+        <Col m={6} sm={12} lg={6} ml-0>
         <Input  
         name="feesAmount"
         id="feesAmount"
@@ -238,8 +269,6 @@ const CreateBillAndFeeCollection = () => {
             
         </Col>
        
-        </Row>
-        <Row className='my-1 mx-1' >
         <Col m={6} sm={12} lg={6} ml-0>
         <Input  
         name="feesPaidAmt"
@@ -249,11 +278,11 @@ const CreateBillAndFeeCollection = () => {
         placeholder="Enter Fees Paid Amount"
         
         {...formik.getFieldProps("feesPaidAmt")}
-        />
-             
+        />     
         </Col>
-        
-        <Col m={6} sm={12} lg={6} ml-0>
+        </Row>
+          <Row className='my-1 mx-1'>
+          <Col m={6} sm={12} lg={6} ml-0>
         <Input  
         name="balance"
         id="balance"
@@ -265,8 +294,7 @@ const CreateBillAndFeeCollection = () => {
         {...formik.getFieldProps("balance")}
         />
         </Col>
-        </Row>
-          
+          </Row>
               <Row className='my-3 mx-1 justify-content-center'>
               <Col m={6} sm={12} ml-0 lg={6}>
               <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 float-right' onClick={()=>createBillAndFee()}>Submit</button>
