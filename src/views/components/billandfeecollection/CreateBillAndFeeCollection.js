@@ -281,7 +281,7 @@ const CreateBillAndFeeCollection = () => {
         />     
         </Col>
         </Row>
-          <Row className='my-1 mx-1'>
+        <Row className='my-1 mx-1'>
           <Col m={6} sm={12} lg={6} ml-0>
         <Input  
         name="balance"
