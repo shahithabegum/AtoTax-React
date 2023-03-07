@@ -6,7 +6,7 @@ import { Col, Row } from 'react-bootstrap';
 import { Input } from '../../../shared/Input';
 import {login}from '../../../service/auth/authService'
 import {authService} from '../../../service/auth'
-import Logo from '../../../assets/image/testlogo.png'
+import Logo from '../../../assets/image/Atotaxlogo.png'
 import './login.css'
 const Login = () => {
   // useEffect(() => {

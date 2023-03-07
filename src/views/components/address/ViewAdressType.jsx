@@ -1,7 +1,5 @@
 
-    import React, { useEffect, useState } from 'react'
-    import {useLocation,Link} from 'react-router-dom'
-    
+    import React from 'react'
     const ViewAdressType = ({item}) => {
         console.log("viewaddress",item)
         const CreatedDate=item.createdDate
@@ -39,11 +37,6 @@
                 
                 </tbody>
                 </table>
-                {/* <p className='text-center col-lg-12 col-md-12 col-sm-12'><b>AddressType Name :</b> {item.addressTypeName}<b>AddressType Name :</b> {item.addressTypeName}</p>
-                <p className='text-center'><b> AddressType Desc :</b> {item.addressTypeDesc}</p>
-               <p ><b>Status :</b> {item.status.statusType}</p>
-               <p className='text-center'><b>Created Date:</b> {item.createdDate}</p>
-               <p className='text-center'><b>LastModified Date :</b> {item.lastModifiedDate}</p> */}
                 </div>
               
                 </div>

@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import {Link,Navigate,useNavigate} from 'react-router-dom'
 import { Col, Row } from 'react-bootstrap';
-import Logo from '../../../../assets/image/testlogo.png'
+import Logo from '../../../../assets/image/Atotaxlogo.png'
 import {forgotpassword} from '../../../../service/auth/authService'
 const ForgotPassword = () => {
     const formik = useFormik({

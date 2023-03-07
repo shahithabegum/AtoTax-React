@@ -6,6 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import ViewBillAndFeeCollection from './ViewBillAndFeeCollection'
 import {FormModel} from '../../../shared/FormModel'
 import { BsEye } from "react-icons/bs";
+import { toast } from 'react-toastify';
 
 const BillAndFeeCollection = (props) => {
     const [billAndFee, setBillAndFee] = useState([])
@@ -18,9 +19,23 @@ const BillAndFeeCollection = (props) => {
   
     const columns = [
      
-      {title: "Amend Id", field:"id"},
-      {title: "Amend Type", field:"BillAndFeeName"},
-      {title: "Status Type", field:"status.statusType"},
+      {title: "Proprietor Name", field:"gstClient.proprietorName"},
+      {title: "Due Month", field:"dueMonth"},
+      {title: "Due Year", field:"dueYear"},
+      {title: "Bills Received", field:"isBillsReceived",render : rowData=>{
+        return(
+          rowData.isBillsReceived === true ? <div><i class="fa fa-check" aria-hidden="true" style={{fontSize:"20px",textAlign:"center",color:'green'
+        }}></i></div> : <div><i class="fa fa-close" aria-hidden="true" style={{fontSize:"20px",textAlign:"center",color:'red'
+      }}></i></div>
+        )
+      }},
+      {title: "Bills Filed", field:"isFiled",render : rowData=>{
+        return(
+          rowData.isFiled === true ? <div><i class="fa fa-check" aria-hidden="true" style={{fontSize:"20px",textAlign:"center",color:'green'
+        }}></i></div> : <div><i class="fa fa-close" aria-hidden="true" style={{fontSize:"20px",textAlign:"center",color:'red'
+      }}></i></div>
+        )
+      }},
       
     ]
       //getting client details
@@ -33,7 +48,12 @@ const BillAndFeeCollection = (props) => {
     }
     const deleteBillAndFeeCollection = (item)=>{
         Delete_BillAndFee(item.id).then(res=>{
-        GetDetails();
+          if(res?.data?.isSuccess){
+            toast.error(res.data.successMessage)
+            GetDetails()
+          }else{
+            toast.error(res.data.errorMessages.toString())
+          }
       })
       }
   

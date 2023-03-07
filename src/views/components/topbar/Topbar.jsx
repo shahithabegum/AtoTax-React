@@ -2,7 +2,7 @@ import { Menu, MenuItem } from '@material-ui/core'
 import React ,{useState,useEffect}from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import {authService} from '../../../service/auth'
-import Logo from './../../../assets/image/testlogo.png'
+import Logo from './../../../assets/image/Atotaxlogo.png'
 import Notification from './../../../assets/image/notification.svg'
 import downArrow from './../../../assets/image/select-arrow.svg'
 import profile from './../../../assets/image/profile.jpg'
@@ -37,7 +37,8 @@ function Topbar(props) {
         <nav className="navbar navbar-light admin-navbar">
           
             <Link className="navbar-brand  p-0" to="/">
-                <img src={Logo} alt="KC header logo" width={210} height={40} className="mr-2" />
+
+                <img src={Logo} alt="Atotax Logo" width={210} height={40} className="Atotaxlogo mr-2" />
                  {/* <b>ATOTAX</b>  */}
             </Link>
             <ul className="nav">

@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 const AssignRole = () => {
     const [userId,setUserId] =useState([])
     const [roles,setRoles] =useState([])
-    const [userforrole,setUserforrole] =useState([])
+    // const [userforrole,setUserforrole] =useState([])
     const [val,setVal] =useState([])
     let navigate = useNavigate()
     useEffect(()=>{
@@ -69,15 +69,18 @@ const AssignRole = () => {
           navigate('/roles')
         }
         const handleselect =(e)=>{
-          console.log(e.target.value)
+          formik.values.userId=e.target.value;
           GetUserRoles(e.target.value).then(res=>{
-            console.log("res",res.data.result.listRoles)
-            setVal(res.data.result.listRoles)
+            var Assign=res.data.result.listRoles
+             console.log("select",Assign)
+            setVal(Assign)
+           
           })
+         
         }
        console.log("roles",val)
-       console.log("userforrole",userforrole)
-        console.log("value",formik.userId)
+      
+        
     return (
       <div  className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
           
@@ -118,7 +121,7 @@ const AssignRole = () => {
                <MultiSelect
                  selectionType="tags"
                  options={options}
-                 value={val}
+                value={val}
                  onChange={setVal}
                 
                />

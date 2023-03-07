@@ -6,7 +6,7 @@ import { Col, Row } from 'react-bootstrap';
 import RessetPasswordValidation from './RestpasswordValidation'
 import {resetpassword}from '../../../../service/auth/authService'
 
-import Logo from '../../../../assets/image/testlogo.png'
+import Logo from '../../../../assets/image/Atotaxlogo.png'
 
 const ResetPassword = () => {
     let navigate=useNavigate();

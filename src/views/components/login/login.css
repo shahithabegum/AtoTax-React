@@ -25,13 +25,15 @@
     color: rgb(176, 25, 25);
 }
 .logoimg{
-    width: 200px;
+    width: 250px;
     height: 70px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
 }
 .imgdiv{
-    margin-top: 40% !important;
+    margin-top: 35% !important;
     left: 50%;
-    width: fit-content;
+    width:fit-content;
     justify-content: center;
 }
 .para{

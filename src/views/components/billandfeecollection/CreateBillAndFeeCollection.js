@@ -7,10 +7,11 @@ import {GetGSTClientsDD} from '../../../service/GstClientService'
 import {GetMediaDD} from '../../../service/MediaTypeService'
 import {Create_BillAndFee} from '../../../service/BIllAndFeeCollectionService'
 import { Col, Row } from 'react-bootstrap';
-import { Input } from '../../../shared/Input';
+import {Model} from '../../../shared/Model'
 import { toast } from 'react-toastify';
 import {GetServiceCategoryDD } from '../../../service/ServiceCategoryService'
-
+import Receivecpop from './Receivecpop'
+import BillAndFeeCollectionValidation from './BillAndFeeCollectionValidation'
 const CreateBillAndFeeCollection = () => {
   const [clientId,setClientId] =useState([])
   const [multiMedia,setMultiMedia] =useState([])
@@ -18,7 +19,11 @@ const CreateBillAndFeeCollection = () => {
   const [month,setMonth] =useState([])
   const [servicecatid,setServicecatid] =useState([])
   const [year,setYear] =useState([])
+  const [show, setShow] = useState(false);
   let navigate = useNavigate()
+ 
+  let close ;
+  close=false;
   useEffect(()=>{
     getGstClientId();
     GetMultiMediaDD();
@@ -34,12 +39,12 @@ const CreateBillAndFeeCollection = () => {
           dueYear:'',
           gstFilingTypeId:'',
           multimediaTypeId:'',
-          feesAmount:'',
-          feesPaidAmt:'',
-          balance:'',
+          // feesAmount:'',
+          // feesPaidAmt:'',
+          // balance:'',
           serviceCategoryId:''
         },
-        //validationSchema:PaidDetailValidation,
+        validationSchema:BillAndFeeCollectionValidation,
         onSubmit: values => {
             console.log(values)
           },
@@ -47,7 +52,7 @@ const CreateBillAndFeeCollection = () => {
        const createBillAndFee = () =>{
         Create_BillAndFee(formik.values).then(res=>{
             if(res?.data?.isSuccess){
-              navigate('/billandfeecollection')
+              navigate('/UpdateBillAndFeeCollection',{ state:res.data.result})
             }
             else{
               toast.error(res?.data?.errorMessages.toString())
@@ -97,10 +102,14 @@ const CreateBillAndFeeCollection = () => {
           setServicecatid(res.data.result)
         })
       }
-     
+     const handlepopup=(e)=>{
+      formik.values.serviceCategoryId=e.target.value
+      setShow(true)
+     }
       const handleCancle =()=>{
         navigate('/billandfeecollection')
       }
+      console.log("location",close)
       return (
         <div  className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
            
@@ -110,9 +119,9 @@ const CreateBillAndFeeCollection = () => {
               className="ml-2 p-2 mt-2 m-auto col-lg-12"
             >
               <h2 className="Tableheading ml-1">
-                Create Bill And Fee Collection
+               Bill And Fee Collection
               </h2>
-              <Row className='my-1 mx-1' >
+              <Row className='my-3 mx-1' >
               <Col m={6} sm={12} lg={6} ml-0>
       <label htmlFor="gstClientID" className='ml-0'>
       GST Client<span style={{color:'red',fontSize:'20px'}}>*</span>
@@ -160,7 +169,7 @@ const CreateBillAndFeeCollection = () => {
        ) : null}
         </Col>
         </Row>
-         <Row className='my-1 mx-1' >
+         <Row className='my-3 mx-1' >
          <Col m={6} sm={12} lg={6} ml-0>
       <label htmlFor="dueMonth" className='ml-0'>
       Month <span style={{color:'red',fontSize:'20px'}}>*</span>
@@ -209,7 +218,7 @@ const CreateBillAndFeeCollection = () => {
       </Col>
         
         </Row>
-        <Row className='my-1 mx-1' >
+        <Row className='my-3 mx-1' >
         <Col m={6} sm={12} lg={6} ml-0>
         <label htmlFor="multimediaTypeId" className='ml-0 mt-2'>
        Multi Media
@@ -239,9 +248,10 @@ const CreateBillAndFeeCollection = () => {
         name="serviceCategoryId"
         type="number"
         {...formik.getFieldProps("serviceCategoryId")}
+        onChange={handlepopup}
         className='ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control'
       >
-         <option value='' label="Select Service categary" />
+         <option value='' label="Select Service category" />
              {servicecatid.map(item=>(
                <option value={item.id} label={item.serviceNameAndDesc} />
               ))}
@@ -254,7 +264,7 @@ const CreateBillAndFeeCollection = () => {
        </Col>
        
         </Row>
-        <Row className='my-1 mx-1' >
+        {/* <Row className='my-3 mx-1' >
         <Col m={6} sm={12} lg={6} ml-0>
         <Input  
         name="feesAmount"
@@ -280,8 +290,8 @@ const CreateBillAndFeeCollection = () => {
         {...formik.getFieldProps("feesPaidAmt")}
         />     
         </Col>
-        </Row>
-        <Row className='my-1 mx-1'>
+        </Row> */}
+        {/* <Row className='my-3 mx-1'>
           <Col m={6} sm={12} lg={6} ml-0>
         <Input  
         name="balance"
@@ -294,17 +304,25 @@ const CreateBillAndFeeCollection = () => {
         {...formik.getFieldProps("balance")}
         />
         </Col>
-          </Row>
+          </Row> */}
               <Row className='my-3 mx-1 justify-content-center'>
               <Col m={6} sm={12} ml-0 lg={6}>
-              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 float-right' onClick={()=>createBillAndFee()}>Submit</button>
+              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-3 float-right' onClick={()=>createBillAndFee()}>Received</button>
               
               </Col>
               <Col m={6} sm={12} ml-0 lg={6}>
-              <button type="submit" className='btn  btn-outline-danger ml-0 col-sm-10 col-lg-4 my-1'  onClick={()=>handleCancle()}>Cancel</button>
+              <button type="submit" className='btn  btn-outline-danger ml-0 col-sm-10 col-lg-4 my-3'  onClick={()=>handleCancle()}>Cancel</button>
                 </Col>
               </Row>
             </form>
+            <Model 
+     show={show}
+     onHide={()=>{setShow(false)}}
+     handleCancle={()=>{navigate('/billandfeecollection')}}
+     title=''
+     >
+     <Receivecpop onHide={()=>{setShow(false)}}/>
+     </Model>
         </div>
       )
 }

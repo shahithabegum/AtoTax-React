@@ -16,7 +16,7 @@ const AddressType = (props) => {
     {title: "ID", field:"id"},
     {title: "Address Type", field:"addressTypeName"},
     {title: "Address Type Desc", field:"addressTypeDesc"},
-    {title: "Status", field:"status.statusType"},
+    {title: "Status", field:"status.statusType"}
   ]
     const [address, setAddress] = useState()
     useEffect(() => {
