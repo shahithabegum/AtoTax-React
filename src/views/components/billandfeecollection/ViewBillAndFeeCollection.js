@@ -32,7 +32,7 @@ const ViewBillAndFeeCollection = () => {
    const handleCancle =()=>{
     navigate('/billandfeecollection')
   }
-  const filed="";
+  const filed=location.state.isFiled;
   if(location.state.filedBy===''){
     filed="To Be Filed";
     console.log("file",filed)
@@ -106,7 +106,7 @@ const ViewBillAndFeeCollection = () => {
         
           <Row className='my-1 mx-1'>
               <Col m={6} sm={12} ml-0 lg={6}>
-              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 ' onClick={()=>UpdateBillAndFee()}>File GST</button>
+              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 ' disabled={filed} onClick={()=>UpdateBillAndFee()}>File GST</button>
               <button type="submit" className='btn  btn-outline-danger col-sm-10 col-lg-4 my-1 ml-3'  onClick={()=>handleCancle()}>Cancel</button>
               </Col>
              
