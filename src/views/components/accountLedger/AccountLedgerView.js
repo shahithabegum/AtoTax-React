@@ -22,7 +22,7 @@ const AccountLedgerView = ({item}) => {
                   <td  className='tilte-td'><b>Payment Type</b></td>
                   <td  className='tilte-td'><b>: </b>{item.paymentType.paymentMethod}</td>
                   <td  className='tilte-td'><b>GST Client Paid</b></td>
-                  <td  className='tilte-td'><b>: </b>{item.isGSTClientPaid}</td>
+                  <td  className='tilte-td'><b>: </b>{item.isGSTClientPaid.toString()}</td>
               </tr>
               <tr>
                   <td  className='tilte-td'><b>Transactio nReference No</b></td>

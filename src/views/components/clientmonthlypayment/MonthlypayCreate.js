@@ -79,6 +79,7 @@ const MonthlypayCreate = () => {
    
 
  const getMonthAndYear = (e) =>{
+  formik.values.gstClientID=e.target.value
     console.log("month and year called")
     console.log("clientid",e.target.value)
     GetlMonthAndYearByClient(e.target.value).then(res=>{
