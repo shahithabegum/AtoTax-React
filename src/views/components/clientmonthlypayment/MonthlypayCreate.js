@@ -36,10 +36,11 @@ const MonthlypayCreate = () => {
           comments:''
         },
        // validationSchema:BillAndFeeCollectionValidation,
-        onSubmit: values => {
-            console.log(values)
-          },
-        });
+       onSubmit: (values,{resetForm}) => {
+        console.log(values)
+        resetForm({values:''})
+      },
+    });
        const createMothlyPay = () =>{
         Create_MonthlyPayment(formik.values).then(res=>{
             if(res?.data?.isSuccess){
