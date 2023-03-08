@@ -34,7 +34,7 @@ const User = (props) => {
     const deleteUser = (item)=>{
       DeleteUser(item.id).then(res=>{
         if(res?.data?.isSuccess){
-          toast.error(res.data.successMessage)
+         
           GetDetails()
         }else{
           toast.error(res.data.errorMessages.toString())

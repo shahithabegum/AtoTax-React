@@ -1,32 +1,27 @@
+
 import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import { useFormik } from 'formik';
-import {GetGstFilingDD} from '../../../service/GstFilingTypesService'
-import {GetMonth,GetYear} from '../../../service/MonthandYearService'
+import {GetPaymentsDD} from '../../../service/PaymentTypeService'
+
 import {GetGSTClientsDD} from '../../../service/GstClientService'
-import {GetMediaDD} from '../../../service/MediaTypeService'
-import {Create_BillAndFee} from '../../../service/BIllAndFeeCollectionService'
+import {Create_MonthlyPayment} from '../../../service/MonthlyPaymentService'
+import {GetlMonthAndYearByClient} from '../../../service/CollectionAndBalanceService'
 import { Col, Row } from 'react-bootstrap';
-import {Model} from '../../../shared/Model'
+import { Input } from '../../../shared/Input';
 import { toast } from 'react-toastify';
 import {GetServiceCategoryDD } from '../../../service/ServiceCategoryService'
-import Receivecpop from './Receivecpop'
-import BillAndFeeCollectionValidation from './BillAndFeeCollectionValidation'
-const CreateBillAndFeeCollection = () => {
+const MonthlypayCreate = () => {
   const [clientId,setClientId] =useState([])
-  const [multiMedia,setMultiMedia] =useState([])
-  const [fillingType,setFillingType] =useState([])
+  const [paymentId,setPaymentId] =useState([])
   const [month,setMonth] =useState([])
   const [servicecatid,setServicecatid] =useState([])
   const [year,setYear] =useState([])
-  const [show, setShow] = useState(false);
+ 
   let navigate = useNavigate()
   useEffect(()=>{
     getGstClientId();
-    GetMultiMediaDD();
-    GetFillingDD();
-    getMonth();
-    getYear();
+    GetpaymentDD();
     getServiceCatDD();
   },[])
     const formik = useFormik({
@@ -34,18 +29,26 @@ const CreateBillAndFeeCollection = () => {
           gstClientID:'',
           dueMonth:'',
           dueYear:'',
-          gstFilingTypeId:'',
-          multimediaTypeId:'',
-          serviceCategoryId:''
+          paymentTypeId:'',
+          serviceCategoryId:'',
+          paymentReferenceNumber:'',
+          receivedAmount:'', 
+          comments:''
         },
-        validationSchema:BillAndFeeCollectionValidation,
+       // validationSchema:BillAndFeeCollectionValidation,
         onSubmit: values => {
             console.log(values)
           },
         });
-       const createBillAndFee = () =>{
-      
-        setShow(true)
+       const createMothlyPay = () =>{
+        Create_MonthlyPayment(formik.values).then(res=>{
+            if(res?.data?.isSuccess){
+              navigate('/clientMonthlyPay')
+            }
+            else{
+              toast.error(res?.data?.errorMessages.toString())
+            }
+          })
           
        }
        const getGstClientId =()=>{
@@ -55,35 +58,16 @@ const CreateBillAndFeeCollection = () => {
           setClientId(res.data.result)
         })
       }
-      const GetMultiMediaDD =()=>{
-        GetMediaDD().then(res=>{
+     
+      const GetpaymentDD =()=>{
+        GetPaymentsDD().then(res=>{
           console.log(res)
          
-          setMultiMedia(res.data.result)
+          setPaymentId(res.data.result)
         })
       }
-      const GetFillingDD =()=>{
-        GetGstFilingDD().then(res=>{
-          console.log(res)
-         
-          setFillingType(res.data.result)
-          
-        })
-      }
-      const getMonth =()=>{
-        GetMonth().then(res=>{
-          console.log(res)
-         
-          setMonth(res.data.result)
-        })
-      }
-      const getYear =()=>{
-        GetYear().then(res=>{
-          console.log(res)
-         
-          setYear(res.data.result)
-        })
-      }
+    
+     
       const getServiceCatDD =()=>{
         GetServiceCategoryDD().then(res=>{
           console.log(res)
@@ -91,12 +75,24 @@ const CreateBillAndFeeCollection = () => {
           setServicecatid(res.data.result)
         })
       }
+   
+   
+
+ const getMonthAndYear = (e) =>{
+    console.log("month and year called")
+    console.log("clientid",e.target.value)
+    GetlMonthAndYearByClient(e.target.value).then(res=>{
+      setMonth(res.data.result.listMonths);
+      setYear(res.data.result.listYears)
+    })
+    
+ 
+  }
+   
       const handleCancle =()=>{
-        navigate('/billandfeecollection')
+        navigate('/clientMonthlyPay')
       }
-      console.log("file",fillingType)
-      console.log("location",formik.values)
-      console.log("id",formik.values.gstClientID[0])
+     
       return (
         <div  className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
            
@@ -106,7 +102,7 @@ const CreateBillAndFeeCollection = () => {
               className="ml-2 p-2 mt-2 m-auto col-lg-12"
             >
               <h2 className="Tableheading ml-1">
-               Bill And Fee Collection
+              Client Monthly Payments
               </h2>
               <Row className='my-3 mx-1' >
               <Col m={6} sm={12} lg={6} ml-0>
@@ -115,10 +111,9 @@ const CreateBillAndFeeCollection = () => {
       </label>
       <select
         name="gstClientID"
-        type="number"
         span="*"
-       
         {...formik.getFieldProps("gstClientID")}
+        onChange={getMonthAndYear}
         className='ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control'
       >
           <option value='' label="Select Client" />
@@ -133,26 +128,25 @@ const CreateBillAndFeeCollection = () => {
       </Col>
       
       <Col m={6} sm={12} lg={6} ml-0>
-      <label htmlFor="gstFilingTypeId" className='ml-0'>
-     Filling Type<span style={{color:'red',fontSize:'20px'}}>*</span>
+      <label htmlFor="paymentTypeId" className='ml-0'>
+      Payment Type<span style={{color:'red',fontSize:'20px'}}>*</span>
       </label>
       <select
-        name="gstFilingTypeId"
+        name="paymentTypeId"
         type="number"
         span="*"
        
-        {...formik.getFieldProps("gstFilingTypeId")}
+        {...formik.getFieldProps("paymentTypeId")}
         className='ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control'
       >
         <option value='' label="Select Filling Type" />
-                {fillingType.map(item=>(
-               <option value={item.id} label={item.filingType} />
+                {paymentId.map(item=>(
+               <option value={item.id} label={item.paymentMethod} />
               ))}
-
       </select>
       
-      {formik.touched.gstFilingTypeId && formik.errors.gstFilingTypeId ? (
-         <p style={{color:"red"}}>{formik.errors.gstFilingTypeId}</p>
+      {formik.touched.paymentTypeId && formik.errors.paymentTypeId ? (
+         <p style={{color:"red"}}>{formik.errors.paymentTypeId}</p>
        ) : null}
         </Col>
         </Row>
@@ -171,9 +165,8 @@ const CreateBillAndFeeCollection = () => {
          
           <option value='' label="Select Payment Due Month" />
                 {month.map((item,index)=>(
-               <option key={index} value={item.month} label={item.month} />
+               <option key={index} value={item} label={item} />
               ))}
-
       </select>
       
       {formik.touched.dueMonth && formik.errors.dueMonth ? (
@@ -196,7 +189,6 @@ const CreateBillAndFeeCollection = () => {
                <option key={index} value={item} label={item} />
                ))} 
 
-
       </select>
       
       {formik.touched.dueYear && formik.errors.dueYear ? (
@@ -206,27 +198,7 @@ const CreateBillAndFeeCollection = () => {
         
         </Row>
         <Row className='my-3 mx-1' >
-        <Col m={6} sm={12} lg={6} ml-0>
-        <label htmlFor="multimediaTypeId" className='ml-0 mt-2'>
-       Multi Media
-      </label>
-      <select
-        name="multimediaTypeId"
-        type="number"
-        {...formik.getFieldProps("multimediaTypeId")}
-        className='ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control'
-      >
-         <option value='' label="Select Multi Media Type" />
-             {multiMedia.map(item=>(
-               <option value={item.id} label={item.mediaAndDesc} />
-              ))}
-
-      </select>
-      
-      {formik.touched.multimediaTypeId && formik.errors.multimediaTypeId ? (
-         <p style={{color:"red"}}>{formik.errors.multimediaTypeId}</p>
-       ) : null}
-        </Col>
+       
         <Col m={6} sm={12} lg={6} ml-0>
         <label htmlFor="serviceCategoryId" className='ml-0 mt-2'>
       Service category
@@ -235,24 +207,65 @@ const CreateBillAndFeeCollection = () => {
         name="serviceCategoryId"
         type="number"
         {...formik.getFieldProps("serviceCategoryId")}
+        // onChange={handlepopup}
         className='ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control'
       >
          <option value='' label="Select Service category" />
              {servicecatid.map(item=>(
                <option value={item.id} label={item.serviceNameAndDesc} />
               ))}
-
       </select>
       
       {formik.touched.serviceCategoryId && formik.errors.serviceCategoryId ? (
          <p style={{color:"red"}}>{formik.errors.serviceCategoryId}</p>
        ) : null}
        </Col>
+       <Col m={6} sm={12} lg={6} ml-0>
+        <Input  
+        name="paymentReferenceNumber"
+        id="paymentReferenceNumber"
+        label="Payment Reference Number "
+        placeholder="Enter Payment Reference Number"
+        span="*"
+        isTouched={formik.touched.paymentReferenceNumber}
+        error={formik.errors.paymentReferenceNumber}
+        {...formik.getFieldProps("paymentReferenceNumber")}
+        />
+             
+        </Col>
+        </Row>
+        <Row className='my-2 mx-1' >
+        <Col m={6} sm={12} lg={6} ml-0>
+        <Input  
+        name="receivedAmount"
+        id="receivedAmount"
+        label="Received Amount"
+        placeholder="Enter Received Amount "
+        span="*"
+        isTouched={formik.touched.receivedAmount}
+        error={formik.errors.receivedAmount}
+        {...formik.getFieldProps("receivedAmount")}
+        />
+             
+        </Col>
+        <Col m={6} sm={12} lg={6} ml-0>
+            <div class="form-group">
+           <label for="comments">Comments</label>
+           <textarea class="form-control" 
+             name="comments"
+            id="comments" 
+            rows="3"
+            placeholder="Enter comments"
+            isTouched={formik.touched.comments}
+            error={formik.errors.comments}
+            {...formik.getFieldProps("comments")}></textarea>
+           </div>
+        </Col>
        
-       </Row>
+        </Row>
               <Row className='my-3 mx-1 justify-content-center'>
               <Col m={6} sm={12} ml-0 lg={6}>
-              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-3 float-right' onClick={()=>createBillAndFee()}>Submit</button>
+              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-3 float-right' onClick={()=>createMothlyPay()}>Submit</button>
               
               </Col>
               <Col m={6} sm={12} ml-0 lg={6}>
@@ -260,18 +273,8 @@ const CreateBillAndFeeCollection = () => {
                 </Col>
               </Row>
             </form>
-            <Model 
-     show={show}
-     onHide={()=>{setShow(false)}}
-    //  confirm={Confirm()}
-     handleCancle={()=>{navigate('/billandfeecollection')}}
-     title=''
-     >
-     <Receivecpop onHide={()=>{setShow(false)}} item={formik.values} clientId={clientId} Service={servicecatid}
-     filling={fillingType} media={multiMedia}/>
-     </Model>
+          
         </div>
       )
 }
-
-export default CreateBillAndFeeCollection
+export default MonthlypayCreate

@@ -202,11 +202,11 @@ const UpdateBillAndFeeCollection = () => {
               </Row>
               <Row className='my-3 mx-1 justify-content-center'>
               <Col m={6} sm={12} ml-0 lg={6}>
-              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 float-right' onClick={()=>UpdateBillAndFee()}>Filed</button>
+              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-12 my-1 float-right' onClick={()=>UpdateBillAndFee()}>Filed</button>
               
               </Col>
               <Col m={6} sm={12} ml-0 lg={6}>
-              <button type="submit" className='btn  btn-outline-danger ml-0 col-sm-10 col-lg-4 my-1'  onClick={()=>handleCancle()}>Cancel</button>
+              <button type="submit" className='btn  btn-outline-danger ml-0 col-sm-10 col-lg-12 my-1'  onClick={()=>handleCancle()}>Cancel</button>
                 </Col>
               </Row>
             </form>

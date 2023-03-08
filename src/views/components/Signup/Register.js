@@ -28,9 +28,9 @@ const Register = () => {
             phoneNumber:''
         },
         validationSchema:RegisterValidation,
-        onSubmit: values => {
+        onSubmit: (values,{resetForm}) => {
             console.log(values)
-          
+            resetForm({values:''})
           },
         });
         const Adduser=()=>{

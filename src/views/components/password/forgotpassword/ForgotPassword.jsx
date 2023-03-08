@@ -21,7 +21,7 @@ const ForgotPassword = () => {
            
            forgotpassword(values).then(data=>{
             if(data?.data?.isSuccess){
-              toast.success("mail has send successfully")
+              console.log(data.data)
             } else {
               toast.error(data?.data?.errorMessages)
             }

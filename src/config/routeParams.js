@@ -75,7 +75,14 @@ import BillAndFeeCollection from '../views/components/billandfeecollection/BillA
 import CreateBillAndFeeCollection from '../views/components/billandfeecollection/CreateBillAndFeeCollection';
 import UpdateBillAndFeeCollection from '../views/components/billandfeecollection/UpdateBillAndFeeCollection';
 import ViewBillAndFeeCollection from '../views/components/billandfeecollection/ViewBillAndFeeCollection';
-
+import ClientMonthlyPay from '../views/components/clientmonthlypayment/ClientMonthlyPay';
+import MonthlypayCreate from '../views/components/clientmonthlypayment/MonthlypayCreate';
+import ClientMonthlypayView from '../views/components/clientmonthlypayment/ClientMonthlypayView';
+import AccountLedger from '../views/components/accountLedger/AccountLedger'
+import AccountLedgerCreate from '../views/components/accountLedger/AccountLedgerCreate'
+import AccountLedgerView from '../views/components/accountLedger/AccountLedgerView'
+import CollectionAndBalance from '../views/components/collectionandbalance/CollectionAndBalance';
+import CollectionAndBalanceView from '../views/components/collectionandbalance/CollectionAndBalanceView';
 export const pathroutes=[
     {
         path: "/login",
@@ -198,24 +205,15 @@ export const pathroutes=[
             path: "/viewAddress",
             DynComponent: ViewAdressType
         },
-        //  // -------------JOBROLE-----------
-        //  {
-        //     path: "/EmpJobRole",
-        //     DynComponent: EmpJobRole
-        // },
-        // {
-        //     path: "/addEmpJobRole",
-        //     DynComponent: CreateEmpJobRole
-        // },
-        // {
-        //     path: "/editEmpJobRole",
-        //     DynComponent: UpdateEmpJobRole
-        // },
-        // {
-        //     path: "/viewEmpJobRole",
-        //     DynComponent: ViewEmpJobRole
-        // },
-
+        // -------------CollectionAndBalance-----------
+        {
+            path: "/CollectionAndBalance",
+            DynComponent: CollectionAndBalance
+        },
+        {
+            path: "/CollectionAndBalanceView",
+            DynComponent: CollectionAndBalanceView
+        },
          // -------------Media  TYPE-----------
          {
             path: "/MediaTypes",
@@ -250,23 +248,6 @@ export const pathroutes=[
             path: "/viewamendments",
             DynComponent: ViewAmendments
         },
-        // // -------------Employee-----------
-        // {
-        //     path: "/Employees",
-        //     DynComponent: Employees
-        // },
-        // {
-        //     path: "/createEmployees",
-        //     DynComponent: CreateEmployees
-        // },
-        // {
-        //     path: "/updateEmployees",
-        //     DynComponent: UpdateEmployees
-        // },
-        // {
-        //     path: "/emplView",
-        //     DynComponent: ViewEmployees
-        // },
          // -------------GST CLient Address-----------
          {
             path: "/GStClientAddressEx",
@@ -407,6 +388,32 @@ export const pathroutes=[
         {
             path: "/viewServicehistory",
             DynComponent: ServiceHistoryView
+        },
+          // ------------MonthlyPayments-----------
+          {
+            path: "/clientMonthlyPay",
+            DynComponent: ClientMonthlyPay
+        },
+        {
+            path: "/MonthlypayCreate",
+            DynComponent: MonthlypayCreate
+        },
+        {
+            path: "/ClientMonthlypayView",
+            DynComponent: ClientMonthlypayView
+        },
+         // ------------AccountsLedger-----------
+         {
+            path: "/accountLedger",
+            DynComponent: AccountLedger
+        },
+        {
+            path: "/AccountLedgerCreate",
+            DynComponent: AccountLedgerCreate
+        },
+        {
+            path: "/AccountLedgerView",
+            DynComponent: AccountLedgerView
         },
         ]
     },

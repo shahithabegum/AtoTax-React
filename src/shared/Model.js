@@ -18,7 +18,7 @@ export function Model(props) {
             <DialogContent style={{padding:"20px",with:"100%"}}>
             
                 {props.children}
-                <Row className='my-1 mx-1 justify-content-center '>
+                {/* <Row className='my-1 mx-1 justify-content-center '>
               <Col m={6} sm={12} ml-0 lg={6}>
               <button type="submit" className='btn btn-block btn-outline-info ml-0 col-sm-10 col-lg-12 my-0' onClick={props.onHide}>Confirm</button>
               
@@ -26,7 +26,7 @@ export function Model(props) {
               <Col m={6} sm={12} ml-0 lg={6}>
               <button type="submit" className='btn  btn-outline-danger ml-0 col-sm-10 col-lg-12 my-0'  onClick={props.handleCancle}>Cancel</button>
                 </Col>
-              </Row>
+              </Row> */}
             </DialogContent>
             {/* <DialogActions className="border-top py-3">
              <CancelButton onClick={props.onHide}>

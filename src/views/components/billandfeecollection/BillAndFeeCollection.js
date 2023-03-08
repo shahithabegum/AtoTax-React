@@ -10,8 +10,8 @@ import { toast } from 'react-toastify';
 
 const BillAndFeeCollection = (props) => {
     const [billAndFee, setBillAndFee] = useState([])
-    const [show, setShow] = useState(false);
-    const [value, setValue] = useState({});
+    // const [show, setShow] = useState(false);
+    // const [value, setValue] = useState({});
     useEffect(() => {
      GetDetails();
     }, [])
@@ -29,7 +29,7 @@ const BillAndFeeCollection = (props) => {
       }}></i></div>
         )
       }},
-      {title: "Bills Filed", field:"isFiled",render : rowData=>{
+      {title: "GST Filed", field:"isFiled",render : rowData=>{
         return(
           rowData.isFiled === true ? <div><i class="fa fa-check" aria-hidden="true" style={{fontSize:"20px",textAlign:"center",color:'green'
         }}></i></div> : <div><i class="fa fa-close" aria-hidden="true" style={{fontSize:"20px",textAlign:"center",color:'red'
@@ -44,18 +44,18 @@ const BillAndFeeCollection = (props) => {
       }
       const GoEdit = (item)=>{
         console.log(props , item)
-        navigate('/UpdateBillAndFeeCollection', { state: item })
+        navigate('/ViewBillAndFeeCollection', { state: item })
     }
-    const deleteBillAndFeeCollection = (item)=>{
-        Delete_BillAndFee(item.id).then(res=>{
-          if(res?.data?.isSuccess){
-            toast.error(res.data.successMessage)
-            GetDetails()
-          }else{
-            toast.error(res.data.errorMessages.toString())
-          }
-      })
-      }
+    // const deleteBillAndFeeCollection = (item)=>{
+    //     Delete_BillAndFee(item.id).then(res=>{
+    //       if(res?.data?.isSuccess){
+    //         toast.error(res.data.successMessage)
+    //         GetDetails()
+    //       }else{
+    //         toast.error(res.data.errorMessages.toString())
+    //       }
+    //   })
+    //   }
   
   console.log("BillAndFee",billAndFee)
     
@@ -74,21 +74,20 @@ const BillAndFeeCollection = (props) => {
                    data={billAndFee}
                    columns={columns}
                    actions={[
-                    rowData=>({icon: ()=><FaEdit style={{color:"green"}}/>,
-                    tooltip: 'edit User',
-                    onClick:(event,rowData)=>GoEdit(rowData)
-                    }),
+                    // rowData=>({icon: ()=><FaEdit style={{color:"green"}}/>,
+                    // tooltip: 'edit User',
+                    // onClick:(event,rowData)=>GoEdit(rowData)
+                    // }),
                     rowData=>({icon: ()=><BsEye style={{color:"blue"}}/>,
                     tooltip: 'view User',
-                    onClick:(event,rowData)=>{ setValue(rowData)
-                    setShow(true)}
+                    onClick:(event,rowData)=>GoEdit(rowData)
                     }),
-                    rowData=>( {
-                      icon: 'delete',
-                      iconProps: { color: 'secondary' },
-                      tooltip: 'dalete User',
-                      onClick:(event,rowData)=>deleteBillAndFeeCollection(rowData)
-                    }),
+                    // rowData=>( {
+                    //   icon: 'delete',
+                    //   iconProps: { color: 'secondary' },
+                    //   tooltip: 'dalete User',
+                    //   onClick:(event,rowData)=>deleteBillAndFeeCollection(rowData)
+                    // }),
                   ]}
                   options={{
                     exportButton: true,
@@ -98,13 +97,13 @@ const BillAndFeeCollection = (props) => {
                   
                 />
               </div>
-        <FormModel 
+        {/* <FormModel 
        show={show}
        onHide={()=>{setShow(false)}}
        title={<h2 className=" view ml-2">Bill And Fee Collection</h2>}
        >
        <ViewBillAndFeeCollection onHide={()=>{setShow(false)}}  item={value}/>
-       </FormModel>
+       </FormModel> */}
     </div>
     )
 }

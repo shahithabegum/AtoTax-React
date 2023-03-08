@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaUserFriends,FaUserTie,FaRupeeSign,FaHome,FaBook,FaUserShield,FaHistory,FaUser,FaKey,FaUserPlus,FaInfoCircle} from "react-icons/fa";
 import { MdEditNote ,MdOutlinePayments,MdOutlinePermMedia,MdLocationOn,MdMiscellaneousServices,MdDashboard,MdNaturePeople} from "react-icons/md";
-import { GiStabbedNote,GiFiles,GiReceiveMoney } from "react-icons/gi";
+import { GiStabbedNote,GiFiles,GiReceiveMoney,GiTakeMyMoney,GiMoneyStack,GiNotebook } from "react-icons/gi";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { IoIosPeople } from "react-icons/io";
 
@@ -42,7 +42,22 @@ export const SidenavData=[
                 title:"Bill And Fee Collection",
                 icon:<GiStabbedNote/>
             }, 
+            {
+                path:"/clientMonthlyPay",
+                title:"Monthly Payments",
+                icon:<GiTakeMyMoney/>
+            }, 
+            {
+                path:"/CollectionAndBalance",
+                title:"Collection And Balance",
+                icon:<GiMoneyStack/>
+            }, 
         ]
+    },
+    {
+        path:"/accountLedger",
+        title:"Account Ledger",
+        icon:<GiNotebook />
     },
     {
         path:"/users",
