@@ -20,6 +20,7 @@ const AccountLedger = () => {
       }}></i></div>
         )
       }},
+      {title: "Payment Method", field:"paymentType.paymentMethod"},
       {title: "Recorded By", field:"transactionRecordedBy"},
     ]
       const [address, setAddress] = useState()
