@@ -161,7 +161,7 @@ const GstForm = () => {
       name="gstEmailId"
       id="gstEmailId"
       label="GST Email"
-      
+      span="*"
       placeholder="example@gmail.com"
       isTouched={formik.touched.gstEmailId}
       error={formik.errors.gstEmailId}

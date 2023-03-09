@@ -20,7 +20,7 @@ export const Gstlistschema=Yup.object().shape({
          ewayBillUserName: Yup.string()
          .max(250, 'Must be 250 characters or less')
         ,
-         gstEmailId: Yup.string().email('Invalid email address'),
+         gstEmailId: Yup.string().email('Invalid email address').required('Required'),
          contactEmailId: Yup.string().email('Invalid email address'),
          gstRecoveryEmailId: Yup.string().email('Invalid email address'),
 })
