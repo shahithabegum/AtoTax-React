@@ -46,7 +46,7 @@ export const SidenavData=[
     }, 
     {
         path:"/GstPaidDetails",
-        title:"Paid Details",
+        title:"GST Paid Details",
         icon:<FaRupeeSign/>
     }, 
    
