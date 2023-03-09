@@ -106,7 +106,7 @@ const GstForm = () => {
       span="*"
       isTouched={formik.touched.proprietorName}
       error={formik.errors.proprietorName}
-      placeholder="Enter GST Client Name"
+      placeholder="Enter Client Name"
       {...formik.getFieldProps("proprietorName")}
       />
       </Col>
@@ -118,7 +118,7 @@ const GstForm = () => {
       id="gstin"
       label="GSTIN"
       span="*"
-      placeholder="Enter GST TIN Number"
+      placeholder="Enter TIN Number"
       isTouched={formik.touched.gstin}
       error={formik.errors.gstin}
       {...formik.getFieldProps("gstin")}
@@ -128,9 +128,9 @@ const GstForm = () => {
       <Input 
       name="gstUserName"
       id="gstUserName"
-      label="GST UserName"
-      span="*"
-      placeholder="Enter GST User Name"
+      label="GST User Name"
+    
+      placeholder="Enter User Name"
       isTouched={formik.touched.gstUserName}
       error={formik.errors.gstUserName}
       {...formik.getFieldProps("gstUserName")}
@@ -142,8 +142,8 @@ const GstForm = () => {
       id="gstUserPassword"
       label="GST User Password"
       
-      span="*"
-      placeholder="Enter GST User Password"
+      
+      placeholder="Enter User Password"
       {...formik.getFieldProps("gstUserPassword")}
       />
       </Col>
@@ -152,7 +152,7 @@ const GstForm = () => {
       name="gstEmailId"
       id="gstEmailId"
       label="GST Email"
-      span="*"
+      
       placeholder="example@gmail.com"
       isTouched={formik.touched.gstEmailId}
       error={formik.errors.gstEmailId}
@@ -166,7 +166,7 @@ const GstForm = () => {
       id="gstEmailPassword"
       label="GST Email Password"
      
-      placeholder="Enter GST Email Password"
+      placeholder="Enter Email Password"
       {...formik.getFieldProps("gstEmailPassword")}
       />
       </Col>
@@ -188,7 +188,7 @@ const GstForm = () => {
       id="gstRecoveryEmailPassword"
       label="GST Recovery Email Password"
      
-      placeholder="Enter GST Recovery Email Password"
+      placeholder="Enter Recovery Email Password"
       {...formik.getFieldProps("gstRecoveryEmailPassword")}
       />
       
@@ -223,7 +223,7 @@ const GstForm = () => {
       name="gstAnnualTurnOver"
       id="gstAnnualTurnOver"
       label="GST Annual TurnOver"
-      span="*"
+     
       placeholder="Enter in Rupees"
       type="number"
       {...formik.getFieldProps("gstAnnualTurnOver")}

@@ -121,7 +121,7 @@ const GstEditing = () => {
       name="gstUserName"
       id="gstUserName"
       label="GST UserName"
-      span="*"
+     
       placeholder="UpdateGST User Name"
       isTouched={formik.touched.gstUserName}
       error={formik.errors.gstUserName}
@@ -143,7 +143,7 @@ const GstEditing = () => {
       name="gstEmailId"
       id="gstEmailId"
       label="GST Email"
-      span="*"
+    
       placeholder="example@gmail.com"
       isTouched={formik.touched.gstEmailId}
       error={formik.errors.gstEmailId}
@@ -213,7 +213,7 @@ const GstEditing = () => {
       name="gstAnnualTurnOver"
       id="gstAnnualTurnOver"
       label="GST Annual TurnOver"
-      span="*"
+      
       placeholder="Updatein Rupees"
       type="number"
       {...formik.getFieldProps("gstAnnualTurnOver")}
