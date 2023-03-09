@@ -35,7 +35,7 @@ const ChangePassword = () => {
        const handleCancle =()=>{
         navigate('/dashboard')
       }
-      const isEnable=formik.values.newPassword>0 && formik.values.newPassword===formik.values.confirmPassword
+      var isEnable=formik.values.newPassword===formik.values.confirmPassword
        return (
        
         <div className='container p-2 col-11 col-sm-10 col-lg-12 mt-5 '>
