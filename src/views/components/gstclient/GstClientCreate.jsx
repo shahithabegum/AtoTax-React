@@ -326,7 +326,7 @@ const GstForm = () => {
       
       <Col m={6} sm={10} lg={6} ml-0 >
       <label htmlFor="Statusid" className='ml-2'>
-       Status
+       Status<span style={{color:'red',fontSize:'20px'}}>*</span>
       </label>
       <select
         name="Statusid"
