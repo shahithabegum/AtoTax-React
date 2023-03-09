@@ -16,6 +16,11 @@ const ServiceHistory = (props) => {
         {title: "Service Name", field:"serviceCategory.serviceName"},
         {title: "Previous Rate", field:"previousRate"},
         {title: "New Rate", field:"newRate"},
+        {title: "Amended Date", field:"amendedDate",render : rowData=>{
+          return(
+          rowData.amendedDate=new Date( rowData.amendedDate).toLocaleDateString()
+          )
+        }},
        
       ]
         const [service, setService] = useState([])

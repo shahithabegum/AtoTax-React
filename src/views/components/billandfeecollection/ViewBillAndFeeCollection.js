@@ -32,6 +32,7 @@ const ViewBillAndFeeCollection = () => {
    const handleCancle =()=>{
     navigate('/billandfeecollection')
   }
+  var isFiled=location.state.isFiled
   var filed=location.state.filedBy;
   if(filed===null){
     filed="To Be Filed";
@@ -45,7 +46,7 @@ const ViewBillAndFeeCollection = () => {
   
           <div className='displaylist mt-2 ml-0 m-auto p-5'>
           <div className='headcontainer'>
-        <h2 className="Tableheading ml-1">Bill And Fees Collection</h2>
+        <h2 className="Tableheading ml-1">GST Bills Processing</h2>
        
       </div>
   <table class="table table-responsive m-auto mt-3">
@@ -102,7 +103,7 @@ const ViewBillAndFeeCollection = () => {
         
           <Row className='my-1 mx-1'>
               <Col m={6} sm={12} ml-0 lg={6}>
-              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 ' disabled={filed} onClick={()=>UpdateBillAndFee()}>File GST</button>
+              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 ' disabled={isFiled} onClick={()=>UpdateBillAndFee()}>File GST</button>
               <button type="submit" className='btn  btn-outline-danger col-sm-10 col-lg-4 my-1 ml-3'  onClick={()=>handleCancle()}>Cancel</button>
               </Col>
              

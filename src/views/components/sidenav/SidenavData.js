@@ -36,7 +36,7 @@ export const SidenavData=[
     },
     {
         path:"/billandfeecollection",
-        title:"Bill And Fee Collection",
+        title:"GST Bills Processing",
         icon:<GiStabbedNote/>
     }, 
     {

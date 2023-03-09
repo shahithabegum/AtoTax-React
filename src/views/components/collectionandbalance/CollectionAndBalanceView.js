@@ -42,8 +42,8 @@ const CollectionAndBalanceView = ({item}) => {
             <td  className='tilte-td'><b>: </b>{item.isGSTFiled.toString()}</td>
         </tr>
        <tr>
-       <td ><b>Current Balance</b></td>
-            <td  >= {item.currentBalance}</td>
+       <td className='text-danger'><b>Current Balance</b></td>
+            <td  className='text-danger'>= {item.currentBalance}</td>
        </tr>
        
     </tbody>

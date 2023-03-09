@@ -63,14 +63,14 @@ const BillAndFeeCollection = (props) => {
        
             <div className='Table-div'>
               <div className='headcontainer'>
-                <h2 className="Tableheading ml-1">Bill And Fee Collection</h2>
+                <h2 className="Tableheading ml-1">GST Bills Processing</h2>
                 <Link to="/CreateBillAndFeeCollection"> <button className='btn btn-success ml-0  mt-2 m-0' >Add</button></Link>
                 {/* <button className='btn btn-success ml-1  mt-2 ml-3' onClick={()=>setShowAdd(true)} >Add</button> */}
               </div>
         
           <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
                 <MaterialTable
-                   title="Bill And Fee Collection"
+                   title="Bills Processing"
                    data={billAndFee}
                    columns={columns}
                    actions={[

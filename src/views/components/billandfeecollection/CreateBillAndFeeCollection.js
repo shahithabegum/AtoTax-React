@@ -106,7 +106,7 @@ const CreateBillAndFeeCollection = () => {
               className="ml-2 p-2 mt-2 m-auto col-lg-12"
             >
               <h2 className="Tableheading ml-1">
-               Bill And Fee Collection
+              GST Bills Processing
               </h2>
               <Row className='my-3 mx-1' >
               <Col m={6} sm={12} lg={6} ml-0>

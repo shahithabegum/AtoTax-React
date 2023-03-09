@@ -31,7 +31,7 @@ const GstForm = () => {
       gstRegDate:"",
       gstSurrenderedDate:'',
       gstRelievedDate:'',
-      gstAnnualTurnOver:'',
+      gstAnnualTurnOver:0,
       mobileNumber:'',
       phoneNumber:'',
       contactEmailId:'',
@@ -46,7 +46,7 @@ const GstForm = () => {
       statusId:'',
     },
     
-      validationSchema: Gstlistschema,
+      //validationSchema: Gstlistschema,
 
     onSubmit: values => {
       console.log(values)
@@ -56,13 +56,22 @@ const GstForm = () => {
   });
  
   const createGstClientSubmit= ()=>{
+              // console.log("gstSurrenderedDate",formik.values.gstSurrenderedDate)
+               console.log("gstRelievedDate",formik.values.gstRelievedDate)
                var isoDategstregdate = new Date(formik.values.gstRegDate).toISOString();
                console.log(isoDategstregdate);
                formik.values.gstRegDate=isoDategstregdate;
-               var isogstSurrenderedDate=new Date(formik.values.gstSurrenderedDate).toISOString();
-               formik.values.gstSurrenderedDate=isogstSurrenderedDate;
-               var isogstRelievedDate=new Date(formik.values.gstRelievedDate).toISOString();
-               formik.values.gstRelievedDate=isogstRelievedDate;
+               if(formik.values.gstSurrenderedDate != null){
+                var isogstSurrenderedDate=new Date(formik.values.gstSurrenderedDate).toISOString();
+                formik.values.gstSurrenderedDate=isogstSurrenderedDate;
+               }else{
+                console.log("gstSurrenderedDate if block",formik.values.gstSurrenderedDate)
+               }
+               if(formik.values.gstRelievedDate != null){
+                var isogstRelievedDate=new Date(formik.values.gstRelievedDate).toISOString();
+                formik.values.gstRelievedDate=isogstRelievedDate;
+               }
+              
              
     try{
     CreateGSTClient(formik.values).then((res)=>{
