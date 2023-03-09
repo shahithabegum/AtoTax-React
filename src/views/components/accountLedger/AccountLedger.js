@@ -13,7 +13,7 @@ const AccountLedger = () => {
       {title: "Income Amount", field:"incomeAmount"},
       {title: "Expense Amount", field:"expenseAmount"},
       {title: "Payment Method", field:"paymentType.paymentMethod"},
-      {title: "GST Client Paid", field:"isGSTClientPaid",render : rowData=>{
+      {title: "GSTClient Transaction", field:"isGSTClientPaid",render : rowData=>{
         return(
           rowData.isGSTClientPaid === true ? <div><i class="fa fa-check" aria-hidden="true" style={{fontSize:"20px",textAlign:"center",color:'green'
         }}></i></div> : <div><i class="fa fa-close" aria-hidden="true" style={{fontSize:"20px",textAlign:"center",color:'red'
