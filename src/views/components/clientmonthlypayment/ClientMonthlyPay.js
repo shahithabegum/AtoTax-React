@@ -31,7 +31,7 @@ const ClientMonthlyPay = (props) => {
     return (
       <div className='Table-div'>
         <div className='headcontainer'>
-          <h2 className="Tableheading ml-1">Client Monthly Payments</h2>
+          <h2 className="Tableheading ml-1">GST Monthly Payments</h2>
           <Link to="/MonthlypayCreate"> <button className='btn btn-success ml-1  mt-2 m-0' >Add</button></Link>
   
         </div>

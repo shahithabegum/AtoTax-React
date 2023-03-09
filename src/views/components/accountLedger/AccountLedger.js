@@ -13,13 +13,14 @@ const AccountLedger = () => {
       {title: "Income Amount", field:"incomeAmount"},
       {title: "Expense Amount", field:"expenseAmount"},
       {title: "Payment Method", field:"paymentType.paymentMethod"},
-      {title: "GSTClient Transaction", field:"isGSTClientPaid",render : rowData=>{
-        return(
-          rowData.isGSTClientPaid === true ? <div><i class="fa fa-check" aria-hidden="true" style={{fontSize:"20px",textAlign:"center",color:'green'
-        }}></i></div> : <div><i class="fa fa-close" aria-hidden="true" style={{fontSize:"20px",textAlign:"center",color:'red'
-      }}></i></div>
-        )
-      }},
+      {title: "GST Client Name", field:"gstClient.proprietorName"},
+      // {title: "GSTClient Transaction", field:"isGSTClientPaid",render : rowData=>{
+      //   return(
+      //     rowData.isGSTClientPaid === true ? <div><i class="fa fa-check" aria-hidden="true" style={{fontSize:"20px",textAlign:"center",color:'green'
+      //   }}></i></div> : <div><i class="fa fa-close" aria-hidden="true" style={{fontSize:"20px",textAlign:"center",color:'red'
+      // }}></i></div>
+      //   )
+      // }},
       {title: "Transaction Date", field:"transactionDate",render : rowData=>{
         return(
         rowData.transactionDate=new Date( rowData.transactionDate).toLocaleDateString()

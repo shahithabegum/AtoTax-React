@@ -41,7 +41,7 @@ export const SidenavData=[
     }, 
     {
         path:"/clientMonthlyPay",
-        title:"Monthly Payments",
+        title:"GST Monthly Payments",
         icon:<GiTakeMyMoney/>
     }, 
     {

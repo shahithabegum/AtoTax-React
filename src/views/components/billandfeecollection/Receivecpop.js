@@ -46,13 +46,13 @@ const Receivecpop = ({ item,clientId,Service,filling,media }) => {
                   <tr>
                     {Service.filter(service=>service.id.toString()===item.serviceCategoryId).map(name=>(
                       
-                    <td className='tilte-td'><b>Filling type : </b> {name.serviceNameAndDesc}</td>))}
+                    <td className='tilte-td'><b>Service Type : </b> {name.serviceNameAndDesc}</td>))}
                   
                   </tr>
                   <tr>
                     {media.filter(media=>media.id.toString()===item.multimediaTypeId).map(name=>(
                       
-                    <td className='tilte-td'><b>Filling type : </b> {name.mediaAndDesc}</td>))}
+                    <td className='tilte-td'><b>MUltiMedia : </b> {name.mediaAndDesc}</td>))}
                   
                   </tr>
                   <tr>
