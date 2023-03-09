@@ -108,7 +108,7 @@ const GstEditing = () => {
       <Input 
       name="gstin"
       id="gstin"
-      label="GST TIN"
+      label="GSTIN"
       span="*"
       placeholder="UpdateGST TIN Number"
       isTouched={formik.touched.gstin}
@@ -133,7 +133,7 @@ const GstEditing = () => {
       name="gstUserPassword"
       id="gstUserPassword"
       label="GST User Password"
-      type="password"
+      
       placeholder="UpdateGST User Password"
       {...formik.getFieldProps("gstUserPassword")}
       />
@@ -156,7 +156,7 @@ const GstEditing = () => {
       name="gstEmailPassword"
       id="gstEmailPassword"
       label="GST Email Password"
-      type="password"
+    
       placeholder="UpdateGST Email Password"
       {...formik.getFieldProps("gstEmailPassword")}
       />
@@ -178,7 +178,7 @@ const GstEditing = () => {
       name="gstRecoveryEmailPassword"
       id="gstRecoveryEmailPassword"
       label="GST Recovery Email Password"
-      type="password"
+     
       placeholder="UpdateGST Recovery Email Password"
       {...formik.getFieldProps("gstRecoveryEmailPassword")}
       />
@@ -291,7 +291,7 @@ const GstEditing = () => {
       name="ewayBillPassword"
       id="ewayBillPassword"
       label="Eway Bill Password"
-      type='password'
+     
       {...formik.getFieldProps("ewayBillPassword")}
       />
       </Col>

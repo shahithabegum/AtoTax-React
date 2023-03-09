@@ -116,7 +116,7 @@ const GstForm = () => {
       <Input 
       name="gstin"
       id="gstin"
-      label="GST TIN"
+      label="GSTIN"
       span="*"
       placeholder="Enter GST TIN Number"
       isTouched={formik.touched.gstin}
@@ -141,7 +141,8 @@ const GstForm = () => {
       name="gstUserPassword"
       id="gstUserPassword"
       label="GST User Password"
-      type="password"
+      
+      span="*"
       placeholder="Enter GST User Password"
       {...formik.getFieldProps("gstUserPassword")}
       />
@@ -164,7 +165,7 @@ const GstForm = () => {
       name="gstEmailPassword"
       id="gstEmailPassword"
       label="GST Email Password"
-      type="password"
+     
       placeholder="Enter GST Email Password"
       {...formik.getFieldProps("gstEmailPassword")}
       />
@@ -186,7 +187,7 @@ const GstForm = () => {
       name="gstRecoveryEmailPassword"
       id="gstRecoveryEmailPassword"
       label="GST Recovery Email Password"
-      type="password"
+     
       placeholder="Enter GST Recovery Email Password"
       {...formik.getFieldProps("gstRecoveryEmailPassword")}
       />
@@ -300,7 +301,7 @@ const GstForm = () => {
       name="ewayBillPassword"
       id="ewayBillPassword"
       label="Eway Bill Password"
-      type='password'
+     
       {...formik.getFieldProps("ewayBillPassword")}
       />
       </Col>
