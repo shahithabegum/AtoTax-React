@@ -28,7 +28,7 @@ const CollectionAndBalance = () => {
     }}></i></div>
       )
     }},
-    
+    {title: "Current Balance", field:"currentBalance"},
   ]
     const [address, setAddress] = useState()
     useEffect(() => {
