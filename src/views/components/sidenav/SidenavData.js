@@ -1,12 +1,10 @@
 import React from 'react';
-import { FaUserFriends,FaUserTie,FaRupeeSign,FaHome,FaBook,FaUserShield,FaHistory,FaUser,FaKey,FaUserPlus,FaInfoCircle} from "react-icons/fa";
+import { FaUserFriends,FaRupeeSign,FaHome,FaBook,FaUserShield,FaHistory,FaUser,FaKey,FaUserPlus,FaInfoCircle} from "react-icons/fa";
 import { MdEditNote ,MdOutlinePayments,MdOutlinePermMedia,MdLocationOn,MdMiscellaneousServices,MdDashboard,MdNaturePeople} from "react-icons/md";
-import { GiStabbedNote,GiFiles,GiReceiveMoney,GiTakeMyMoney,GiMoneyStack,GiNotebook } from "react-icons/gi";
-import { TiWeatherPartlySunny } from "react-icons/ti";
+import { GiStabbedNote,GiFiles,GiReceiveMoney,GiTakeMyMoney,GiMoneyStack,GiNotebook,GiSettingsKnobs } from "react-icons/gi";
 import { IoIosPeople } from "react-icons/io";
 
-import { SiStatuspage } from "react-icons/si";
-
+import { HiUsers } from "react-icons/hi2";
 export const SidenavData=[
     {
         path:"/dashboard",
@@ -28,57 +26,40 @@ export const SidenavData=[
                 icon:<MdLocationOn/>
             },
             {
-                path:"/GstFilingTypes",
-                title:"Filing Types",
-                icon:<GiFiles/>
-            }
-            , {
-                path:"/GstPaidDetails",
-                title:"Paid Details",
-                icon:<FaRupeeSign/>
-            }, 
-            {
-                path:"/billandfeecollection",
-                title:"Bill And Fee Collection",
-                icon:<GiStabbedNote/>
-            }, 
-            {
-                path:"/clientMonthlyPay",
-                title:"Monthly Payments",
-                icon:<GiTakeMyMoney/>
-            }, 
-            {
-                path:"/CollectionAndBalance",
-                title:"Collection And Balance",
-                icon:<GiMoneyStack/>
-            }, 
-        ]
+                path:"/addressType",
+                title:"Address Type",
+                icon:<FaHome/>
+            },
+           
+          
+           ]
     },
+    {
+        path:"/billandfeecollection",
+        title:"Bill And Fee Collection",
+        icon:<GiStabbedNote/>
+    }, 
+    {
+        path:"/clientMonthlyPay",
+        title:"Monthly Payments",
+        icon:<GiTakeMyMoney/>
+    }, 
+    {
+        path:"/GstPaidDetails",
+        title:"Paid Details",
+        icon:<FaRupeeSign/>
+    }, 
+   
     {
         path:"/accountLedger",
         title:"Account Ledger",
         icon:<GiNotebook />
     },
     {
-        path:"/users",
-        title:"Users",
-        icon:<FaUser />
-    },
-    {
-        path:"/roles",
-        title:"Roles",
-        icon:<FaInfoCircle/>
-    },
-    {
-        path:"/assignroles",
-        title:"Assign Roles",
-        icon:<MdNaturePeople/>
-    },
-    {
-        path:"/register",
-        title:"Register",
-        icon:<FaUserPlus/>
-    },
+        path:"/CollectionAndBalance",
+        title:"Collection And Balance",
+        icon:<GiMoneyStack/>
+    }, 
     {
         title: "Amendments",
         icon: <FaBook/>,
@@ -96,6 +77,39 @@ export const SidenavData=[
             },
         ]
     },
+    {
+        title: "Users",
+        icon: <HiUsers/>,
+        "childrens": [
+            {
+                path:"/register",
+                title:"Register",
+                icon:<FaUserPlus/>
+            },
+             {
+        path:"/users",
+        title:"Users",
+        icon:<FaUser />
+    },
+    {
+        path:"/roles",
+        title:"Roles",
+        icon:<FaInfoCircle/>
+    },
+    {
+        path:"/assignroles",
+        title:"Assign Roles",
+        icon:<MdNaturePeople/>
+    },
+   
+    {
+        path:"/changepassword",
+        title:"Change Password",
+        icon:<FaKey />
+    },
+   ]
+},
+    
     {
         title: "Services",
         icon: <MdMiscellaneousServices/>,
@@ -119,10 +133,13 @@ export const SidenavData=[
         ]
     },
     {
-        path:"/addressType",
-        title:"Address Type",
-        icon:<FaHome/>
-    },
+        title: "GST Configuration",
+        icon: <GiSettingsKnobs/>,
+        "childrens": [   {
+            path:"/GstFilingTypes",
+            title:"Filing Types",
+            icon:<GiFiles/>
+        },
    
    
     {
@@ -134,14 +151,6 @@ export const SidenavData=[
         title:"Media Type",
         icon:<MdOutlinePermMedia/>
     },
-    {
-        path:"/changepassword",
-        title:"Change Password",
-        icon:<FaKey />
-    },
-    // {
-    //     path:"/Status",
-    //     title:"Status",
-    //     icon:<SiStatuspage/>
-    // },
+]
+},
 ]

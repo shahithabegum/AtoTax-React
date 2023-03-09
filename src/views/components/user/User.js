@@ -12,8 +12,6 @@ const User = (props) => {
   const [value, setValue] = useState({});
     let navigate = useNavigate();
     const columns = [
-      
-      {title: "Employee Id", field:"employeeId"},
       {title: "User Name", field:"userName"},
       {title: "Email", field:"email"},
       {title: "Phone Number", field:"phoneNumber"},

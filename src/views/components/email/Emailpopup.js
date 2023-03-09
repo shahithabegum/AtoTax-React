@@ -13,7 +13,7 @@ const Emailpopup = ({email}) => {
             <h2 className="text-center Tableheading mt-0">Email Verification</h2>
             <p className="text-center mt-3" style={{fontSize:"20px"}}>
                 We have sent email to <Link to={email}> {email}  </Link> to confirm the validity <br></br>of our
-                email address.After receiving the email follow<br></br> the link 
+                email address. After receiving the email follow<br></br> the link 
                 provided to complete your registeration 
             </p>
         </div>

@@ -21,10 +21,10 @@ const SidenavItem = ({position,dropdownopen,activenumber,item}) => {
               
                   <div className=' p-0'>
                     
-                   <div className="sidehead nav-link p-1 ml-1" onClick={()=>{dropdownopen(position)}}>
-                       <div className='mx-1 '>
+                   <div className="sidehead nav-link p-1 ml-1 " onClick={()=>{dropdownopen(position)}}>
+                       <div className='mx-1'>
                       
-                       <span className='icon ml-0'>{item.icon}</span>
+                       <span className='icon ml-0 '>{item.icon}</span>
                         <span className=' title ms-1 ml-3 d-none d-sm-inline'>{item.title}</span>
                        </div>
                        
@@ -33,8 +33,8 @@ const SidenavItem = ({position,dropdownopen,activenumber,item}) => {
                    {
                     activenumber.includes(position) ?   <div className="childcontent p-2 m-2 " >
                         { item.childrens.map((items,index)=>(
-                            <div>
-                        <NavLink to={items.path} className='nav-link  mx-2' activeclassName='active'>
+                            <div >
+                        <NavLink to={items.path} className='nav-link  mx-2 ' activeclassName='active'>
                              
                                 <span  className='icon'>{items.icon}</span>
                                 <span className='title ms-1 d-none d-sm-inline ml-3 '>{items.title}</span>

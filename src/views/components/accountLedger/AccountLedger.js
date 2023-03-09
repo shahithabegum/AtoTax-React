@@ -20,7 +20,11 @@ const AccountLedger = () => {
       }}></i></div>
         )
       }},
-      {title: "Payment Method", field:"paymentType.paymentMethod"},
+      {title: "Transaction Date", field:"transactionDate",render : rowData=>{
+        return(
+        rowData.transactionDate=new Date( rowData.transactionDate).toLocaleDateString()
+        )
+      }},
       {title: "Recorded By", field:"transactionRecordedBy"},
     ]
       const [address, setAddress] = useState()

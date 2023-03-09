@@ -32,8 +32,8 @@ const ViewBillAndFeeCollection = () => {
    const handleCancle =()=>{
     navigate('/billandfeecollection')
   }
-  const filed=location.state.isFiled;
-  if(location.state.filedBy===''){
+  var filed=location.state.filedBy;
+  if(filed===null){
     filed="To Be Filed";
     console.log("file",filed)
   }
@@ -65,37 +65,33 @@ const ViewBillAndFeeCollection = () => {
               <tr>
                   <td  className='tilte-td'><b>Filing Type</b></td>
                   <td  className='tilte-td'><b>: </b>{location.state.gstFilingType.filingType}</td>
-                  <td  className='tilte-td'><b>Fees Amount</b></td>
-                  <td  className='tilte-td'><b>: </b>{location.state.feesAmount}</td>
-              </tr>
-              <tr>
-                  <td  className='tilte-td'><b>Fees Paid Amount</b></td>
-                  <td  className='tilte-td'><b>: </b>{location.state.feesPaidAmt}</td>
-                  <td  className='tilte-td'><b>Balance</b></td>
-                  <td  className='tilte-td'><b>: </b>{location.state.balance}</td>
-              </tr>
-              <tr>
                   <td  className='tilte-td'><b>Due Month</b></td>
                   <td  className='tilte-td'><b>: </b>{location.state.dueMonth}</td>
+              </tr>
+          
+              <tr>
                   <td  className='tilte-td'><b>Due Year</b></td>
                   <td  className='tilte-td'><b>: </b>{location.state.dueYear}</td>
+                  <td  className='tilte-td'><b>Received By</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.receivedBy}</td>
               </tr>
 
               <tr>
-                  <td  className='tilte-td'><b>Received By</b></td>
-                  <td  className='tilte-td'><b>: </b>{location.state.receivedBy}</td>
+              <td  className='tilte-td'><b>Bills Received</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.isBillsReceived.toString()}</td>
                   <td  className='tilte-td'><b>Received Date</b></td>
                   <td  className='tilte-td'><b>: </b>{ReceivedDate}</td>
+                  
               </tr>
               <tr>
-                  <td  className='tilte-td'><b>Bills Received</b></td>
-                  <td  className='tilte-td'><b>: </b>{location.state.isBillsReceived.toString()}</td>
+                
                   <td  className='tilte-td'><b>Filed </b></td>
                   <td  className='tilte-td'><b>: </b>{location.state.isFiled.toString()}</td>
+                  <td  className='tilte-td'><b>Filed By</b></td>
+                  <td  className='tilte-td'><b>: </b>{filed}</td>
               </tr>
               <tr>
-                  <td  className='tilte-td'><b>Filed By</b></td>
-                  <td  className='tilte-td'><b>: </b>{location.state.filedBy}</td>
+                 
                   <td  className='tilte-td'><b>Filed Date</b></td>
                   <td  className='tilte-td'><b>: </b>{FiledDate}</td>
               </tr>

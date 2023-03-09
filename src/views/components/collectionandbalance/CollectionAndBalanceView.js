@@ -31,16 +31,20 @@ const CollectionAndBalanceView = ({item}) => {
         <tr>
             <td  className='tilte-td'><b>Fees Amount</b></td>
             <td  className='tilte-td'><b>: </b>{item.feesAmount}</td>
-            <td  className='tilte-td'><b>Amount Paid</b></td>
-            <td  className='tilte-td'><b>: </b>{item.amountPaid}</td>
-        </tr>
-        <tr>
             <td  className='tilte-td'><b>Bills Received</b></td>
             <td  className='tilte-td'><b>: </b>{item.isGSTBillReceived.toString()}</td>
+        </tr>
+        <tr>
+        <td  className='tilte-td'><b>Amount Paid</b></td>
+            <td  className='tilte-td'>(-) {item.amountPaid}</td>
+           
             <td  className='tilte-td'><b>GST Filed </b></td>
             <td  className='tilte-td'><b>: </b>{item.isGSTFiled.toString()}</td>
         </tr>
-      
+       <tr>
+       <td ><b>Current Balance</b></td>
+            <td  >= {item.currentBalance}</td>
+       </tr>
        
     </tbody>
    

@@ -47,6 +47,7 @@ const MonthlypayCreate = () => {
               navigate('/clientMonthlyPay')
             }
             else{
+             
               toast.error(res?.data?.errorMessages.toString())
             }
           })
@@ -84,6 +85,7 @@ const MonthlypayCreate = () => {
     console.log("month and year called")
     console.log("clientid",e.target.value)
     GetlMonthAndYearByClient(e.target.value).then(res=>{
+     
       setMonth(res.data.result.listMonths);
       setYear(res.data.result.listYears)
     })

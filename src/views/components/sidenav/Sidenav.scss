@@ -29,7 +29,7 @@
 .childcontent{
    width: 95%;
    margin: 0;
-
+   align-items: center;
    padding: 0;
    height: max-content;
    background-color: #1186c9;
@@ -55,8 +55,10 @@
    color: black;
 }
 .icon{
- margin-top: 10px;
+ 
  font-size: 20px;
+ text-align: center !important;
+ justify-content: center;
 }
 .title{
  font-size: 17px;
