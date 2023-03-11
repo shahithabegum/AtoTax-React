@@ -15,7 +15,16 @@ const GstForm = () => {
   const ref = React.useRef();
 
   const [status,setStatus] =useState([])
- 
+  const [regular,setRegular] =useState([{
+    value:true,
+    label:"yes"
+  },
+  {
+    value:false,
+    label:"No"
+  },
+]
+   )
 
   useEffect(()=>{
     getStatus()
@@ -29,9 +38,9 @@ const GstForm = () => {
       gstUserName:'',
       gstUserPassword:'',
       gstRegDate:"",
-      gstSurrenderedDate:'',
-      gstRelievedDate:'',
-      gstAnnualTurnOver:0,
+      gstSurrenderedDate:null,
+      gstRelievedDate:null,
+      gstAnnualTurnOver:null,
       mobileNumber:'',
       phoneNumber:'',
       contactEmailId:'',
@@ -43,10 +52,11 @@ const GstForm = () => {
       ewayBillPassword:'',
       rackFileNo:'',
       tallyDataFilePath:'',
+      isRegular:true,
       statusId:'',
     },
     
-      //validationSchema: Gstlistschema,
+      validationSchema: Gstlistschema,
 
     onSubmit: values => {
       console.log(values)
@@ -61,17 +71,22 @@ const GstForm = () => {
                var isoDategstregdate = new Date(formik.values.gstRegDate).toISOString();
                console.log(isoDategstregdate);
                formik.values.gstRegDate=isoDategstregdate;
-               if(formik.values.gstSurrenderedDate != null){
+               if(formik.values.gstSurrenderedDate){
                 var isogstSurrenderedDate=new Date(formik.values.gstSurrenderedDate).toISOString();
                 formik.values.gstSurrenderedDate=isogstSurrenderedDate;
                }else{
                 console.log("gstSurrenderedDate if block",formik.values.gstSurrenderedDate)
+                formik.values.gstSurrenderedDate=null
                }
-               if(formik.values.gstRelievedDate != null){
+               if(formik.values.gstRelievedDate){
                 var isogstRelievedDate=new Date(formik.values.gstRelievedDate).toISOString();
                 formik.values.gstRelievedDate=isogstRelievedDate;
                }
-              
+               else{
+                console.log("gstSurrenderedDate if block",formik.values.gstRelievedDate)
+                formik.values.gstRelievedDate=null
+               }
+               formik.values.gstAnnualTurnOver=formik.values.gstAnnualTurnOver?formik.values.gstAnnualTurnOver:null
              
     try{
     CreateGSTClient(formik.values).then((res)=>{
@@ -99,7 +114,7 @@ const GstForm = () => {
         setStatus(res.data.result)
     })
   }
-  
+  console.log("regular",regular)
   return (
     <div className='containerform  p-2 col-11 col-sm-10 col-lg-12 '>
       <h2 className=' fromheading m-0 p-0'>Create New GST Client</h2>  
@@ -350,6 +365,25 @@ const GstForm = () => {
       </select>
       {formik.touched.Statusid && formik.errors.Statusid ? (
                  <p style={{color:"red"}}>{formik.errors.Statusid}</p>
+               ) : null}
+      </Col>
+      <Col m={6} sm={10} lg={6} ml-0 >
+      <label htmlFor="isRegular" className='ml-2'>
+       Regular<span style={{color:'red',fontSize:'20px'}}>*</span>
+      </label>
+      <select
+        name="isRegular"
+        
+        {...formik.getFieldProps("isRegular")}
+        className='col-10 ml-1 p-1 br-2 form-control'
+      >
+       <option value='' label="Select Regular" />
+       {regular.map(item=>(
+        <option value={item.value} label={item.label} />
+        ))}
+      </select>
+      {formik.touched.isRegular && formik.errors.isRegular ? (
+                 <p style={{color:"red"}}>{formik.errors.isRegular}</p>
                ) : null}
       </Col>
        </Row>

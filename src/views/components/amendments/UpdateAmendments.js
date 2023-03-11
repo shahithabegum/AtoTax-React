@@ -28,7 +28,7 @@ const UpdateAmendments = () => {
           amendTypeId:location.state.amendTypeId,
           arn:location.state.arn,
           approvalStatusTypeId:location.state.approvalStatusTypeId,
-          sumittedDate:location.state.sumittedDate,
+          // sumittedDate:location.state.sumittedDate,
           approvedDate:"",
            
         },
@@ -39,8 +39,8 @@ const UpdateAmendments = () => {
           },
         });
         const UpdateAmendment = () =>{
-          var isdob=new Date(formik.values.sumittedDate).toISOString();
-         formik.values.sumittedDate=isdob;
+        //   var isdob=new Date(formik.values.sumittedDate).toISOString();
+        //  formik.values.sumittedDate=isdob;
          var Approvedate =new Date(formik.values.approvedDate).toISOString();
          formik.values.approvedDate=Approvedate;
          const data = Object.assign(formik.values,{id:location.state.id})
@@ -182,7 +182,7 @@ const UpdateAmendments = () => {
                ) : null}
               </Col>
                 </Row>
-          <Row className='my-3 mx-1' >
+          {/* <Row className='my-3 mx-1' >
           <Col m={6} sm={12} lg={12} ml-0>
           <SmallInput  
           name="sumittedDate"
@@ -198,7 +198,7 @@ const UpdateAmendments = () => {
            <p style={{color:"red"}}>{formik.errors.sumittedDate}</p>
          ) : null}
           </Col>
-         </Row>
+         </Row> */}
          <Row className='my-3 mx-1' >
               <Col m={6} sm={12} lg={12} ml-0>
               <SmallInput  

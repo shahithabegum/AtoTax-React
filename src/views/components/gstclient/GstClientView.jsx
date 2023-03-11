@@ -6,9 +6,9 @@ const GstClientView = ({ item }) => {
   const regdate=item.gstRegDate
   var RegDate = new Date(regdate).toLocaleDateString();
   const RelievedDate=item.gstRelievedDate
-  var gstRelievedDate = new Date(RelievedDate).toLocaleDateString();
+  var gstRelievedDate =RelievedDate? new Date(RelievedDate).toLocaleDateString():"";
   const SurrenderedDate=item.gstSurrenderedDate
-  var gstSurrenderedDate = new Date(SurrenderedDate).toLocaleDateString();
+  var gstSurrenderedDate =SurrenderedDate? new Date(SurrenderedDate).toLocaleDateString():"";
 
   return (
     <div className="container">

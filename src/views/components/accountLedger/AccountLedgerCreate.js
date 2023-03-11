@@ -15,8 +15,8 @@ const AccountLedgerCreate = () => {
   },[])
     const formik = useFormik({
         initialValues: {
-          incomeAmount:0,
-          expenseAmount:0,
+          incomeAmount:null,
+          expenseAmount:null,
           paymentTypeId:'',
           transactionReferenceNo:'',
           comments:''
@@ -27,7 +27,10 @@ const AccountLedgerCreate = () => {
           },
         });
        const createAccountsLedger = () =>{
-       
+     
+          formik.values.incomeAmount=formik.values.incomeAmount?formik.values.incomeAmount:null
+          formik.values.expenseAmount=formik.values.expenseAmount?formik.values.expenseAmount:null
+        
         Create_AccountLedger(formik.values).then(res=>{
             if(res?.data?.isSuccess){
               navigate('/accountLedger')
@@ -60,7 +63,6 @@ const AccountLedgerCreate = () => {
               name="incomeAmount"
               id="incomeAmount"
               label="Income Amount :"
-              span="*"
               type="number"
               disabled={income}
              

@@ -24,7 +24,7 @@ const ChangePassword = () => {
        
         changepassword(formik.values).then(res=>{
             if(res?.data?.isSuccess){
-              toast.success("Created")
+             
               //navigate('/addressType')
             }
             else {

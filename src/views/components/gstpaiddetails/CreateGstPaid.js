@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import {GetPaymentsDD} from '../../../service/PaymentTypeService'
 import {GetMonth,GetYear} from '../../../service/MonthandYearService'
 import {GetGSTClientsDD} from '../../../service/GstClientService'
-import {GetServiceCategoryDD} from '../../../service/ServiceCategoryService'
+// import {GetServiceCategoryDD} from '../../../service/ServiceCategoryService'
 import {Create_PaidDetails} from '../../../service/GstPaidDetailService'
 import { Col, Row } from 'react-bootstrap';
 import { SmallInput } from '../../../shared/SamllInput';
@@ -12,14 +12,14 @@ import { toast } from 'react-toastify';
 import PaidDetailValidation from './PaidDetailValidation'
 const CreateGstPaid = () => {
   const [clientId,setClientId] =useState([])
-  const [serviceCatID,setserviceCatID] =useState([])
+  // const [serviceCatID,setserviceCatID] =useState([])
   const [paymentTypeId,setPaymentTypeId] =useState([])
   const [month,setMonth] =useState([])
   const [year,setYear] =useState([])
   let navigate = useNavigate()
   useEffect(()=>{
     getGstClientId();
-    getServiceCatID();
+    // getServiceCatID();
     getPaymentTypeID();
     getMonth();
     getYear();
@@ -27,7 +27,7 @@ const CreateGstPaid = () => {
     const formik = useFormik({
         initialValues: {
           gstClientID:'',
-          serviceCategoryId:'',
+          // serviceCategoryId:'',
           paymentTypeId:'',
           paymentDueMonth:'',
           paymentDueYear:'',
@@ -56,13 +56,13 @@ const CreateGstPaid = () => {
           setClientId(res.data.result)
         })
       }
-      const getServiceCatID =()=>{
-        GetServiceCategoryDD().then(res=>{
-          console.log(res)
+      // const getServiceCatID =()=>{
+      //   GetServiceCategoryDD().then(res=>{
+      //     console.log(res)
          
-          setserviceCatID(res.data.result)
-        })
-      }
+      //     setserviceCatID(res.data.result)
+      //   })
+      // }
       const getPaymentTypeID =()=>{
         GetPaymentsDD().then(res=>{
           console.log(res)
@@ -114,7 +114,7 @@ const CreateGstPaid = () => {
              ) : null}
             </Col>
               </Row>
-              <Row className='my-3 mx-1' >
+              {/* <Row className='my-3 mx-1' >
               <Col m={6} sm={12} lg={4} ml-0  className='p-1'>
               <label htmlFor="serviceCategoryId"className="form-label col-sm-10 col-lg-12 p-0 text-lg-right float-sm-left">
              Service Category :<span style={{color:'red',fontSize:'20px'}}>*</span>
@@ -137,7 +137,7 @@ const CreateGstPaid = () => {
                <p style={{color:"red",textAlign:"left"}}>{formik.errors.serviceCategoryId}</p>
              ) : null}
             </Col>
-              </Row>
+              </Row> */}
               <Row className='my-3 mx-1' >
               <Col m={6} sm={12} lg={4} ml-0  className='p-1'>
               <label htmlFor="paymentTypeId"className="form-label col-sm-10 col-lg-12 p-0 text-lg-right float-sm-left">

@@ -73,7 +73,10 @@ const AssignRole = () => {
           GetUserRoles(e.target.value).then(res=>{
             var Assign=res.data.result.listRoles
              console.log("select",Assign)
-            setVal(Assign)
+             let options=Assign.map((item)=>{
+              return { value:item.roleId , label:item.roleName}
+            })
+            setVal(options)
            
           })
          

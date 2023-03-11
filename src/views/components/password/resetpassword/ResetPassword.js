@@ -40,7 +40,7 @@ const ResetPassword = () => {
            
           console.log("value",formik.values.password)
         }
-        const isEnable=formik.values.newPassword>0 && formik.values.newPassword===formik.values.confirmPassword
+        const isEnable=formik.values.newPassword===formik.values.confirmPassword
         return (
             <div className='containerlogin'>
              <div className='sidewrapper  col-12 '>

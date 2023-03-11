@@ -23,7 +23,7 @@ const ForgotPassword = () => {
             if(data?.data?.isSuccess){
               console.log(data.data)
             } else {
-              toast.error(data?.data?.errorMessages)
+              toast.error(data?.data?.errorMessages.toString())
             }
            })
            

@@ -12,7 +12,7 @@ const Sidenav = () => {
        areadytake=true
        setActiveNum([...filterdata])
     }else{
-      setActiveNum([...activeNum,position])
+      setActiveNum([position])
       // setOpen(!open)
     //  timeout =  setTimeout(()=>{setActiveNum([position])},5000)
     }

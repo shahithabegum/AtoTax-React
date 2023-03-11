@@ -40,7 +40,6 @@ const Register = () => {
                formik.values.doj=doj;
             register(formik.values).then(res=>{
               if(res?.data?.isSuccess){
-               // toast.success("Register Success")
                 console.log(res.data)
                setShow(true);
               
