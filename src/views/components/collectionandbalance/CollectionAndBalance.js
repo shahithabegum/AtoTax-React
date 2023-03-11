@@ -14,6 +14,7 @@ const CollectionAndBalance = () => {
     {title: "Proprietor Name", field:"gstClient.proprietorName"},
     {title: "Due Month", field:"dueMonth"},
     {title: "Due Year", field:"dueYear"},
+    {title: "Return Type", field:"frequency.gstReturnFreqType"},
     {title: "Bills Received", field:"isGSTBillReceived",render : rowData=>{
       return(
         rowData.isGSTBillReceived === true ? <div><i class="fa fa-check" aria-hidden="true" style={{fontSize:"20px",textAlign:"center",color:'green'

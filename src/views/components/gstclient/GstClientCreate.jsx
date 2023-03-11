@@ -52,14 +52,14 @@ const GstForm = () => {
       ewayBillPassword:'',
       rackFileNo:'',
       tallyDataFilePath:'',
-      isRegular:true,
+      isRegular:'',
       statusId:'',
     },
     
       validationSchema: Gstlistschema,
 
     onSubmit: values => {
-      console.log(values)
+      console.log("Creategstclient",values)
      
       
     },
@@ -87,7 +87,7 @@ const GstForm = () => {
                 formik.values.gstRelievedDate=null
                }
                formik.values.gstAnnualTurnOver=formik.values.gstAnnualTurnOver?formik.values.gstAnnualTurnOver:null
-             
+              formik.values.isRegular=formik.values.isRegular==="true"? true:false;
     try{
     CreateGSTClient(formik.values).then((res)=>{
       if(res?.data?.isSuccess){

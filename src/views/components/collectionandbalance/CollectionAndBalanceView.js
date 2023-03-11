@@ -15,12 +15,11 @@ const CollectionAndBalanceView = ({item}) => {
             <td  className='tilte-td'><b>: </b>{item.gstClient.gstin}</td>
         </tr>
         <tr>
-            <td  className='tilte-td'><b>Service Name</b></td>
-            <td  className='tilte-td'><b>: </b>{item.serviceCategory.serviceName}</td>
+            <td className='tilte-td'><b>Return Type</b></td>
+            <td  className='tilte-td'><b>: </b>{item.frequency.gstReturnFreqType}</td>
             <td  className='tilte-td'><b>Description</b></td>
-            <td  className='tilte-td'><b>: </b>{item.serviceCategory.description}</td>
+            <td  className='tilte-td'><b>: </b>{item.frequency.description}</td>
         </tr>
-      
         <tr>
             <td  className='tilte-td'><b>Due Month</b></td>
             <td  className='tilte-td'><b>: </b>{item.dueMonth}</td>
@@ -42,8 +41,10 @@ const CollectionAndBalanceView = ({item}) => {
             <td  className='tilte-td'><b>: </b>{item.isGSTFiled.toString()}</td>
         </tr>
        <tr>
-       <td className='text-danger'><b>Current Balance</b></td>
-            <td  className='text-danger'>= {item.currentBalance}</td>
+       <td className='text-danger tilte-td'><b>Current Balance</b></td>
+            <td  className='text-danger tilte-td'>= {item.currentBalance}</td>
+            <td className='tilte-td'><b>Regular</b></td>
+            <td  className='tilte-td'><b>: </b>{item.gstClient.isRegular.toString()}</td>
        </tr>
        
     </tbody>
