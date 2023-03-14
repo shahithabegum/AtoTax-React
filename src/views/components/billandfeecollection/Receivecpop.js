@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Col, Row } from 'react-bootstrap';
-import {Create_BillAndFee} from '../../../service/BIllAndFeeCollectionService'
+import {Update_ProcessInvoices} from '../../../service/CollectionAndBalanceService'
 import {useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify';
 import "./Receivedpop.scss";
@@ -13,17 +13,18 @@ const Receivecpop = ({ item,clientId,frequency}) => {
   
   
   const Confirm = () =>{
-        Create_BillAndFee(item).then(res=>{
-            if(res?.data?.isSuccess){
-              navigate('/billandfeecollection')
-            }
-            else{
-              toast.error(res?.data?.errorMessages.toString())
-            }
-          })
+   
+    Update_ProcessInvoices(item).then(res=>{
+      if(res?.data?.isSuccess){
+     
+       console.log("res",res.data.result)
+      }
+      else {
+        toast.error(res?.data?.errorMessages.toString())
+      }
+    })
     }
-    const val=frequency.filter(f=>f.id.toString()===item.returnFrequencyTypeId)
-    console.log("fillingval", val);
+    
   return (
     <div className="container">
       <div className="Billpopupwarapper">
@@ -41,30 +42,27 @@ const Receivecpop = ({ item,clientId,frequency}) => {
                       
                     <td className='tilte-td'><b>GST Client : </b> {name.gstClientAndGSTIN}</td>))}
                   
+                      
+                  {frequency.filter(f=>f.id.toString()===item.returnFrequencyTypeId).map(name=>(
+                      
+                      <td className='tilte-td'><b>Frequency Type : </b> {name.returnFreqType}</td>))}
                   </tr>
                   <tr>
-                    {frequency.filter(f=>f.id.toString()===item.returnFrequencyTypeId).map(name=>(
-                      
-                    <td className='tilte-td'><b>Frequency Type : </b> {name.returnFreqType}</td>))}
-                  
-                   </tr> 
-                 {/* <tr>
-                    {media.filter(media=>media.id.toString()===item.multimediaTypeId).map(name=>(
-                      
-                    <td className='tilte-td'><b>MUltiMedia : </b> {name.mediaAndDesc}</td>))}
-                  
-                  </tr> */} 
+                  <td  className='tilte-td'><b>Purchase Invoice : </b>{item.purchaseInvoice}</td>
+                  <td  className='tilte-td'><b>Purchase Nil : </b>{item.purchaseNil}</td>
+                  </tr>
+                 
                   <tr>
-                  <td  className='tilte-td'><b>Due Month : </b>{item.dueMonth}</td>
+                  <td  className='tilte-td'><b>Sales Invoice : </b>{item.salesInvoice}</td>
+                  <td  className='tilte-td'><b>Sales Bills Nil : </b>{item.salesBillsNil}</td>
                   </tr>
                   <tr>
+                      <td  className='tilte-td'><b>GST Tax Amount : </b>{item.gstTaxAmount}</td>
+                      <td  className='tilte-td'><b>Due Month : </b>{item.dueMonth}</td>
+                  </tr> 
+                  <tr>
+                  <td  className='tilte-td'><b>Amount Paid : </b>{item.amountPaid}</td>
                   </tr>
-                  {/* <tr>
-                    {filling.filter(f=>f.id.toString()===item.gstFilingTypeId).map(name=>(
-                      
-                    <td className='tilte-td'><b>Filling type : </b> {name.filingType}</td>))}
-                  
-                  </tr> */}
                 </tbody>
               </table>
               <Row className='my-1 mx-1 justify-content-center '>

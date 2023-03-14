@@ -1,28 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useFormik } from "formik";
-import { GetReturnFrequencyDD } from "../../../service/ReturnFrequencyService";
-import { GetMonth } from "../../../service/MonthandYearService";
 import { GetGSTClientsDD } from "../../../service/GstClientService";
 import { Col, Row } from "react-bootstrap";
 import { Model } from "../../../shared/Model";
 import { Input } from "../../../shared/Input";
-import {Update_ProcessInvoices} from '../../../service/CollectionAndBalanceService'
-import { toast } from "react-toastify";
+import {GetS1Process} from '../../../service/CollectionAndBalanceService'
 import Receivecpop from "./Receivecpop";
 import BillAndFeeCollectionValidation from "./BillAndFeeCollectionValidation";
 const CreateBillAndFeeCollection = () => {
   const [clientId, setClientId] = useState([]);
-  const [FrequencyType, setFrequencyType] = useState([]);
   const [month, setMonth] = useState([]);
+  const [FrequencyType, setFrequencyType] = useState([]);
   const [show, setShow] = useState(false);
   const location = useLocation();
   let navigate = useNavigate();
   useEffect(() => {
     getGstClientId();
-
-    GetFrequencyTypeDD();
-    getMonth();
+    getGstClientdata(); 
   }, []);
   const formik = useFormik({
     initialValues: {
@@ -38,44 +33,24 @@ const CreateBillAndFeeCollection = () => {
     },
     validationSchema: BillAndFeeCollectionValidation,
     onSubmit: (values) => {
-      console.log("updatedata", values);
+      setShow(true)
     },
   });
-  const updateinvoiceReceived = () => {
-    const data = Object.assign(formik.values,{id:location.state.gstClientId})
-    Update_ProcessInvoices(data,location.state.gstClientId).then(res=>{
-      if(res?.data?.isSuccess){
-     
-       console.log("res",res.data.result)
-      }
-      else {
-        toast.error(res?.data?.errorMessages.toString())
-      }
-    })
-    setShow(true)
-  };
   const getGstClientId = () => {
     GetGSTClientsDD().then((res) => {
-      console.log(res);
-
       setClientId(res.data.result);
     });
   };
-
-  const GetFrequencyTypeDD = () => {
-    GetReturnFrequencyDD().then((res) => {
-      console.log(res);
-
-      setFrequencyType(res.data.result);
+  const getGstClientdata = () => {
+    GetS1Process(location.state.gstClientId).then((res) => {
+    
+      setMonth(res.data.result.dueMonths);
+      setFrequencyType(res.data.result.listReturnFreqTypes
+        )
     });
   };
-  const getMonth = () => {
-    GetMonth().then((res) => {
-      console.log(res);
-
-      setMonth(res.data.result);
-    });
-  };
+ 
+ 
   const handleCancle = () => {
     navigate("/billandfeecollection");
   };
@@ -91,12 +66,12 @@ const CreateBillAndFeeCollection = () => {
           <Col m={6} sm={12} lg={6} ml-0>
             <label htmlFor="gstClientID" className="ml-0">
               GST Client
-              <span style={{ color: "red", fontSize: "20px" }}>*</span>
             </label>
             <select
               name="gstClientID"
               type="number"
               span="*"
+              disabled="true"
               {...formik.getFieldProps("gstClientID")}
               className="ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control"
             >
@@ -151,7 +126,9 @@ const CreateBillAndFeeCollection = () => {
             >
               <option value="" label="Select Payment Due Month" />
               {month.map((item, index) => (
-                <option key={index} value={item.month} label={item.month} />
+                <option key={index} value={item
+                } label={item
+                } />
               ))}
             </select>
 
@@ -171,6 +148,7 @@ const CreateBillAndFeeCollection = () => {
                   type="checkbox"
                   value={true}
                   id="purchaseInvoice"
+                  disabled={formik.values.purchaseNil}
                   {...formik.getFieldProps("purchaseInvoice")}
                 />
                 <label class="form-check-label" for="purchaseInvoice">
@@ -183,6 +161,7 @@ const CreateBillAndFeeCollection = () => {
                   type="checkbox"
                   value={true}
                   id="purchaseNil"
+                  disabled={formik.values.purchaseInvoice}
                   {...formik.getFieldProps("purchaseNil")}
                 />
                 <label class="form-check-label" for="purchaseNil">
@@ -190,6 +169,9 @@ const CreateBillAndFeeCollection = () => {
                 </label>
               </div>
             </div>
+            {formik.touched.purchaseInvoice && formik.errors.purchaseInvoice ? (
+              <p style={{ color: "red" }}>{formik.errors.purchaseInvoice}</p>
+            ) : null}
           </Col>
         </Row>
         <Row className="my-3 mx-1">
@@ -219,8 +201,12 @@ const CreateBillAndFeeCollection = () => {
                   type="checkbox"
                   value={true}
                   id="salesInvoice"
+                  disabled={formik.values.salesBillsNil}
                   {...formik.getFieldProps("salesInvoice")}
                 />
+                 {formik.touched.salesInvoice && formik.errors.salesInvoice ? (
+              <p style={{ color: "red" }}>{formik.errors.salesInvoice}</p>
+            ) : null}
                 <label class="form-check-label" for="salesInvoice">
                   Sales Invoice
                 </label>
@@ -231,6 +217,7 @@ const CreateBillAndFeeCollection = () => {
                   type="checkbox"
                   value={true}
                   id="salesBillsNil"
+                  disabled={formik.values.salesInvoice}
                   {...formik.getFieldProps("salesBillsNil")}
                 />
                 <label class="form-check-label" for="salesBillsNil">
@@ -238,6 +225,7 @@ const CreateBillAndFeeCollection = () => {
                 </label>
               </div>
             </div>
+           
           </Col>
         </Row>
         <Row className="my-3 mx-1">
@@ -261,7 +249,7 @@ const CreateBillAndFeeCollection = () => {
             <button
               type="submit"
               className="btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-3 float-right"
-              onClick={() => updateinvoiceReceived()}
+              onClick={() => {setShow(true)}}
             >
               Submit
             </button>
