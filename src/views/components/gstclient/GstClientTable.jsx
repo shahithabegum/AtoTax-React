@@ -15,11 +15,12 @@ const GstClientTable = (props) => {
   const columns = [
     
     {title: "Proprietor Name", field:"proprietorName"},
-    {title: "GST Tin No", field:"gstin"},
-    {title: "GST User Name", field:"gstUserName"},
+    {title: "GSTin No", field:"gstin"},
+    {title: "User Name", field:"gstUserName"},
     {title: "GST Email", field:"gstEmailId"},
     {title: "Phone Number", field:"phoneNumber"},
     {title: "Rack File No", field:"rackFileNo"},
+    {title: "Relation Manager", field:"clientRelationMgr"},
     {title: "Status", field:"status.statusType", cellStyle:(e,rowData)=>{
       rowData.status.statusType === "ACTIVE"? <p style={{color:"green"}}> </p>:
       <p style={{color:"red"}}>{rowData.status.statusType} </p>

@@ -83,6 +83,7 @@ import AccountLedgerCreate from '../views/components/accountLedger/AccountLedger
 import AccountLedgerView from '../views/components/accountLedger/AccountLedgerView'
 import CollectionAndBalance from '../views/components/collectionandbalance/CollectionAndBalance';
 import CollectionAndBalanceView from '../views/components/collectionandbalance/CollectionAndBalanceView';
+import { BillandFeeTest } from '../views/components/billandfeecollection/BillandFeeTest';
 export const pathroutes=[
     {
         path: "/login",
@@ -207,11 +208,11 @@ export const pathroutes=[
         },
         // -------------CollectionAndBalance-----------
         {
-            path: "/CollectionAndBalance",
+            path: "/ProcessTrackingAndFeeBalances",
             DynComponent: CollectionAndBalance
         },
         {
-            path: "/CollectionAndBalanceView",
+            path: "/ProcessTrackingAndFeeBalancesView",
             DynComponent: CollectionAndBalanceView
         },
          // -------------Media  TYPE-----------
@@ -371,6 +372,10 @@ export const pathroutes=[
         {
             path: "/ViewBillAndFeeCollection",
             DynComponent: ViewBillAndFeeCollection
+        },
+        {
+            path: "/BillandFee",
+            DynComponent: BillandFeeTest
         },
           // ------------Service Charge Update History-----------
           {

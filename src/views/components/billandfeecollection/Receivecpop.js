@@ -5,13 +5,12 @@ import {useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify';
 import "./Receivedpop.scss";
 
-const Receivecpop = ({ item,clientId,Service,filling,media }) => {
+const Receivecpop = ({ item,clientId,frequency}) => {
   let navigate = useNavigate()
   console.log("item", item);
   console.log("client", clientId);
-  console.log("Service", Service);
-  console.log("filling", filling);
-  console.log("media", media);
+  console.log("frequency", frequency);
+  
   
   const Confirm = () =>{
         Create_BillAndFee(item).then(res=>{
@@ -23,7 +22,7 @@ const Receivecpop = ({ item,clientId,Service,filling,media }) => {
             }
           })
     }
-    const val=filling.filter(f=>f.id.toString()===item.gstFilingTypeId)
+    const val=frequency.filter(f=>f.id.toString()===item.returnFrequencyTypeId)
     console.log("fillingval", val);
   return (
     <div className="container">
@@ -44,29 +43,28 @@ const Receivecpop = ({ item,clientId,Service,filling,media }) => {
                   
                   </tr>
                   <tr>
-                    {Service.filter(service=>service.id.toString()===item.serviceCategoryId).map(name=>(
+                    {frequency.filter(f=>f.id.toString()===item.returnFrequencyTypeId).map(name=>(
                       
-                    <td className='tilte-td'><b>Service Type : </b> {name.serviceNameAndDesc}</td>))}
+                    <td className='tilte-td'><b>Frequency Type : </b> {name.returnFreqType}</td>))}
                   
-                  </tr>
-                  <tr>
+                   </tr> 
+                 {/* <tr>
                     {media.filter(media=>media.id.toString()===item.multimediaTypeId).map(name=>(
                       
                     <td className='tilte-td'><b>MUltiMedia : </b> {name.mediaAndDesc}</td>))}
                   
-                  </tr>
+                  </tr> */} 
                   <tr>
                   <td  className='tilte-td'><b>Due Month : </b>{item.dueMonth}</td>
                   </tr>
                   <tr>
-                  <td  className='tilte-td'><b>Due Year : </b>{item.dueYear}</td>
                   </tr>
-                  <tr>
+                  {/* <tr>
                     {filling.filter(f=>f.id.toString()===item.gstFilingTypeId).map(name=>(
                       
                     <td className='tilte-td'><b>Filling type : </b> {name.filingType}</td>))}
                   
-                  </tr>
+                  </tr> */}
                 </tbody>
               </table>
               <Row className='my-1 mx-1 justify-content-center '>

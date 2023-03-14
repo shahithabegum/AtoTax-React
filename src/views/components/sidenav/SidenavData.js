@@ -3,7 +3,7 @@ import { FaUserFriends,FaRupeeSign,FaHome,FaBook,FaUserShield,FaHistory,FaUser,F
 import { MdEditNote ,MdOutlinePayments,MdOutlinePermMedia,MdLocationOn,MdMiscellaneousServices,MdDashboard,MdNaturePeople} from "react-icons/md";
 import { GiStabbedNote,GiFiles,GiReceiveMoney,GiTakeMyMoney,GiMoneyStack,GiNotebook,GiSettingsKnobs } from "react-icons/gi";
 import { IoIosPeople } from "react-icons/io";
-
+import { TbZoomMoney } from "react-icons/tb";
 import { HiUsers } from "react-icons/hi2";
 export const SidenavData=[
     {
@@ -56,9 +56,9 @@ export const SidenavData=[
         icon:<GiNotebook />
     },
     {
-        path:"/CollectionAndBalance",
-        title:"Collection And Balance",
-        icon:<GiMoneyStack/>
+        path:"/ProcessTrackingAndFeeBalances",
+        title:"Tracking And Fee Balance",
+        icon:<TbZoomMoney/>
     }, 
     {
         title: "Amendments",

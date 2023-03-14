@@ -3,7 +3,7 @@ import MaterialTable from 'material-table'
 import {Link} from 'react-router-dom'
 import CollectionAndBalanceView from './CollectionAndBalanceView'
 import { BsEye } from "react-icons/bs";
-import {GetAllCollectionAndBalance} from '../../../service/CollectionAndBalanceService'
+import {GetAllProcessTrackingAndFeeBalances} from '../../../service/CollectionAndBalanceService'
 import {FormModel} from '../../../shared/FormModel'
 
 const CollectionAndBalance = () => {
@@ -38,21 +38,21 @@ const CollectionAndBalance = () => {
     }, [])
     //getting client details
     const GetDetails = ()=>{
-      GetAllCollectionAndBalance().then(res=>setAddress(res.data.result));
+      GetAllProcessTrackingAndFeeBalances().then(res=>setAddress(res.data.result));
     }
     console.log("rowdata",value)
     console.log("show",show)
   return (
     <div className='Table-div'>
       <div className='headcontainer'>
-        <h2 className="Tableheading ml-1">Collection And Balances</h2>
+        <h2 className="Tableheading ml-1">Process Tracking And Fee Balances</h2>
        
 
       </div>
 
   <div style={{ maxWidth: '100%' }} className='container mt-2 my-2'>
         <MaterialTable
-           title="Collection And Balance"
+           title="Process Tracking And Fee Balances"
            data={address}
            columns={columns}
            actions={[
@@ -73,7 +73,7 @@ const CollectionAndBalance = () => {
       <FormModel 
      show={show}
      onHide={()=>{setShow(false)}}
-     title={<h2 className=" view ml-2">Collection And Balance</h2>}
+     title={<h2 className=" view ml-2">Process Tracking And Fee Balance</h2>}
      >
      <CollectionAndBalanceView onHide={()=>{setShow(false)}}  item={value}/>
      </FormModel>

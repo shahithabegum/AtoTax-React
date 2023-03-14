@@ -5,18 +5,35 @@ import { Col, Row } from 'react-bootstrap';
 import { Input } from '../../../shared/Input';
 import {useLocation} from 'react-router-dom';
 import { UpdateGSTClient} from './../../../service/GstClientService'
+import{GetUser} from '../../../service/UserService'
 import{GetStatus} from '../../../service/StatusService'
 import { toast } from 'react-toastify';
 const GstEditing = () => {
   const [status,setStatus] =useState([])
+  const [relationMg,setRelationMg] =useState([])
+  const [regular,setRegular] =useState([{
+    value:true,
+    label:"Monthly"
+  },
+  {
+    value:false,
+    label:"Quarterly"
+  },
+]
+   )
+
   const location = useLocation();
   //Navigation
   let navigate = useNavigate();
   console.log(location.state)
   //getting Id
   useEffect(()=>{
-    getStatus()
+    getStatus();
+    getUsers()
   },[])
+  const regdate=location.state.gstRegDate
+  var RegDate = new Date(regdate);
+  console.log("RegDate",RegDate)
   const formik = useFormik({
     //Fetching values 
     initialValues: {
@@ -25,7 +42,7 @@ const GstEditing = () => {
       contactName:location.state.contactName,
       gstUserName:location.state.gstUserName,
       gstUserPassword:location.state.gstEmailPassword,
-      gstRegDate: location.state.gstRegDate,
+      gstRegDate: RegDate,
       gstSurrenderedDate:location.state.gstSurrenderedDate,
       gstRelievedDate:location.state.gstRelievedDate,
       gstAnnualTurnOver:location.state.gstAnnualTurnOver,
@@ -41,7 +58,8 @@ const GstEditing = () => {
       rackFileNo:location.state.rackFileNo,
       tallyDataFilePath:location.state.tallyDataFilePath,
       statusId:location.state.statusId,
-
+      clientRelationMgrId:location.state.clientRelationMgrId,
+      isRegular:location.state.isRegular
     },
 //handleSubmitting
     onSubmit:values=>{
@@ -50,13 +68,27 @@ const GstEditing = () => {
   });
   //Update   GstClient
     const handleUpdate  = ()=>{
+      console.log("gstRelievedDate",formik.values.gstRelievedDate)
       var isoDategstregdate = new Date(formik.values.gstRegDate).toISOString();
       console.log(isoDategstregdate);
       formik.values.gstRegDate=isoDategstregdate;
-      var isogstSurrenderedDate=new Date(formik.values.gstSurrenderedDate).toISOString();
-      formik.values.gstSurrenderedDate=isogstSurrenderedDate;
-      var isogstRelievedDate=new Date(formik.values.gstRelievedDate).toISOString();
-      formik.values.gstRelievedDate=isogstRelievedDate;
+      if(formik.values.gstSurrenderedDate){
+       var isogstSurrenderedDate=new Date(formik.values.gstSurrenderedDate).toISOString();
+       formik.values.gstSurrenderedDate=isogstSurrenderedDate;
+      }else{
+       console.log("gstSurrenderedDate if block",formik.values.gstSurrenderedDate)
+       formik.values.gstSurrenderedDate=null
+      }
+      if(formik.values.gstRelievedDate){
+       var isogstRelievedDate=new Date(formik.values.gstRelievedDate).toISOString();
+       formik.values.gstRelievedDate=isogstRelievedDate;
+      }
+      else{
+       console.log("gstSurrenderedDate if block",formik.values.gstRelievedDate)
+       formik.values.gstRelievedDate=null
+      }
+      formik.values.gstAnnualTurnOver=formik.values.gstAnnualTurnOver?formik.values.gstAnnualTurnOver:null
+     formik.values.isRegular=formik.values.isRegular==="true"? true:false;
         const data = Object.assign(formik.values,{id:location.state.id})
       try{
         UpdateGSTClient(data,location.state.id).then(res=>{
@@ -78,6 +110,12 @@ const GstEditing = () => {
         console.log(res)
         if(res.status)
           setStatus(res.data.result)
+      })
+    }
+    const getUsers =()=>{
+      GetUser().then(res=>{
+        console.log(res)
+        setRelationMg(res.data.result)
       })
     }
     const handleCancle = (e) => {
@@ -330,6 +368,44 @@ const GstEditing = () => {
       </select>
       {formik.touched.Statusid && formik.errors.Statusid ? (
                  <p style={{color:"red"}}>{formik.errors.Statusid}</p>
+               ) : null}
+      </Col>
+      <Col m={6} sm={10} lg={6} ml-0 >
+      <label htmlFor="isRegular" className='ml-2'>
+       Regular<span style={{color:'red',fontSize:'20px'}}>*</span>
+      </label>
+      <select
+        name="isRegular"
+        
+        {...formik.getFieldProps("isRegular")}
+        className='col-10 ml-1 p-1 br-2 form-control'
+      >
+       <option value='' label="Select Regular" />
+       {regular.map(item=>(
+        <option value={item.value} label={item.label} />
+        ))}
+      </select>
+      {formik.touched.isRegular && formik.errors.isRegular ? (
+                 <p style={{color:"red"}}>{formik.errors.isRegular}</p>
+               ) : null}
+      </Col>
+      <Col m={6} sm={10} lg={6} ml-0 >
+      <label htmlFor="clientRelationMgrId" className='ml-2 mt-2'>
+       Relation Manager<span style={{color:'red',fontSize:'20px'}}>*</span>
+      </label>
+      <select
+        name="clientRelationMgrId"
+        
+        {...formik.getFieldProps("clientRelationMgrId")}
+        className='col-10 ml-1 p-1 br-2 form-control'
+      >
+       <option value='' label="Select Relation Manager" />
+       {relationMg.map(item=>(
+        <option value={item.id} label={item.userName} />
+        ))}
+      </select>
+      {formik.touched.clientRelationMgrId && formik.errors.clientRelationMgrId ? (
+                 <p style={{color:"red"}}>{formik.errors.clientRelationMgrId}</p>
                ) : null}
       </Col>
        </Row>

@@ -7,7 +7,17 @@ export const Gstlistschema=Yup.object().shape({
          gstin: Yup.string()
          .max(250, 'Must be 250 characters or less')
          .required('Required'),
+         rackFileNo: Yup.string()
+         .max(250, 'Must be 250 characters or less')
+         .required('Required'),
+         tallyDataFilePath: Yup.string()
+         .max(250, 'Must be 250 characters or less')
+         .required('Required'),
          statusId: Yup.number()
+        .required('Required'),
+        isRegular: Yup.boolean()
+        .required('Required'),
+        clientRelationMgrId: Yup.string()
         .required('Required'),
         gstRegDate: Yup.date()
         .required('Required'),

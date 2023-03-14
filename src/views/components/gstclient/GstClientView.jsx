@@ -9,7 +9,7 @@ const GstClientView = ({ item }) => {
   var gstRelievedDate =RelievedDate? new Date(RelievedDate).toLocaleDateString():"";
   const SurrenderedDate=item.gstSurrenderedDate
   var gstSurrenderedDate =SurrenderedDate? new Date(SurrenderedDate).toLocaleDateString():"";
-
+  var isRegular=item.isRegular ? "Monthly" : "Quarterly";
   return (
     <div className="container">
       <div className="displaylist mt-2 ml-0 m-auto p-3">
@@ -126,11 +126,20 @@ const GstClientView = ({ item }) => {
            
             <tr>
               <td className='tilte-td'>
+                <b>Return Type</b>
+              </td>
+              <td className='tilte-td'><b>: </b>{isRegular}</td>
+              <td className='tilte-td'>
+                <b>Relation Manager</b>
+              </td>
+              <td className='tilte-td'><b>: </b>{item.clientRelationMgr}</td>
+            </tr>
+            <tr>
+              <td className='tilte-td'>
                 <b>Status Type</b>
               </td>
               <td className='tilte-td'><b>: </b>{item.status.statusType}</td>
             </tr>
-            
           </tbody>
         </table>
       </div>

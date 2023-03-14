@@ -6,6 +6,7 @@ import { Col, Row } from 'react-bootstrap';
 import { Input } from '../../../shared/Input';
 import {CreateGSTClient} from '../../../service/GstClientService'
 import{GetStatus} from '../../../service/StatusService'
+import{GetUser} from '../../../service/UserService'
 
 import './Gststyle.scss'
 import { toast } from 'react-toastify';
@@ -15,19 +16,21 @@ const GstForm = () => {
   const ref = React.useRef();
 
   const [status,setStatus] =useState([])
+  const [relationMg,setRelationMg] =useState([])
   const [regular,setRegular] =useState([{
     value:true,
-    label:"yes"
+    label:"Monthly"
   },
   {
     value:false,
-    label:"No"
+    label:"Quarterly"
   },
 ]
    )
 
   useEffect(()=>{
-    getStatus()
+    getStatus();
+    getUsers();
   },[])
 
   const formik = useFormik({
@@ -53,7 +56,8 @@ const GstForm = () => {
       rackFileNo:'',
       tallyDataFilePath:'',
       isRegular:'',
-      statusId:'',
+      statusId:1,
+      clientRelationMgrId:''
     },
     
       validationSchema: Gstlistschema,
@@ -114,7 +118,13 @@ const GstForm = () => {
         setStatus(res.data.result)
     })
   }
-  console.log("regular",regular)
+  const getUsers =()=>{
+    GetUser().then(res=>{
+      console.log(res)
+      setRelationMg(res.data.result)
+    })
+  }
+  console.log("regular",relationMg)
   return (
     <div className='containerform  p-2 col-11 col-sm-10 col-lg-12 '>
       <h2 className=' fromheading m-0 p-0'>Create New GST Client</h2>  
@@ -334,6 +344,7 @@ const GstForm = () => {
       name="rackFileNo"
       id="rackFileNo"
       label="Rack File No"
+      span="*"
       placeholder="Enter Rack File Number"
       {...formik.getFieldProps("rackFileNo")}
       />
@@ -343,17 +354,17 @@ const GstForm = () => {
       name="tallyDataFilePath"
       id="tallyDataFilePath"
       label="Tally Data FilePath"
+      span="*"
       placeholder="Enter Tally Data FilePath"
       {...formik.getFieldProps("tallyDataFilePath")}
       />
       </Col>
-      
       <Col m={6} sm={10} lg={6} ml-0 >
-      <label htmlFor="Statusid" className='ml-2'>
+      <label htmlFor="statusId" className='ml-2'>
        Status<span style={{color:'red',fontSize:'20px'}}>*</span>
       </label>
       <select
-        name="Statusid"
+        name="statusId"
         type="number"
         {...formik.getFieldProps("statusId")}
         className='col-10 ml-1 p-1 br-2 form-control'
@@ -363,8 +374,8 @@ const GstForm = () => {
         <option value={item.id} label={item.statusType} />
         ))}
       </select>
-      {formik.touched.Statusid && formik.errors.Statusid ? (
-                 <p style={{color:"red"}}>{formik.errors.Statusid}</p>
+      {formik.touched.statusId && formik.errors.statusId ? (
+                 <p style={{color:"red"}}>{formik.errors.statusId}</p>
                ) : null}
       </Col>
       <Col m={6} sm={10} lg={6} ml-0 >
@@ -384,6 +395,25 @@ const GstForm = () => {
       </select>
       {formik.touched.isRegular && formik.errors.isRegular ? (
                  <p style={{color:"red"}}>{formik.errors.isRegular}</p>
+               ) : null}
+      </Col>
+      <Col m={6} sm={10} lg={6} ml-0 >
+      <label htmlFor="clientRelationMgrId" className='ml-2 mt-2'>
+       Relation Manager<span style={{color:'red',fontSize:'20px'}}>*</span>
+      </label>
+      <select
+        name="clientRelationMgrId"
+        
+        {...formik.getFieldProps("clientRelationMgrId")}
+        className='col-10 ml-1 p-1 br-2 form-control'
+      >
+       <option value='' label="Select Relation Manager" />
+       {relationMg.map(item=>(
+        <option value={item.id} label={item.userName} />
+        ))}
+      </select>
+      {formik.touched.clientRelationMgrId && formik.errors.clientRelationMgrId ? (
+                 <p style={{color:"red"}}>{formik.errors.clientRelationMgrId}</p>
                ) : null}
       </Col>
        </Row>

@@ -64,7 +64,7 @@ const BillAndFeeCollection = (props) => {
             <div className='Table-div'>
               <div className='headcontainer'>
                 <h2 className="Tableheading ml-1">GST Bills Processing</h2>
-                <Link to="/CreateBillAndFeeCollection"> <button className='btn btn-success ml-0  mt-2 m-0' >Add</button></Link>
+                <Link to="/BillandFee"> <button className='btn btn-success ml-0  mt-2 m-0' >Add</button></Link>
                 {/* <button className='btn btn-success ml-1  mt-2 ml-3' onClick={()=>setShowAdd(true)} >Add</button> */}
               </div>
         

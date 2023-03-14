@@ -1,24 +1,31 @@
 import axios from "axios"
 import { API_BASE_URL } from "../config/index";
-const GetAllCollectionAndBalance = ()=>{
-    return axios.get(API_BASE_URL+'/api/CollectionAndBalances/GetCollectionAndBalances')
+const GetAllProcessTrackingAndFeeBalances = ()=>{
+    return axios.get(API_BASE_URL+'/api/ProcessTrackingAndFeeBalances/GetProcessTrackingAndFeeBalances')
 }
-const GetlCollectionAndBalanceById = (id)=>{
-    return axios.get(API_BASE_URL+`/api/CollectionAndBalances/GetCollectionAndBalance/${id}`)
+const GetlProcessTrackingAndFeeBalancesById = (id)=>{
+    return axios.get(API_BASE_URL+`/api/ProcessTrackingAndFeeBalances/GetProcessTrackingAndFeeBalance/${id}`)
+}
+const GetProcessPopupDataById = (id)=>{
+    return axios.get(API_BASE_URL+`/api/ProcessTrackingAndFeeBalances/GetProcessPopupDataForGSTClient/${id}`)
 }
 const GetlMonthAndYearByClient = (id)=>{
-    return axios.get(API_BASE_URL+`/api/CollectionAndBalances/GetMonthAndYearDataforGSTClient/${id}`)
+    return axios.get(API_BASE_URL+`/api/ProcessTrackingAndFeeBalancess/GetMonthAndYearDataforGSTClient/${id}`)
 }
 const GetPendingPayments = ()=>{
-    return axios.get(API_BASE_URL+'/api/CollectionAndBalances/GetPendingPaymentList')
+    return axios.get(API_BASE_URL+'/api/ProcessTrackingAndFeeBalances/GetPendingPaymentList')
 }
 const GetPendingPaymentsByClient = ()=>{
-    return axios.get(API_BASE_URL+'/api/CollectionAndBalances/GetPendingPaymentListByClient')
+    return axios.get(API_BASE_URL+'/api/ProcessTrackingAndFeeBalances/GetPendingPaymentListByClient')
 }
 const GetFiledStatus = ()=>{
-    return axios.get(API_BASE_URL+'/api/CollectionAndBalances/GetGSTFiledStatusList?bBillsReceived=false&bGSTFiled=false')
+    return axios.get(API_BASE_URL+'/api/ProcessTrackingAndFeeBalances/GetGSTFiledStatusList')
 }
 const GetBillsNotReceivedList = ()=>{
-    return axios.get(API_BASE_URL+'/api/CollectionAndBalances/GetGSTBillsNotReceivedList')
+    return axios.get(API_BASE_URL+'/api/ProcessTrackingAndFeeBalances/GetGSTBillsNotReceivedList')
 }
-export{GetAllCollectionAndBalance,GetlCollectionAndBalanceById,GetPendingPayments,GetPendingPaymentsByClient,GetFiledStatus,GetBillsNotReceivedList,GetlMonthAndYearByClient}
+const Update_ProcessInvoices= (data,id)=>{
+    return axios.put(API_BASE_URL+`/api/ProcessTrackingAndFeeBalances/UpdateProcessInvoicesReceived/${id}`,data)
+}
+export{GetAllProcessTrackingAndFeeBalances,GetlProcessTrackingAndFeeBalancesById,GetPendingPayments,GetPendingPaymentsByClient,GetFiledStatus,
+    GetBillsNotReceivedList,GetlMonthAndYearByClient,GetProcessPopupDataById,Update_ProcessInvoices}
