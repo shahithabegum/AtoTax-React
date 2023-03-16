@@ -35,17 +35,19 @@ export const BillandFeeTest = () => {
     }
     const getMonthAndYear = (e) => {
       console.log("tager",e.target.value)
-      
-      GetProcessPopupDataById(e.target.value).then(res=>{
-        if(res?.data?.isSuccess){
-          setClient(res.data.result)
-          setShow(true)
-          }else{
-              setShow(false)
-          }
+      if(e.target.value===''){
+        setShow(false)
+      }
+      else{
+        GetProcessPopupDataById(e.target.value).then(res=>{
+          if(res?.data?.isSuccess){
+            setClient(res.data.result)
+            setShow(true)
+            }
+         })
         
-       })
-      
+      }
+     
         
     };
     const handleCancle =()=>{

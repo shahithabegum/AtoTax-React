@@ -13,11 +13,13 @@ const Receivecpop = ({ item,clientId,frequency}) => {
   
   
   const Confirm = () =>{
-   
+    item.dueMonth=item.dueMonth ? item.dueMonth : null;
+    console.log("m",item.dueMonth)
     Update_ProcessInvoices(item).then(res=>{
       if(res?.data?.isSuccess){
      
        console.log("res",res.data.result)
+       navigate("/ViewBillAndFeeCollection",{ state: res.data.result})
       }
       else {
         toast.error(res?.data?.errorMessages.toString())
@@ -48,19 +50,21 @@ const Receivecpop = ({ item,clientId,frequency}) => {
                       <td className='tilte-td'><b>Frequency Type : </b> {name.returnFreqType}</td>))}
                   </tr>
                   <tr>
-                  <td  className='tilte-td'><b>Purchase Invoice : </b>{item.purchaseInvoice}</td>
-                  <td  className='tilte-td'><b>Purchase Nil : </b>{item.purchaseNil}</td>
+                  <td  className='tilte-td'><b>Purchase Invoice : </b>{item.purchaseInvoice.toString()}</td>
+                  <td  className='tilte-td'><b>Purchase Nil : </b>{item.purchaseNil.toString()}</td>
                   </tr>
                  
                   <tr>
-                  <td  className='tilte-td'><b>Sales Invoice : </b>{item.salesInvoice}</td>
-                  <td  className='tilte-td'><b>Sales Bills Nil : </b>{item.salesBillsNil}</td>
+                  <td  className='tilte-td'><b>Sales Invoice : </b>{item.salesInvoice.toString()}</td>
+                  <td  className='tilte-td'><b>Sales Bills Nil : </b>{item.salesBillsNil.toString()}</td>
                   </tr>
                   <tr>
-                      <td  className='tilte-td'><b>GST Tax Amount : </b>{item.gstTaxAmount}</td>
+                     
                       <td  className='tilte-td'><b>Due Month : </b>{item.dueMonth}</td>
+                      <td  className='tilte-td'><b>Due Year : </b>{item.dueYear}</td>
                   </tr> 
                   <tr>
+                  <td  className='tilte-td'><b>GST Tax Amount : </b>{item.gstTaxAmount}</td>
                   <td  className='tilte-td'><b>Amount Paid : </b>{item.amountPaid}</td>
                   </tr>
                 </tbody>

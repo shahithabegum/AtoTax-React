@@ -5,40 +5,40 @@ import { Col, Row } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 const ViewBillAndFeeCollection = () => {
     const location =useLocation();
-    const [data, setData] = useState({
-        id:location.state.id,
-        gstClientID:location.state.gstClientID,
-        dueMonth:location.state.dueMonth,
-        dueYear:location.state.dueYear,
-    })
+    // const [data, setData] = useState({
+    //     id:location.state.id,
+    //     gstClientID:location.state.gstClientID,
+    //     dueMonth:location.state.dueMonth,
+    //     dueYear:location.state.dueYear,
+    // })
     let navigate = useNavigate()
- 
-     console.log("viewaddress",data)
-    const receivedDate=location.state.receivedDate
-   var ReceivedDate = new Date(receivedDate).toLocaleDateString();
-   const filedDate=location.state.filedDate
-   var FiledDate = new Date(filedDate).toLocaleDateString();
+ //
+  //   console.log("viewaddress",data)
+//     const receivedDate=location.state.receivedDate
+//    var ReceivedDate = new Date(receivedDate).toLocaleDateString();
+//    const filedDate=location.state.filedDate
+//    var FiledDate = new Date(filedDate).toLocaleDateString();
    const UpdateBillAndFee = () =>{
-    Update_BillAndFee(data,location.state.id).then(res=>{
-        if(res?.data?.isSuccess){
-          navigate('/billandfeecollection')
-        }
-        else{
-          toast.error(res?.data?.errorMessages.toString())
-        }
-      })
+    // Update_BillAndFee(data,location.state.id).then(res=>{
+    //     if(res?.data?.isSuccess){
+    //       navigate('/billandfeecollection')
+    //     }
+    //     else{
+    //       toast.error(res?.data?.errorMessages.toString())
+    //     }
+    //   })
       
    }
    const handleCancle =()=>{
     navigate('/billandfeecollection')
   }
-  var isFiled=location.state.isFiled
-  var filed=location.state.filedBy;
-  if(filed===null){
-    filed="To Be Filed";
-    console.log("file",filed)
-  }
-  console.log("file",filed)
+//   var isFiled=location.state.isFiled
+//   var filed=location.state.filedBy;
+//   if(filed===null){
+//     filed="To Be Filed";
+//     console.log("file",filed)
+//   }
+  console.log("file",location.state)
   return (
   
       <div className='container mt-5' >
@@ -51,7 +51,7 @@ const ViewBillAndFeeCollection = () => {
       </div>
   <table class="table table-responsive m-auto mt-3">
           <tbody className='view-table-body'>
-              <tr>
+              {/* <tr>
                   <td className='tilte-td'><b>Proprietor Name</b></td>
                   <td  className='tilte-td'><b>: </b>{location.state.gstClient.proprietorName}</td>
                   <td className='tilte-td'><b>GST TIN</b></td>
@@ -96,14 +96,14 @@ const ViewBillAndFeeCollection = () => {
                   <td  className='tilte-td'><b>Filed Date</b></td>
                   <td  className='tilte-td'><b>: </b>{FiledDate}</td>
               </tr>
-             
+              */}
           </tbody>
          
           </table>
         
           <Row className='my-1 mx-1'>
               <Col m={6} sm={12} ml-0 lg={6}>
-              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 ' disabled={isFiled} onClick={()=>UpdateBillAndFee()}>File GST</button>
+              <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 '  onClick={()=>UpdateBillAndFee()}>File GST</button>
               <button type="submit" className='btn  btn-outline-danger col-sm-10 col-lg-4 my-1 ml-3'  onClick={()=>handleCancle()}>Cancel</button>
               </Col>
              

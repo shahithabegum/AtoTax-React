@@ -40,10 +40,10 @@ axios.interceptors.response.use(
             message=res.data.successMessage
             toast.success(message)
          }
-         // else  if(res?.data?.statusCode===204){
-         //    message=res.data.successMessage
-         //    toast.error(message)
-         // }
+         else  if(res?.data?.statusCode===204){
+            message=res.data.successMessage
+            toast.error(message)
+         }
       }
       
      console.log("successmessage",message)
