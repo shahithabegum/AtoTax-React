@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GetServiceCategoryDD } from "../../../service/ServiceCategoryService";
+ import { GetReturnFrequencyDD } from "../../../service/ReturnFrequencyService";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useFormik } from "formik";
 import { Col, Row } from "react-bootstrap";
@@ -20,9 +20,9 @@ const UpdateFeeCharge = () => {
   const formik = useFormik({
     initialValues: {
       gstClientId: location.state.gstClientId,
-      serviceCategoryId: location.state.serviceCategoryId,
+      returnFrequencyTypeId: location.state.returnFrequencyTypeId,
       defaultCharge: location.state.defaultCharge,
-      previousCharge: location.state.serviceCategory.previousCharge,
+      previousCharge: location.state.returnFrequencyType.previousCharge,
     },
     validationSchema: ClientFeeValidation,
     onSubmit: (values) => {
@@ -41,7 +41,7 @@ const UpdateFeeCharge = () => {
     });
   };
   const getDefultCharge = () => {
-    GetServiceCategoryDD().then((res) => {
+    GetReturnFrequencyDD().then((res) => {
       console.log(res);
       if (res.status) setStatus(res.data.result);
     });
@@ -88,7 +88,7 @@ const UpdateFeeCharge = () => {
                 border: " 1px solid lightgray",
               }}
               name="gstClientId"
-              type="number"
+              disabled="true"
               {...formik.getFieldProps("gstClientId")}
             >
               {gstClient.map((item) => (
@@ -130,10 +130,10 @@ const UpdateFeeCharge = () => {
         <Row className="my-3 mx-1">
           <Col m={6} sm={12} lg={4} ml-0 className="p-1">
             <label
-              htmlFor="serviceCategoryId"
+              htmlFor="returnFrequencyTypeId"
               className="form-label col-sm-10 col-lg-12 p-0 text-lg-right float-sm-left"
             >
-              Service Category :
+              Return Type :
               <span style={{ color: "red", fontSize: "20px" }}>*</span>
             </label>
           </Col>
@@ -147,19 +147,20 @@ const UpdateFeeCharge = () => {
                 borderRadius: "5px",
                 border: " 1px solid lightgray",
               }}
-              name="serviceCategoryId"
+              name="returnFrequencyTypeId"
               type="number"
-              {...formik.getFieldProps("serviceCategoryId")}
+              disabled="true"
+              {...formik.getFieldProps("returnFrequencyTypeId")}
             >
-              <option value=" " label="Select Service" />
+              <option value=" " label="Select Return Type" />
               {status.map((item) => (
-                <option value={item.id} label={item.serviceNameAndDesc} />
+                <option value={item.id} label={item.returnFreqType} />
               ))}
             </select>
-            {formik.touched.serviceCategoryId &&
-            formik.errors.serviceCategoryId ? (
+            {formik.touched.returnFrequencyTypeId &&
+            formik.errors.returnFrequencyTypeId ? (
               <p style={{ color: "red", textAlign: "left" }}>
-                {formik.errors.serviceCategoryId}
+                {formik.errors.returnFrequencyTypeId}
               </p>
             ) : null}
           </Col>

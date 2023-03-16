@@ -5,39 +5,39 @@ import { Col, Row } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 const ViewBillAndFeeCollection = () => {
     const location =useLocation();
-    // const [data, setData] = useState({
-    //     id:location.state.id,
-    //     gstClientID:location.state.gstClientID,
-    //     dueMonth:location.state.dueMonth,
-    //     dueYear:location.state.dueYear,
-    // })
+    const [data, setData] = useState({
+        id:location.state.id,
+        gstClientID:location.state.gstClientID,
+        dueMonth:location.state.dueMonth,
+        dueYear:location.state.dueYear,
+    })
     let navigate = useNavigate()
- //
-  //   console.log("viewaddress",data)
-//     const receivedDate=location.state.receivedDate
-//    var ReceivedDate = new Date(receivedDate).toLocaleDateString();
-//    const filedDate=location.state.filedDate
-//    var FiledDate = new Date(filedDate).toLocaleDateString();
+ 
+    console.log("viewaddress",data)
+    const receivedDate=location.state.receivedDate
+   var ReceivedDate = new Date(receivedDate).toLocaleDateString();
+   const filedDate=location.state.salesFiledDate
+   var FiledDate = new Date(filedDate).toLocaleDateString();
    const UpdateBillAndFee = () =>{
-    // Update_BillAndFee(data,location.state.id).then(res=>{
-    //     if(res?.data?.isSuccess){
-    //       navigate('/billandfeecollection')
-    //     }
-    //     else{
-    //       toast.error(res?.data?.errorMessages.toString())
-    //     }
-    //   })
+    Update_BillAndFee(data,location.state.id).then(res=>{
+        if(res?.data?.isSuccess){
+          navigate('/billandfeecollection')
+        }
+        else{
+          toast.error(res?.data?.errorMessages.toString())
+        }
+      })
       
    }
    const handleCancle =()=>{
     navigate('/billandfeecollection')
   }
-//   var isFiled=location.state.isFiled
-//   var filed=location.state.filedBy;
-//   if(filed===null){
-//     filed="To Be Filed";
-//     console.log("file",filed)
-//   }
+  var isFiled=location.state.isFiled
+  var filed=location.state.filedBy;
+  if(filed===null){
+    filed="To Be Filed";
+    console.log("file",filed)
+  }
   console.log("file",location.state)
   return (
   
@@ -51,52 +51,83 @@ const ViewBillAndFeeCollection = () => {
       </div>
   <table class="table table-responsive m-auto mt-3">
           <tbody className='view-table-body'>
-              {/* <tr>
+              <tr>
                   <td className='tilte-td'><b>Proprietor Name</b></td>
                   <td  className='tilte-td'><b>: </b>{location.state.gstClient.proprietorName}</td>
-                  <td className='tilte-td'><b>GST TIN</b></td>
+                  <td className='tilte-td'><b>Sales Invoice</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.salesInvoice.toString()}</td>
+                  <td className='tilte-td'><b>Purchase Invoice</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.purchaseInvoice.toString()}</td>
+              </tr>
+              <tr>
+              <td className='tilte-td'><b>GST TIN</b></td>
                   <td  className='tilte-td'><b>: </b>{location.state.gstClient.gstin}</td>
-              </tr>
-              <tr>
-                  <td  className='tilte-td'><b>Service Name</b></td>
-                  <td  className='tilte-td'><b>: </b>{location.state.serviceCategory.serviceName}</td>
-                  <td  className='tilte-td'><b>Multimedia</b></td>
-                  <td  className='tilte-td'><b>: </b>{location.state.multimediaType.media}</td>
-              </tr>
-              <tr>
-                  <td  className='tilte-td'><b>Filing Type</b></td>
-                  <td  className='tilte-td'><b>: </b>{location.state.gstFilingType.filingType}</td>
-                  <td  className='tilte-td'><b>Due Month</b></td>
+                  <td className='tilte-td'><b>Sales Bills Nil</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.salesBillsNil.toString()}</td>
+                  <td className='tilte-td'><b>Purchase Nil</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.purchaseNil.toString()}</td>
+             </tr>
+             <tr>
+             <td  className='tilte-td'><b>Rack File No</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.rackFileNo}</td> 
+                  <td className='tilte-td'><b>Sales Filed</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.salesFiled}</td>
+                  <td className='tilte-td'><b>GSTR3B Filed</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.gstR3BFiled}</td>
+             </tr>
+             <tr>
+             <td  className='tilte-td'><b>Frequency Type</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.returnFrequencyType}</td>
+                  <td className='tilte-td'><b>Sales Not Filed</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.salesNotFiled}</td>
+                  <td className='tilte-td'><b>GSTR3B Not Filed</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.gstR3BNilNotFiled}</td>
+             </tr>
+             <tr>
+             <td  className='tilte-td'><b>Due Month</b></td>
                   <td  className='tilte-td'><b>: </b>{location.state.dueMonth}</td>
-              </tr>
-          
-              <tr>
-                  <td  className='tilte-td'><b>Due Year</b></td>
+                  <td className='tilte-td'><b>Sales Nil Filed</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.salesNilFiled}</td>
+                  <td className='tilte-td'><b>GSTR3B Nil Filed</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.gstR3BNILFiled}</td>
+             </tr>
+             <tr>
+             <td  className='tilte-td'><b>Due Year</b></td>
                   <td  className='tilte-td'><b>: </b>{location.state.dueYear}</td>
-                  <td  className='tilte-td'><b>Received By</b></td>
-                  <td  className='tilte-td'><b>: </b>{location.state.receivedBy}</td>
-              </tr>
+                  <td className='tilte-td'><b>Sales Nil Not Filed</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.salesNilNotFiled}</td>
+                  <td className='tilte-td'><b>GSTR3B Nil Not Filed</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.gstR3BNilNotFiled}</td>
+             </tr>
+             <tr>
+             <td  className='tilte-td'><b>gst Tax Amount</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.gstTaxAmount}</td>
+                  <td className='tilte-td'><b>GSTR1 Filed By</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.gstR1FiledByUser}</td>
+                  <td className='tilte-td'><b>GSTR3B Filed By</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.gstR3BFiledByUser}</td>
+             </tr>
+             <tr>
+             <td  className='tilte-td'><b>Fees Amount</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.feesAmount}</td>
+                  <td className='tilte-td'><b>Sales Filed Date</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.salesFiledDate}</td>
+                  <td className='tilte-td'><b>GSTR3B Filed Date</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.gstR3BFiledDate}</td>
+             </tr>
+             <tr>
+             <td  className='tilte-td'><b>Amount Paid</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.amountPaid}</td>
+                  <td  className='tilte-td'><b>Received By User</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.receivedByUser}</td>
 
-              <tr>
-              <td  className='tilte-td'><b>Bills Received</b></td>
-                  <td  className='tilte-td'><b>: </b>{location.state.isBillsReceived.toString()}</td>
+             </tr>
+             <tr>
+             <td  className='tilte-td'><b>Current Balance</b></td>
+                  <td  className='tilte-td'><b>: </b>{location.state.currentBalance}</td>
                   <td  className='tilte-td'><b>Received Date</b></td>
                   <td  className='tilte-td'><b>: </b>{ReceivedDate}</td>
-                  
-              </tr>
-              <tr>
-                
-                  <td  className='tilte-td'><b>Filed </b></td>
-                  <td  className='tilte-td'><b>: </b>{location.state.isFiled.toString()}</td>
-                  <td  className='tilte-td'><b>Filed By</b></td>
-                  <td  className='tilte-td'><b>: </b>{filed}</td>
-              </tr>
-              <tr>
-                 
-                  <td  className='tilte-td'><b>Filed Date</b></td>
-                  <td  className='tilte-td'><b>: </b>{FiledDate}</td>
-              </tr>
-              */}
+             </tr>
           </tbody>
          
           </table>

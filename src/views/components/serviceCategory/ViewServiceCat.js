@@ -15,11 +15,10 @@ const ViewServiceCat = ({item}) => {
     <div className='displaylist mt-2 ml-0 m-auto p-5'>
 <table class="view-table table table-responsive ml-0 w-full m-auto ">
     <tbody className='view-table-body '>
-            <tr>
-                <td className='tilte-td'><b>Service Name</b></td>
-                <td className='tilte-td'><b>: </b>{item.serviceName}</td>
+    <tr>
+                <td className='tilte-td'><b>Return Type</b></td>
+                <td className='tilte-td'><b>: </b>{item.returnFreqType}</td>
             </tr>
-            
             <tr>
                 <td className='tilte-td'><b>Description</b></td>
                 <td className='tilte-td'><b>: </b>{item.description}</td>
@@ -33,13 +32,15 @@ const ViewServiceCat = ({item}) => {
                 <td className='tilte-td'><b>: </b>{item.previousCharge}</td>
             </tr>
             <tr>
-                <td className='tilte-td'><b>Service Name</b></td>
-                <td className='tilte-td'><b>: </b>{item.serviceName}</td>
-            </tr>
-            <tr>
                 <td className='tilte-td'><b>Status Type</b></td>
                 <td className='tilte-td'><b>: </b>{item.status.statusType}</td>
             </tr>
+            <tr>
+                <td className='tilte-td'><b>Created Date</b></td>
+                <td className='tilte-td'><b>: </b>{CreatedlocalDate}</td>
+            </tr>
+            
+         
             <tr>
                 <td className='tilte-td'><b>Last Modified Date</b></td>
                 <td className='tilte-td'><b>: </b>{item.lastModifiedDate}</td>

@@ -5,7 +5,11 @@ import { GetGSTClientsDD } from "../../../service/GstClientService";
 import { Col, Row } from "react-bootstrap";
 import { Model } from "../../../shared/Model";
 import { Input } from "../../../shared/Input";
-import {GetS1Process,GetYearByClient,GetmonthByClient} from '../../../service/CollectionAndBalanceService'
+import {
+  GetS1Process,
+  GetYearByClient,
+  GetmonthByClient,
+} from "../../../service/CollectionAndBalanceService";
 import Receivecpop from "./Receivecpop";
 import BillAndFeeCollectionValidation from "./BillAndFeeCollectionValidation";
 const CreateBillAndFeeCollection = () => {
@@ -21,26 +25,27 @@ const CreateBillAndFeeCollection = () => {
   let navigate = useNavigate();
   useEffect(() => {
     getGstClientId();
-    getGstClientdata(); 
+    getGstClientdata();
   }, []);
   const formik = useFormik({
     initialValues: {
       gstClientID: location.state.gstClientId,
       dueMonth: "",
-      dueYear:'',
+      dueYear: "",
       returnFrequencyTypeId: "",
       salesInvoice: false,
       salesBillsNil: false,
       purchaseInvoice: false,
       purchaseNil: false,
       gstTaxAmount: "",
-      amountPaid: "",
+      amountPaid: '',
     },
     validationSchema: BillAndFeeCollectionValidation,
     onSubmit: (values) => {
-      setShow(true)
+      setShow(true);
     },
   });
+
   const getGstClientId = () => {
     GetGSTClientsDD().then((res) => {
       setClientId(res.data.result);
@@ -48,64 +53,81 @@ const CreateBillAndFeeCollection = () => {
   };
   const getGstClientdata = () => {
     GetS1Process(location.state.gstClientId).then((res) => {
-    
-      // 
-      setFrequencyType(res.data.result.listReturnFreqTypes)
+      //
+      setFrequencyType(res.data.result.listReturnFreqTypes);
     });
   };
- const getYear=(e)=>{
-  console.log("year")
-  if(e.target.value===''){
-    setYShow(false)
-    setOShow(false)
-    setMShow(false)
-  }else{
-   
-    GetYearByClient(location.state.gstClientId,e.target.value).then(res=>{
-      if(res?.data?.isSuccess ){
-        setYear(res.data.result.years)
-        setYShow(true)
-        setOShow(false)
-        setMShow(false)
+  const getYear = (e) => {
+    console.log("year");
+    if (e.target.value === "") {
+      setYShow(false);
+      setOShow(false);
+      setMShow(false);
+    } else {
+      GetYearByClient(location.state.gstClientId, e.target.value).then(
+        (res) => {
+          if (res?.data?.isSuccess) {
+            setYear(res.data.result.yearsAndAmount);
+            setYShow(true);
+            setOShow(false);
+            setMShow(false);
+          }
         }
-    })
-  }
-  
- formik.values.dueYear=''
- formik.values.dueMonth=''
- formik.values.salesInvoice=false
- formik.values.dueMonth=false
- formik.values.purchaseInvoice=false
- formik.values.dueMopurchaseNilnth=false
- 
- }
- const getMonth=(e)=>{
-  if(e.target.value==='' ){
-    setOShow(false)
-    setMShow(false)
-  }else{
-    setOShow(true)
-    GetmonthByClient(location.state.gstClientId,formik.values.returnFrequencyTypeId,e.target.value).then(res=>{
-      if(res?.data?.isSuccess && res.data.result.returnFrequencyTypeId<4){
-        setMonth(res.data.result.dueMonths);
-        setMShow(true)
+      );
+    }
+
+    formik.values.dueYear = "";
+    formik.values.dueMonth = "";
+    formik.values.salesInvoice = false;
+    formik.values.dueMonth = false;
+    formik.values.purchaseInvoice = false;
+    formik.values.dueMopurchaseNilnth = false;
+  };
+  const getMonth = (e) => {
+    if (e.target.value === "") {
+      setOShow(false);
+      setMShow(false);
+    } else {
+      setOShow(true);
+
+      GetmonthByClient(
+        location.state.gstClientId,
+        formik.values.returnFrequencyTypeId,
+        e.target.value
+      ).then((res) => {
+        if (res?.data?.isSuccess && res.data.result.returnFrequencyTypeId < 4) {
+          setMonth(res.data.result.dueMonths);
+          setMShow(true);
         }
-    })
-  }
-  console.log("Month")
+      });
+    }
+    console.log("Month");
+    var dic2 = Object.entries(year).filter(([k, v]) => {
+      if (k === e.target.value) {
+        return v;
+      }
+    });
+    var dic3 = dic2[0];
+    var val = dic3[1];
+    var val2 = val;
+    console.log("key2", dic2);
+    console.log("key3", val);
+    formik.values.amountPaid=val2
+    formik.values.dueMonth = "";
+    formik.values.salesInvoice = false;
+    formik.values.dueMonth = false;
+    formik.values.purchaseInvoice = false;
+    formik.values.dueMopurchaseNilnth = false;
+  };
+
+  console.log("freqtype", FrequencyType);
+  console.log("years", year);
+
  
-  formik.values.dueMonth=''
-  formik.values.salesInvoice=false
-  formik.values.dueMonth=false
-  formik.values.purchaseInvoice=false
-  formik.values.dueMopurchaseNilnth=false
-  
- }
- console.log("freqtype",FrequencyType)
- console.log("years",yshow)
- console.log("Month",mshow)
- console.log("others",Oshow)
- console.log("value",formik.values.dueYear)
+  console.log("key3", typeof val);
+  console.log("Month", mshow);
+  console.log("others", Oshow);
+  console.log("value", formik.values.dueYear);
   const handleCancle = () => {
     navigate("/billandfeecollection");
   };
@@ -151,7 +173,10 @@ const CreateBillAndFeeCollection = () => {
               type="number"
               span="*"
               {...formik.getFieldProps("returnFrequencyTypeId")}
-              onChange={(e)=>{formik.handleChange(e);getYear(e)}}
+              onChange={(e) => {
+                formik.handleChange(e);
+                getYear(e);
+              }}
               className="ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control"
             >
               <option value="" label="Select Frequency Type" />
@@ -168,196 +193,205 @@ const CreateBillAndFeeCollection = () => {
             ) : null}
           </Col>
         </Row>
-        {yshow ? 
-        <Row className="my-3 mx-1">
-       
-        <Col m={6} sm={12} lg={6} ml-0>
-            <label htmlFor="dueYear" className="ml-0">
-              Year <span style={{ color: "red", fontSize: "20px" }}>*</span>
-            </label>
-            <select
-              name="dueYear"
-              type="number"
-              span="*"
-              {...formik.getFieldProps("dueYear")}
-              onChange={(e)=>{formik.handleChange(e);getMonth(e)}}
-              className="ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control"
-            >
-              <option value="" label="Select Payment Due year" />
-              {year.map((item, index) => (
-                <option key={index} value={item
-                } label={item
-                } />
-              ))}
-            </select>
+        {yshow ? (
+          <Row className="my-3 mx-1">
+            <Col m={6} sm={12} lg={6} ml-0>
+              <label htmlFor="dueYear" className="ml-0">
+                Year <span style={{ color: "red", fontSize: "20px" }}>*</span>
+              </label>
+              <select
+                name="dueYear"
+                type="number"
+                span="*"
+                {...formik.getFieldProps("dueYear")}
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  getMonth(e);
+                }}
+                className="ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control"
+              >
+                <option value="" label="Select Payment Due year" />
+                {Object.entries(year).map(([key, value]) => (
+                  <option value={key} label={key} />
+                ))}
+              </select>
 
-            {formik.touched.dueYear && formik.errors.dueYear ? (
-              <p style={{ color: "red" }}>{formik.errors.dueYear}</p>
-            ) : null}
-          </Col>
-          {mshow ? 
-          <Col m={6} sm={12} lg={6} ml-0>
-            <label htmlFor="dueMonth" className="ml-0">
-              Month <span style={{ color: "red", fontSize: "20px" }}>*</span>
-            </label>
-            <select
-              name="dueMonth"
-              type="number"
-              span="*"
-              {...formik.getFieldProps("dueMonth")}
-              className="ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control"
-            >
-              <option value="" label="Select Payment Due Month" />
-              {month.map((item, index) => (
-                <option key={index} value={item
-                } label={item
-                } />
-              ))}
-            </select>
+              {formik.touched.dueYear && formik.errors.dueYear ? (
+                <p style={{ color: "red" }}>{formik.errors.dueYear}</p>
+              ) : null}
+            </Col>
+            {mshow ? (
+              <Col m={6} sm={12} lg={6} ml-0>
+                <label htmlFor="dueMonth" className="ml-0">
+                  Month{" "}
+                  <span style={{ color: "red", fontSize: "20px" }}>*</span>
+                </label>
+                <select
+                  name="dueMonth"
+                  type="number"
+                  span="*"
+                  {...formik.getFieldProps("dueMonth")}
+                  className="ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control"
+                >
+                  <option value="" label="Select Payment Due Month" />
+                  {Object.entries(month).map((item, index) => (
+                    <option key={index} value={item} label={item} />
+                  ))}
+                </select>
 
-            {formik.touched.dueMonth && formik.errors.dueMonth ? (
-              <p style={{ color: "red" }}>{formik.errors.dueMonth}</p>
-            ) : null}
-          </Col>
-          : ""
-        }
-        </Row> 
-        : ""
-      }
-        {Oshow ? 
-        <Row className="my-3 mx-1">
-        <Col m={6} sm={12} lg={6} ml-0>
-            <label htmlFor="purchaseInvoice" className="ml-0">
-            Purchase
-              <span style={{ color: "red", fontSize: "20px" }}>*</span>
-            </label>
-            <div className="d-flex">
-              <div class="form-check">
-                <input
-                  class="form-check-input large"
-                  type="checkbox"
-                  value={true}
-                  id="purchaseInvoice"
-                  disabled={formik.values.purchaseNil}
-                  {...formik.getFieldProps("purchaseInvoice")}
-                />
-                <label class="form-check-label ml-2 mt-1" for="purchaseInvoice">
-                Purchase Invoice
-                </label>
+                {formik.touched.dueMonth && formik.errors.dueMonth ? (
+                  <p style={{ color: "red" }}>{formik.errors.dueMonth}</p>
+                ) : null}
+              </Col>
+            ) : (
+              ""
+            )}
+          </Row>
+        ) : (
+          ""
+        )}
+        {Oshow ? (
+          <Row className="my-3 mx-1">
+            <Col m={6} sm={12} lg={6} ml-0>
+              <label htmlFor="purchaseInvoice" className="ml-0">
+                Purchase
+                <span style={{ color: "red", fontSize: "20px" }}>*</span>
+              </label>
+              <div className="d-flex">
+                <div class="form-check">
+                  <input
+                    class="form-check-input large"
+                    type="checkbox"
+                    value={true}
+                    id="purchaseInvoice"
+                    disabled={formik.values.purchaseNil}
+                    {...formik.getFieldProps("purchaseInvoice")}
+                  />
+                  <label
+                    class="form-check-label ml-2 mt-1"
+                    for="purchaseInvoice"
+                  >
+                    Purchase Invoice
+                  </label>
+                </div>
+                <div class="form-check ml-4">
+                  <input
+                    class="form-check-input large"
+                    type="checkbox"
+                    value={true}
+                    id="purchaseNil"
+                    disabled={formik.values.purchaseInvoice}
+                    {...formik.getFieldProps("purchaseNil")}
+                  />
+                  <label class="form-check-label ml-2 mt-1" for="purchaseNil">
+                    Purchase Nil
+                  </label>
+                </div>
               </div>
-              <div class="form-check ml-4">
-                <input
-                  class="form-check-input large"
-                  type="checkbox"
-                  value={true}
-                  id="purchaseNil"
-                  disabled={formik.values.purchaseInvoice}
-                  {...formik.getFieldProps("purchaseNil")}
-                />
-                <label class="form-check-label ml-2 mt-1" for="purchaseNil">
-                Purchase Nil
-                </label>
+              {formik.touched.purchaseInvoice &&
+              formik.errors.purchaseInvoice ? (
+                <p style={{ color: "red" }}>{formik.errors.purchaseInvoice}</p>
+              ) : null}
+            </Col>
+            <Col m={6} sm={12} lg={6} ml-0>
+              <label htmlFor="salesInvoice" className="ml-0">
+                Sales
+                <span style={{ color: "red", fontSize: "20px" }}>*</span>
+              </label>
+              <div className="d-flex">
+                <div class="form-check">
+                  <input
+                    class="form-check-input large"
+                    type="checkbox"
+                    value={true}
+                    id="salesInvoice"
+                    disabled={formik.values.salesBillsNil}
+                    {...formik.getFieldProps("salesInvoice")}
+                  />
+                  {formik.touched.salesInvoice && formik.errors.salesInvoice ? (
+                    <p style={{ color: "red" }}>{formik.errors.salesInvoice}</p>
+                  ) : null}
+                  <label class="form-check-label ml-2 mt-1" for="salesInvoice">
+                    Sales Invoice
+                  </label>
+                </div>
+                <div class="form-check ml-4">
+                  <input
+                    class="form-check-input large"
+                    type="checkbox"
+                    value={true}
+                    id="salesBillsNil"
+                    disabled={formik.values.salesInvoice}
+                    {...formik.getFieldProps("salesBillsNil")}
+                  />
+                  <label class="form-check-label ml-2 mt-1" for="salesBillsNil">
+                    Sales Bills Nil
+                  </label>
+                </div>
               </div>
-            </div>
-            {formik.touched.purchaseInvoice && formik.errors.purchaseInvoice ? (
-              <p style={{ color: "red" }}>{formik.errors.purchaseInvoice}</p>
-            ) : null}
-          </Col>
-          <Col m={6} sm={12} lg={6} ml-0>
-            <label htmlFor="salesInvoice" className="ml-0">
-              Sales
-              <span style={{ color: "red", fontSize: "20px" }}>*</span>
-            </label>
-            <div className="d-flex">
-              <div class="form-check">
-                <input
-                  class="form-check-input large"
-                  type="checkbox"
-                  value={true}
-                  id="salesInvoice"
-                  disabled={formik.values.salesBillsNil}
-                  {...formik.getFieldProps("salesInvoice")}
-                />
-                 {formik.touched.salesInvoice && formik.errors.salesInvoice ? (
-              <p style={{ color: "red" }}>{formik.errors.salesInvoice}</p>
-            ) : null}
-                <label class="form-check-label ml-2 mt-1" for="salesInvoice">
-                  Sales Invoice
-                </label>
-              </div>
-              <div class="form-check ml-4">
-                <input
-                  class="form-check-input large"
-                  type="checkbox"
-                  value={true}
-                  id="salesBillsNil"
-                  disabled={formik.values.salesInvoice}
-                  {...formik.getFieldProps("salesBillsNil")}
-                />
-                <label class="form-check-label ml-2 mt-1" for="salesBillsNil">
-                  Sales Bills Nil
-                </label>
-              </div>
-            </div>
-           
-          </Col>
-        </Row>
-        :""}
-         {Oshow ? 
-        <Row className="my-3 mx-1">
-        <Col m={6} sm={12} lg={6} ml-0>
-          <Input  
-        name="gstTaxAmount"
-        id="gstTaxAmount"
-        label="GST Tax Amount "
-        placeholder="Enter GST Tax Amount "
-        type="number"
-        span="*"
-        isTouched={formik.touched.gstTaxAmount}
-        error={formik.errors.gstTaxAmount}
-        {...formik.getFieldProps("gstTaxAmount")}
-        />
-             
-          </Col>
-          <Col m={6} sm={12} lg={6} ml-0>
-          <Input  
-        name="amountPaid"
-        id="amountPaid"
-        label="Amount Paid"
-        placeholder="Enter Amount Paid "
-        type="number"
-        span="*"
-        isTouched={formik.touched.amountPaid}
-        error={formik.errors.amountPaid}
-        {...formik.getFieldProps("amountPaid")}
-        />
-             
-          </Col>
-          
-        </Row>
-         :""}
-        {Oshow ? 
-        <Row className="my-3 mx-1 justify-content-center">
-          <Col m={6} sm={12} ml-0 lg={6}>
-            <button
-              type="submit"
-              className="btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-3 float-right"
-              onClick={() => {setShow(true)}}
-            >
-              Submit
-            </button>
-          </Col>
-          <Col m={6} sm={12} ml-0 lg={6}>
-            <button
-              type="submit"
-              className="btn  btn-outline-danger ml-0 col-sm-10 col-lg-4 my-3"
-              onClick={() => handleCancle()}
-            >
-              Cancel
-            </button>
-          </Col>
-        </Row> 
-         :""}
+            </Col>
+          </Row>
+        ) : (
+          ""
+        )}
+        {Oshow ? (
+          <Row className="my-3 mx-1">
+            <Col m={6} sm={12} lg={6} ml-0>
+              <Input
+                name="gstTaxAmount"
+                id="gstTaxAmount"
+                label="GST Tax Amount "
+                placeholder="Enter GST Tax Amount "
+                type="number"
+                span="*"
+                isTouched={formik.touched.gstTaxAmount}
+                error={formik.errors.gstTaxAmount}
+                {...formik.getFieldProps("gstTaxAmount")}
+              />
+            </Col>
+            <Col m={6} sm={12} lg={6} ml-0>
+              <Input
+                name="amountPaid"
+                id="amountPaid"
+                label="Amount Paid"
+                placeholder="Enter Amount Paid "
+                type="number"
+                span="*"
+                isTouched={formik.touched.amountPaid}
+                error={formik.errors.amountPaid}
+                {...formik.getFieldProps("amountPaid")}
+              />
+            </Col>
+          </Row>
+        ) : (
+          ""
+        )}
+        {Oshow ? (
+          <Row className="my-3 mx-1 justify-content-center">
+            <Col m={6} sm={12} ml-0 lg={6}>
+              <button
+                type="submit"
+                className="btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-3 float-right"
+                onClick={() => {
+                  setShow(true);
+                }}
+              >
+                Submit
+              </button>
+            </Col>
+            <Col m={6} sm={12} ml-0 lg={6}>
+              <button
+                type="submit"
+                className="btn  btn-outline-danger ml-0 col-sm-10 col-lg-4 my-3"
+                onClick={() => handleCancle()}
+              >
+                Cancel
+              </button>
+            </Col>
+          </Row>
+        ) : (
+          ""
+        )}
       </form>
       <Model
         show={show}

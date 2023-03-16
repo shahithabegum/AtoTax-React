@@ -21,10 +21,10 @@ const ViewFeeCharge = ({item}) => {
                 <td className='tilte-td'><b>: </b>{item.gstClient.gstin}</td>
             </tr>
             <tr>
-                <td className='tilte-td'><b>Service Name</b></td>
-                <td className='tilte-td'><b>: </b>{item.serviceCategory.serviceName}</td>
+                <td className='tilte-td'><b>Return Freq Type</b></td>
+                <td className='tilte-td'><b>: </b>{item.returnFrequencyType.returnFreqType}</td>
                 <td className='tilte-td'><b>Description </b></td>
-                <td className='tilte-td'><b>: </b>{item.serviceCategory.description}</td>
+                <td className='tilte-td'><b>: </b>{item.returnFrequencyType.description}</td>
             </tr>
             <tr>
                         <td  className='tilte-td'><b>Created Date</b></td>
@@ -34,14 +34,14 @@ const ViewFeeCharge = ({item}) => {
             </tr>
             <tr>
                 <td className='tilte-td'><b>Previous Charge </b></td>
-                <td className='tilte-td'><b>: </b>{item.serviceCategory.previousCharge}</td>
+                <td className='tilte-td'><b>: </b>{item.returnFrequencyType.previousCharge}</td>
                 <td className='tilte-td'><b>Current Charge </b></td>
                 <td className='tilte-td'><b>: </b>{item.defaultCharge}</td>
                 
             </tr>
             <tr>
                 <td className='tilte-td'><b>Fixed Charge </b></td>
-                <td className='tilte-td'><b>: </b>{item.serviceCategory.fixedCharge}</td>
+                <td className='tilte-td'><b>: </b>{item.returnFrequencyType.fixedCharge}</td>
             </tr>
            
            </tbody>

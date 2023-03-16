@@ -17,10 +17,10 @@ const Clientfeecharges = (props) => {
 
   const columns = [
    {title: "Proprietor Name", field:"gstClient.proprietorName",defaultGroupOrder:0},
-    {title: "Service Name", field:"serviceCategory.serviceName"},
-    {title: "Fixed Charge", field:"serviceCategory.fixedCharge"},
+    {title: "Return Freq Type", field:"returnFrequencyType.returnFreqType"},
+    {title: "Fixed Charge", field:"returnFrequencyType.fixedCharge"},
     {title: "Current Charge", field:"defaultCharge"},
-    {title: "Previous Charge", field:"serviceCategory.previousCharge"},
+    {title: "Previous Charge", field:"returnFrequencyType.previousCharge"},
   ]
     //getting client details
     const GetDetails = ()=>{
