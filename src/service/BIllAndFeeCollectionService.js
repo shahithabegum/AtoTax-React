@@ -13,6 +13,7 @@ const Create_BillAndFee = (data)=>{
 const Update_BillAndFee= (data,id)=>{
     return axios.put(API_BASE_URL+`/api/GSTBillsProcessing/UpdateGSTBillsProcessing/${id}`,data)
 }
+
 const Delete_BillAndFee= (id)=>{
     return axios.delete(API_BASE_URL+`/api/GSTBillsProcessing/DeleteGSTBillsProcessing/${id}`)
 }

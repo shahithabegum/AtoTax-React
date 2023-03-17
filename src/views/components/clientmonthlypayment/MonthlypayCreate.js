@@ -9,19 +9,19 @@ import { GetlMonthAndYearByClient } from "../../../service/CollectionAndBalanceS
 import { Col, Row } from "react-bootstrap";
 import { Input } from "../../../shared/Input";
 import { toast } from "react-toastify";
-import { GetServiceCategoryDD } from "../../../service/ServiceCategoryService";
+import { GetReturnFrequencyDD } from "../../../service/ReturnFrequencyService";
 const MonthlypayCreate = () => {
   const [clientId, setClientId] = useState([]);
   const [paymentId, setPaymentId] = useState([]);
   const [month, setMonth] = useState([]);
-  const [servicecatid, setServicecatid] = useState([]);
+  const [FrequencyType, setFrequencyType] = useState([]);
   const [year, setYear] = useState([]);
 
   let navigate = useNavigate();
   useEffect(() => {
     getGstClientId();
     GetpaymentDD();
-    getServiceCatDD();
+    getfrequencyDD();
   }, []);
   const formik = useFormik({
     initialValues: {
@@ -29,7 +29,7 @@ const MonthlypayCreate = () => {
       dueMonth: "",
       dueYear: "",
       paymentTypeId: "",
-      serviceCategoryId: "",
+      returnFrequencyTypeId: "",
       paymentReferenceNumber: "",
       receivedAmount: "",
       comments: "",
@@ -70,11 +70,10 @@ const MonthlypayCreate = () => {
     });
   };
 
-  const getServiceCatDD = () => {
-    GetServiceCategoryDD().then((res) => {
+  const getfrequencyDD = () => {
+    GetReturnFrequencyDD().then((res) => {
       console.log(res);
-
-      setServicecatid(res.data.result);
+      if (res.status) setFrequencyType(res.data.result);
     });
   };
 
@@ -195,25 +194,25 @@ const MonthlypayCreate = () => {
         </Row>
         <Row className="my-3 mx-1">
           <Col m={6} sm={12} lg={6} ml-0>
-            <label htmlFor="serviceCategoryId" className="ml-0 mt-2">
-              Service category
+            <label htmlFor="returnFrequencyTypeId" className="ml-0 mt-2">
+            Return Type 
             </label>
             <select
-              name="serviceCategoryId"
+              name="returnFrequencyTypeId"
               type="number"
-              {...formik.getFieldProps("serviceCategoryId")}
+              {...formik.getFieldProps("returnFrequencyTypeId")}
               // onChange={handlepopup}
               className="ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control"
             >
-              <option value="" label="Select Service category" />
-              {servicecatid.map((item) => (
-                <option value={item.id} label={item.serviceNameAndDesc} />
+              <option value="" label="Select Return Type" />
+              {FrequencyType.map((item) => (
+                <option value={item.id} label={item.returnFreqType} />
               ))}
             </select>
 
-            {formik.touched.serviceCategoryId &&
-            formik.errors.serviceCategoryId ? (
-              <p style={{ color: "red" }}>{formik.errors.serviceCategoryId}</p>
+            {formik.touched.returnFrequencyTypeId &&
+            formik.errors.returnFrequencyTypeId ? (
+              <p style={{ color: "red" }}>{formik.errors.returnFrequencyTypeId}</p>
             ) : null}
           </Col>
           <Col m={6} sm={12} lg={6} ml-0>

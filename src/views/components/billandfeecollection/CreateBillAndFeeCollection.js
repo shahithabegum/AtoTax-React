@@ -12,6 +12,7 @@ import {
 } from "../../../service/CollectionAndBalanceService";
 import Receivecpop from "./Receivecpop";
 import BillAndFeeCollectionValidation from "./BillAndFeeCollectionValidation";
+import { object } from "yup";
 const CreateBillAndFeeCollection = () => {
   const [clientId, setClientId] = useState([]);
   const [month, setMonth] = useState([]);
@@ -96,7 +97,7 @@ const CreateBillAndFeeCollection = () => {
         e.target.value
       ).then((res) => {
         if (res?.data?.isSuccess && res.data.result.returnFrequencyTypeId < 4) {
-          setMonth(res.data.result.dueMonths);
+          setMonth(res.data.result.monthsAndAmount);
           setMShow(true);
         }
       });
@@ -125,12 +126,27 @@ const CreateBillAndFeeCollection = () => {
 
  
   console.log("key3", typeof val);
-  console.log("Month", mshow);
+  console.log("Month", month);
   console.log("others", Oshow);
   console.log("value", formik.values.dueYear);
   const handleCancle = () => {
     navigate("/billandfeecollection");
   };
+  const handlemonth =(e)=>{
+   var amt=Object.entries(month)
+   var dic2 = Object.entries(month).filter(([k, v]) => {
+    if (k === e.target.value) {
+      return v;
+    }
+  });
+  var dic3 = dic2[0];
+  var val = dic3[1];
+  var val2 = val;
+  console.log("key2", dic2);
+  console.log("amt", amt);
+  console.log("key3", val);
+   formik.values.amountPaid=val2
+  }
   return (
     <div className="container p-2 col-11 col-sm-10 col-lg-12 mt-5">
       <form
@@ -223,7 +239,7 @@ const CreateBillAndFeeCollection = () => {
             {mshow ? (
               <Col m={6} sm={12} lg={6} ml-0>
                 <label htmlFor="dueMonth" className="ml-0">
-                  Month{" "}
+                  Month
                   <span style={{ color: "red", fontSize: "20px" }}>*</span>
                 </label>
                 <select
@@ -231,11 +247,15 @@ const CreateBillAndFeeCollection = () => {
                   type="number"
                   span="*"
                   {...formik.getFieldProps("dueMonth")}
+                  onChange={(e) => {
+                    formik.handleChange(e);
+                    handlemonth(e);
+                  }}
                   className="ml-0 col-lg-10 col-sm-10 col-m-6 d-sm-m-0 form-control"
                 >
                   <option value="" label="Select Payment Due Month" />
-                  {Object.entries(month).map((item, index) => (
-                    <option key={index} value={item} label={item} />
+                  {Object.keys(month).map((key) => (
+                    <option  value={key} label={key}  />
                   ))}
                 </select>
 

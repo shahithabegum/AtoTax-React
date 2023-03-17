@@ -84,6 +84,8 @@ import AccountLedgerView from '../views/components/accountLedger/AccountLedgerVi
 import CollectionAndBalance from '../views/components/collectionandbalance/CollectionAndBalance';
 import CollectionAndBalanceView from '../views/components/collectionandbalance/CollectionAndBalanceView';
 import { BillandFeeTest } from '../views/components/billandfeecollection/BillandFeeTest';
+import SalesGSTR from '../views/components/billandfeecollection/SalesGSTR';
+import GSTR3B from '../views/components/billandfeecollection/GSTR3B';
 export const pathroutes=[
     {
         path: "/login",
@@ -214,6 +216,14 @@ export const pathroutes=[
         {
             path: "/ProcessTrackingAndFeeBalancesView",
             DynComponent: CollectionAndBalanceView
+        },
+        {
+            path: "/salesGstr1",
+            DynComponent: SalesGSTR
+        },
+        {
+            path: "/GSTR3B",
+            DynComponent: GSTR3B
         },
          // -------------Media  TYPE-----------
          {

@@ -36,5 +36,11 @@ const GetBillsNotReceivedList = ()=>{
 const Update_ProcessInvoices= (data)=>{
     return axios.put(API_BASE_URL+`/api/ProcessTrackingAndFeeBalances/UpdateProcessInvoicesReceived`,data)
 }
+const SalesGSTR1Filed= (data)=>{
+    return axios.put(API_BASE_URL+`/api/ProcessTrackingAndFeeBalances/UpdateSalesGSTR1Filed`,data)
+}
+const UpdateGSTR3BFiled= (data)=>{
+    return axios.put(API_BASE_URL+`/api/ProcessTrackingAndFeeBalances/UpdateGSTR3BFiled`,data)
+}
 export{GetAllProcessTrackingAndFeeBalances,GetlProcessTrackingAndFeeBalancesById,GetPendingPayments,GetPendingPaymentsByClient,GetFiledStatus,
-    GetBillsNotReceivedList,GetlMonthAndYearByClient,GetProcessPopupDataById,Update_ProcessInvoices,GetS1Process,GetYearByClient,GetmonthByClient}
+    GetBillsNotReceivedList,GetlMonthAndYearByClient,GetProcessPopupDataById,Update_ProcessInvoices,GetS1Process,GetYearByClient,GetmonthByClient,SalesGSTR1Filed,UpdateGSTR3BFiled}
